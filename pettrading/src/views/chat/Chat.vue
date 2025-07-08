@@ -41,7 +41,7 @@
         </div>
         <div class="inputbar">
           <textarea v-model="form.message"></textarea>
-          <button class="but" @click="send">发送</button>
+          <button class="but" @click="send">送信</button>
         </div>
       </div>
     </div>

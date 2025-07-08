@@ -266,7 +266,7 @@
         self.timeoutObj && clearTimeout(self.timeoutObj);
         self.serverTimeoutObj && clearTimeout(self.serverTimeoutObj);
         self.timeoutObj = setTimeout(function () {
-          //这里发送一个心跳，后端收到后，返回一个心跳信息
+          //这里送信一个心跳，后端收到后，返回一个心跳信息
           if(self.websocket.readyState == 1) {
             //如果连接正常
             self.websocket.send("heartCheck");

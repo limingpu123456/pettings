@@ -6,7 +6,7 @@
     <input type="text" v-model="message">
     <input type="text" v-model="touser">
     <div>
-      <el-button type="primary" @click="send">发送</el-button>
+      <el-button type="primary" @click="send">送信</el-button>
     </div>
   </div>
 </template>
