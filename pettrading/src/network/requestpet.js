@@ -40,7 +40,7 @@ export function requestqueryMaxPrice() {
     })
 }
 
-//查询所有ペットの年齢
+//查询所有年齢
 export function requestqueryage() {
     return request({
         url: "/pet/queryage",
@@ -64,7 +64,7 @@ export function requestqueryAllPet(parameter) {
     })
 }
 
-//删除宠物信息
+//削除宠物信息
 export function requestdeletePet(parameter) {
     return request({
         url: "/pet/deletePet",

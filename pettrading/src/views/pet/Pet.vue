@@ -7,8 +7,8 @@
         @select="handleSelect">
           <el-menu-item class="el-menu-item" index="-1">全部</el-menu-item>
           <el-menu-item class="el-menu-item" index="0">販売中</el-menu-item>
-          <el-menu-item class="el-menu-item" index="1">已販売</el-menu-item>
-          <el-menu-item class="el-menu-item" index="2">已完成</el-menu-item>
+          <el-menu-item class="el-menu-item" index="1">販売完了</el-menu-item>
+          <el-menu-item class="el-menu-item" index="2">完了済み</el-menu-item>
           <el-menu-item class="el-menu-item" index="3">購入希望中</el-menu-item>
         </el-menu>
       </div>
@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="nolists" v-if="petlists.length == 0">
-        暂无数据
+        該当なし
       </div>
     </div>
   </div>

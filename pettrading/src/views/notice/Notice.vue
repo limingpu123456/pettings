@@ -43,7 +43,7 @@
       };
       //连接关闭的回调方法
       this.websocket.onclose = function() {
-        console.log("连接关闭")
+        console.log("接続が切断されました")
       };
     },
     methods: {

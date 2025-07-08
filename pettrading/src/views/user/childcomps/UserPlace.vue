@@ -2,20 +2,20 @@
 <template>
   <div class="userplace">
     <el-table :data="data" style="width: 100%">
-      <!-- 手机号 -->
-      <el-table-column label="手机号" width="200">
+      <!-- 携帯番号 -->
+      <el-table-column label="携帯番号" width="200">
         <template slot-scope="scope">
           <span v-if="show != scope.$index">{{ scope.row.phone }}</span>
           <el-input
             v-model="form.phone"
             clearable
             v-if="show === scope.$index"
-            placeholder="请输入手机号"
+            placeholder="携帯番号を入力してください"
           ></el-input>
         </template>
       </el-table-column>
-      <!-- 收件人 -->
-      <el-table-column label="收件人" width="200">
+      <!-- 受取人 -->
+      <el-table-column label="受取人" width="200">
         <template slot-scope="scope">
           <span v-if="show != scope.$index">{{ scope.row.username }}</span>
           <el-input
@@ -26,8 +26,8 @@
           ></el-input>
         </template>
       </el-table-column>
-      <!-- 地址 -->
-      <el-table-column label="地址">
+      <!-- 住所 -->
+      <el-table-column label="住所">
         <template slot-scope="scope">
           <span v-if="show != scope.$index">{{ scope.row.address }}</span>
           <el-input
@@ -45,15 +45,15 @@
             v-if="show != scope.$index"
             type="text"
             @click="change(scope.$index, scope.row)"
-            >修改</el-button
+            >修正</el-button
           >
           <span v-if="show != scope.$index">
             <el-popconfirm
-              title="确定删除该地址吗？"
+              title="この住所を本当に削除してもよろしいですか？"
               @confirm="deleteaddress(scope.$index, scope.row)"
             >
               <el-button class="deletebut" slot="reference" type="text"
-                >删除</el-button
+                >削除</el-button
               >
             </el-popconfirm>
           </span>
@@ -61,19 +61,19 @@
             v-if="show === scope.$index && show != length"
             type="text"
             @click="update(scope.$index, scope.row)"
-            >确认</el-button
+            >確認</el-button
           >
           <el-button
             v-if="show === scope.$index && show === length"
             type="text"
             @click="update(scope.$index, scope.row)"
-            >增加</el-button
+            >追加</el-button
           >
           <el-button
             v-if="show === scope.$index"
             type="text"
             @click="cancel(scope.$index, scope.row)"
-            >取消</el-button
+            >キャンセル</el-button
           >
         </template>
       </el-table-column>
@@ -110,7 +110,7 @@ export default {
     };
   },
   methods: {
-    // 按修改按钮
+    // 按修正按钮
     change(index, row) {
       if (this.count === 1) {
         this.data.pop();
@@ -122,7 +122,7 @@ export default {
       this.form = row;
       this.show = index;
     },
-    //按取消按钮
+    //按キャンセル按钮
     cancel(index, row) {
       if (index === this.length) {
         this.data.pop();
@@ -135,47 +135,47 @@ export default {
         this.show = null;
       }
     },
-    // 按确认/增加按钮
+    // 按確認/增加按钮
     update(index, row) {
       if (this.form.phone === "") {
         this.$message({
-          message: "手机号不能为空",
+          message: "携帯番号空にできません",
           type: "error",
           center: true,
           showClose: true,
         });
       } else if (this.form.username === "") {
         this.$message({
-          message: "收件人不能为空",
+          message: "受取人空にできません",
           type: "error",
           center: true,
           showClose: true,
         });
       } else if (this.form.address === "") {
         this.$message({
-          message: "地址不能为空",
+          message: "住所空にできません",
           type: "error",
           center: true,
           showClose: true,
         });
       } else if (/^1\d{10}$/.test(this.form.phone)) {
         if (index === this.length) {
-          // 增加地址
+          // 增加住所
           this.addAddress(index, row);
         } else {
-          // 修改地址
+          // 修正住所
           this.updateAddress();
         }
       } else {
         this.$message({
-          message: "请输入11位手机号码，1xx xxxx xxxx",
+          message: "11桁の携帯番号（1xx xxxx xxxx）を入力してください",
           type: "error",
           center: true,
           showClose: true,
         });
       }
     },
-    // 按删除按钮
+    // 按削除按钮
     deleteaddress(index, row) {
       if (this.count === 1) {
         this.data.pop();
@@ -212,7 +212,7 @@ export default {
         this.count++;
       }
     },
-    //添加地址
+    //添加住所
     addAddress(index, row) {
       requestaddAddress({
         uid: this.$store.state.uid,
@@ -236,7 +236,7 @@ export default {
           console.log(err);
         });
     },
-    // 修改地址
+    // 修正住所
     updateAddress() {
       requestupdateAddress({
         aid: this.form.aid,

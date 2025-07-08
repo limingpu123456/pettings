@@ -3,7 +3,7 @@
   <div class='chat'>
     <div class="chatbar">
       <div class="chattop">
-        <div>聊天室</div>
+        <div>チャットルーム</div>
         <div>{{activeuser.username}}</div>
         <div class="close" @click="$store.state.showchat = false">退出</div>
       </div>
@@ -19,7 +19,7 @@
       </div>
       <div class="chatmessagebar" v-if="show == false">
         <div class="tip">
-          选择联系人开始聊天
+          連絡先を選んでチャットを開始してください
         </div>
       </div>
       <div class="chatmessagebar" v-if="show == true">
@@ -85,7 +85,7 @@
       send() {
         if(this.form.message == ""){
           this.$message({
-            message: "信息不能为空",
+            message: "情報は空にできません",
             type: "error",
             center: true,
             showClose:true

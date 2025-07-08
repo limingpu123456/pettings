@@ -1,11 +1,11 @@
 <!---->
 <template>
   <div class='sidebar'>
-    <el-tooltip class="item" effect="dark" content="发布想要販売宠物" placement="left">
+    <el-tooltip class="item" effect="dark" content="販売したいペットを投稿する" placement="left">
       <button class="but" @click="tosell">販売</button>
     </el-tooltip>
     <el-tooltip class="item" effect="dark"  placement="left">
-      <div slot="content">没找到想要的宠物？<br/>发布宠物请求试试</div>
+      <div slot="content">欲しいペットが見つかりませんか？<br/>ペットの希望を投稿する</div>
       <button class="but" @click="tobuy">購入希望</button>
     </el-tooltip>
   </div>

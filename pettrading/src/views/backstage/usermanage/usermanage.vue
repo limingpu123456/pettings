@@ -3,39 +3,39 @@
   <div class="usermanage">
     <div class="selectbar">
       <el-form :inline="true" :model="form">
-        <el-form-item label="用户id">
+        <el-form-item label="ユーザーID">
           <el-input
             clearable
             v-model="form.uid"
-            placeholder="用户id"
+            placeholder="ユーザーID"
           ></el-input>
         </el-form-item>
-        <el-form-item label="用户名">
+        <el-form-item label="ユーザー名">
           <el-input
             clearable
             v-model="form.username"
-            placeholder="用户名"
+            placeholder="ユーザー名"
           ></el-input>
         </el-form-item>
-        <el-form-item label="真实姓名">
+        <el-form-item label="本名">
           <el-input
             clearable
             v-model="form.realname"
-            placeholder="真实姓名"
+            placeholder="本名"
           ></el-input>
         </el-form-item>
-        <el-form-item label="身份证">
+        <el-form-item label="身分証明書">
           <el-input
             clearable
             v-model="form.idcard"
-            placeholder="身份证"
+            placeholder="身分証明書"
           ></el-input>
         </el-form-item>
-        <el-form-item label="联系电话">
+        <el-form-item label="連絡電話番号">
           <el-input
             clearable
             v-model="form.phone"
-            placeholder="联系电话"
+            placeholder="連絡電話番号"
           ></el-input>
         </el-form-item>
         <el-form-item>
@@ -53,36 +53,36 @@
       <el-table :data="user" style="width: 100%">
         <el-table-column prop="uid" label="id" sortable width="100">
         </el-table-column>
-        <el-table-column label="用户头像" width="180">
+        <el-table-column label="ユーザー画像" width="180">
           <template slot-scope="scope">
             <div class="avatar">
               <img :src="'/api/' + scope.row.avatar" alt="" />
             </div>
           </template>
         </el-table-column>
-        <el-table-column prop="username" label="用户名" width="180">
+        <el-table-column prop="username" label="ユーザー名" width="180">
         </el-table-column>
-        <el-table-column prop="password" label="登録密码" width="150">
+        <el-table-column prop="password" label="パスワード登録" width="150">
         </el-table-column>
         <el-table-column prop="sex" label="性別" width="100"> </el-table-column>
-        <el-table-column prop="realname" label="真实姓名" width="180">
+        <el-table-column prop="realname" label="本名" width="180">
         </el-table-column>
-        <el-table-column prop="idcard" width="200" label="身份证号">
+        <el-table-column prop="idcard" width="200" label="身分証番号">
         </el-table-column>
-        <el-table-column prop="telphone" label="手机号" width="180">
+        <el-table-column prop="telphone" label="携帯番号" width="180">
         </el-table-column>
         <el-table-column label="操作" width="180">
           <template slot-scope="scope">
             <el-button size="mini" @click="handleEdit(scope.$index, scope.row)"
-              >编辑</el-button
+              >編集</el-button
             >
             <el-popconfirm
-              confirmButtonText="确定"
-              cancelButtonText="取消"
+              confirmButtonText="確定"
+              cancelButtonText="キャンセル"
               placement="top"
               icon="el-icon-info"
               iconColor="red"
-              title="确定删除该用户吗？"
+              title="このユーザーを削除してもよろしいですか"
               @confirm="handleDelete(scope.$index, scope.row)"
             >
               <el-button
@@ -90,7 +90,7 @@
                 size="mini"
                 type="danger"
                 slot="reference"
-                >删除</el-button
+                >削除</el-button
               >
             </el-popconfirm>
           </template>
@@ -112,52 +112,52 @@
     <el-drawer :visible.sync="drawer" direction="rtl" size="50%">
       <div class="updatebar">
         <el-form :model="updateform" label-width="80px">
-          <el-form-item label="用户名">
+          <el-form-item label="ユーザー名">
             <el-input
               v-model="updateform.username"
-              placeholder="用户名"
+              placeholder="ユーザー名"
               clearable
             ></el-input>
           </el-form-item>
-          <el-form-item label="登録密码">
+          <el-form-item label="パスワード登録">
             <el-input
               v-model="updateform.password"
-              placeholder="登録密码"
+              placeholder="パスワード登録"
               clearable
             ></el-input>
           </el-form-item>
           <el-form-item label="性別">
             <el-radio-group v-model="updateform.sex">
-              <el-radio label="保密">保密</el-radio>
+              <el-radio label="秘密保持">秘密保持</el-radio>
               <el-radio label="男">男</el-radio>
               <el-radio label="女">女</el-radio>
             </el-radio-group>
           </el-form-item>
-          <el-form-item label="真实姓名">
+          <el-form-item label="本名">
             <el-input
               v-model="updateform.realname"
-              placeholder="真实姓名"
+              placeholder="本名"
               clearable
             ></el-input>
           </el-form-item>
-          <el-form-item label="身份证号">
+          <el-form-item label="身分証番号">
             <el-input
               v-model="updateform.idcard"
-              placeholder="身份证号"
+              placeholder="身分証番号"
               clearable
             ></el-input>
           </el-form-item>
-          <el-form-item label="手机号">
+          <el-form-item label="携帯番号">
             <el-input
               v-model="updateform.telphone"
-              placeholder="手机号"
+              placeholder="携帯番号"
               clearable
             ></el-input>
           </el-form-item>
           <el-form-item>
             <div class="but">
-              <el-button type="primary" @click="update">提交</el-button>
-              <el-button type="primary" @click="drawer = false">取消</el-button>
+              <el-button type="primary" @click="update">提出</el-button>
+              <el-button type="primary" @click="drawer = false">キャンセル</el-button>
             </div>
           </el-form-item>
         </el-form>
@@ -260,7 +260,7 @@ export default {
       })
         .then((res) => {
           this.$notify({
-            title: "删除成功",
+            title: "削除成功",
             message: res,
             offset: 100,
             type: "success",

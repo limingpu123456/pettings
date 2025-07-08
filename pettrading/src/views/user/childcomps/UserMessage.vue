@@ -6,17 +6,17 @@
     </div>
     <div class="mescontent">
       <ul>
-        <!-- 用户名 -->
+        <!-- ユーザー名 -->
         <li>
-          <p class="type">用户名</p>
+          <p class="type">ユーザー名 </p>
           <div class="inp">
             <img src="~assets/img/user/user.png" alt class="img-bg" />
             <input readonly="true" type="text" v-model="username" />
           </div>
         </li>
-        <!-- 真实姓名 -->
+        <!-- 本名 -->
         <li>
-          <p class="type">真实姓名 </p>
+          <p class="type">本名 </p>
           <div class="inp">
           <img src="~assets/img/user/user.png" alt class="img-bg" />
           <input
@@ -25,10 +25,10 @@
             v-model="realname"
           />
         </div>
-        <!-- 身份证号 -->
+        <!-- 身分証明書号 -->
         </li>
         <li>
-          <p class="type">身份证号 </p>
+          <p class="type">身分証明書号 </p>
           <div class="inp">
             <img src="~assets/img/user/idcard.png" alt class="img-bg" />
             <input
@@ -50,9 +50,9 @@
             />
           </div>
         </li>
-        <!-- 手机号 -->
+        <!-- 携帯番号 -->
         <li>
-          <p class="type">手机号 </p>
+          <p class="type">携帯番号 </p>
           <div class="inp">
             <img src="~assets/img/user/phone.png" alt class="img-bg" />
             <input

@@ -1,16 +1,16 @@
 <!---->
 <template>
   <div class='buying'>
-    <breadcrumb>宠物購入希望</breadcrumb>
+    <breadcrumb>ペット購入希望</breadcrumb>
     <div class="container">
       <div class="mainbuy">
         <selector @query="query">
-          <el-tooltip class="item" effect="dark" content="我也要購入希望" placement="bottom">
+          <el-tooltip class="item" effect="dark" content="私も購入希望です" placement="bottom">
             <el-button type="primary" @click="towantbuy">購入希望</el-button>
           </el-tooltip>
         </selector>
         <div class="rightcard">
-          <div v-if="lists.length === 0 && show === true" class="nolists">没有您要搜索的宠物</div>
+          <div v-if="lists.length === 0 && show === true" class="nolists">ご希望のペットは見つかりません</div>
           <carditem :lists="lists"></carditem>
         </div>
       </div>
@@ -104,7 +104,7 @@
       query(form) {
         this.currentpage = 1;
         this.form = form;
-        if(this.form.age == "不限") {
+        if(this.form.age == "不問") {
           this.form.age = -1
         }
         //更加条件検索数据

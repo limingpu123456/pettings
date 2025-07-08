@@ -1,22 +1,22 @@
-<!--地址管理-->
+<!--住所管理-->
 <template>
   <div class="addressmanage">
     <div class="selectbar">
       <el-form :inline="true" :model="form">
-        <el-form-item label="地址id">
-          <el-input v-model="form.aid" placeholder="地址id"></el-input>
+        <el-form-item label="住所ID">
+          <el-input v-model="form.aid" placeholder="住所ID"></el-input>
         </el-form-item>
-        <el-form-item label="用户id">
-          <el-input v-model="form.uid" placeholder="用户id"></el-input>
+        <el-form-item label="ユーザーID">
+          <el-input v-model="form.uid" placeholder="ユーザーID"></el-input>
         </el-form-item>
-        <el-form-item label="收件人">
-          <el-input v-model="form.username" placeholder="收件人"></el-input>
+        <el-form-item label="受取人">
+          <el-input v-model="form.username" placeholder="受取人"></el-input>
         </el-form-item>
-        <el-form-item label="地址">
-          <el-input v-model="form.address" placeholder="地址"></el-input>
+        <el-form-item label="住所">
+          <el-input v-model="form.address" placeholder="住所"></el-input>
         </el-form-item>
-        <el-form-item label="联系电话">
-          <el-input v-model="form.phone" placeholder="联系电话"></el-input>
+        <el-form-item label="連絡電話番号">
+          <el-input v-model="form.phone" placeholder="連絡電話番号"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button
@@ -30,27 +30,27 @@
     </div>
     <div>
       <el-table :data="address" style="width: 100%">
-        <el-table-column prop="aid" sortable label="地址id" width="180">
+        <el-table-column prop="aid" sortable label="住所ID" width="180">
         </el-table-column>
-        <el-table-column label="所属用户id" prop="uid" width="180">
+        <el-table-column label="所属ユーザーID" prop="uid" width="180">
         </el-table-column>
-        <el-table-column prop="username" label="收件人" width="200">
+        <el-table-column prop="username" label="受取人" width="200">
         </el-table-column>
-        <el-table-column prop="address" label="地址"> </el-table-column>
-        <el-table-column prop="phone" width="200" label="联系电话">
+        <el-table-column prop="address" label="住所"> </el-table-column>
+        <el-table-column prop="phone" width="200" label="連絡電話番号">
         </el-table-column>
         <el-table-column label="操作" width="180">
           <template slot-scope="scope">
             <el-button size="mini" @click="handleEdit(scope.$index, scope.row)"
-              >编辑</el-button
+              >編集</el-button
             >
             <el-popconfirm
-              confirmButtonText="确定"
-              cancelButtonText="取消"
+              confirmButtonText="確定"
+              cancelButtonText="キャンセル"
               placement="top"
               icon="el-icon-info"
               iconColor="red"
-              title="确定删除该用户吗？"
+              title="このユーザーを削除してもよろしいですか"
               @confirm="handleDelete(scope.$index, scope.row)"
             >
               <el-button
@@ -58,7 +58,7 @@
                 size="mini"
                 type="danger"
                 slot="reference"
-                >删除</el-button
+                >削除</el-button
               >
             </el-popconfirm>
           </template>
@@ -80,31 +80,31 @@
     <el-drawer :visible.sync="drawer" direction="rtl" size="50%">
       <div class="updatebar">
         <el-form :model="updateaddress" label-width="80px">
-          <el-form-item label="收件人">
+          <el-form-item label="受取人">
             <el-input
               v-model="updateaddress.username"
-              placeholder="收件人"
+              placeholder="受取人"
               clearable
             ></el-input>
           </el-form-item>
-          <el-form-item label="地址">
+          <el-form-item label="住所">
             <el-input
               v-model="updateaddress.address"
-              placeholder="地址"
+              placeholder="住所"
               clearable
             ></el-input>
           </el-form-item>
-          <el-form-item label="联系电话">
+          <el-form-item label="連絡電話番号">
             <el-input
               v-model="updateaddress.phone"
-              placeholder="联系电话"
+              placeholder="連絡電話番号"
               clearable
             ></el-input>
           </el-form-item>
           <el-form-item>
             <div class="but">
-              <el-button type="primary" @click="update">提交</el-button>
-              <el-button type="primary" @click="drawer = false">取消</el-button>
+              <el-button type="primary" @click="update">提出</el-button>
+              <el-button type="primary" @click="drawer = false">キャンセル</el-button>
             </div>
           </el-form-item>
         </el-form>
@@ -203,7 +203,7 @@ export default {
       })
         .then((res) => {
           this.$notify({
-            title: "删除成功",
+            title: "削除成功",
             message: res,
             offset: 100,
             type: "success",
@@ -238,7 +238,7 @@ export default {
       })
         .then((res) => {
           this.$notify({
-            title: "修改成功",
+            title: "変更が完了しました",
             message: res,
             type: "success",
             offset: 100,

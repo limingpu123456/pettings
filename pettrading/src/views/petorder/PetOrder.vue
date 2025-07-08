@@ -7,11 +7,11 @@
         <el-menu :default-active="activeIndex" mode="horizontal" background-color="#f2f2f2"
         @select="handleSelect">
           <el-menu-item class="el-menu-item" index="-1">全部</el-menu-item>
-          <el-menu-item class="el-menu-item" index="0">进行中</el-menu-item>
-          <el-menu-item class="el-menu-item" index="1">已完成</el-menu-item>
-          <el-menu-item class="el-menu-item" index="2">已取消</el-menu-item>
-          <el-menu-item class="el-menu-item" index="3">修改中</el-menu-item>
-          <el-menu-item class="el-menu-item" index="4">取消中</el-menu-item>
+          <el-menu-item class="el-menu-item" index="0">進行中</el-menu-item>
+          <el-menu-item class="el-menu-item" index="1">完了済み</el-menu-item>
+          <el-menu-item class="el-menu-item" index="2">キャンセル</el-menu-item>
+          <el-menu-item class="el-menu-item" index="3">変更中</el-menu-item>
+          <el-menu-item class="el-menu-item" index="4">キャンセル中</el-menu-item>
         </el-menu>
       </div>
     </div>
@@ -20,7 +20,7 @@
         <ordercard :item="item" :statu.sync="item.postatu" @deleteorder="deleteorder(item)"></ordercard>
       </div>
       <div class="nolists" v-if="petorder.length == 0">
-        暂无数据
+        該当なし
       </div>
     </div>
   </div>

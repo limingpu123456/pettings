@@ -6,7 +6,7 @@
       ペット詳細情報
     </breadcrumb>
     <div v-if="nopet == true">
-      <div class="notexixtpet">该宠物不存在</div>
+      <div class="notexixtpet">そのペットは存在しません</div>
     </div>
     <div v-if="nopet == false">
       <div class="maindetail container" v-if="photo.length > 0">
@@ -26,14 +26,14 @@
         </div>
         <div class="message">
           <div class="mbar">
-            <div class="title">ペットの名前：</div>
+            <div class="title">名前：</div>
             <div class="val">{{ pet.petname }}</div>
           </div>
           <div class="mbar">
             <div class="title" v-if="pet.pk != 3">価格：</div>
             <div class="title" v-if="pet.pk == 3">最高価格：</div>
             <div class="val" v-if="pet.price != -1">{{ pet.price }}</div>
-            <div class="val" v-if="pet.price == -1">不限</div>
+            <div class="val" v-if="pet.price == -1">不問</div>
           </div>
           <div class="mbar">
             <div class="title">タイプ：</div>
@@ -50,7 +50,7 @@
           <div class="mbar">
             <div class="title">年齢：</div>
             <div class="val" v-if="pet.age != -1">{{ pet.age }}ヶ月</div>
-            <div class="val" v-if="pet.age == -1">不限</div>
+            <div class="val" v-if="pet.age == -1">不問</div>
           </div>
           <!-- <div class="mbar">
             <div class="title">数量：</div>
@@ -98,7 +98,7 @@
               </div>
             </div>
             <div v-if="user.uid != $store.state.uid && pet.pk == 0">
-              <el-button type="primary" @click="topurchase">立即购买</el-button>
+              <el-button type="primary" @click="topurchase">今すぐ購入</el-button>
             </div>
             <div v-if="user.uid != $store.state.uid && pet.pk == 3">
               <el-button type="primary" @click="selectmypet"
@@ -116,13 +116,13 @@
             </div>
             <div v-if="user.uid == $store.state.uid && pet.pk != 1">
               <el-popover placement="top" width="160" v-model="visible">
-                <p>删除后将无法恢复，确定删除吗？</p>
+                <p>削除すると復元できません。削除してもよろしいですか</p>
                 <div style="text-align: right; margin: 0">
                   <el-button size="mini" type="text" @click="visible = false"
-                    >取消</el-button
+                    >キャンセル</el-button
                   >
                   <el-button type="primary" size="mini" @click="deletepet"
-                    >确定</el-button
+                    >確定</el-button
                   >
                 </div>
                 <el-button type="danger" slot="reference">このペットを削除する</el-button>
@@ -137,7 +137,7 @@
                   pet.pk != 3
                 "
               >
-                <div class="done">已販売</div>
+                <div class="done">販売完了</div>
               </div>
               <div v-if="user.uid == $store.state.uid && pet.pk == 0">
                 <div class="doing">販売中</div>
@@ -149,7 +149,7 @@
                   pet.pk == 1
                 "
               >
-                <div class="done">已販売</div>
+                <div class="done">販売完了</div>
               </div>
               <div
                 v-if="
@@ -158,7 +158,7 @@
                   pet.pk == 2
                 "
               >
-                <div class="success">已完成</div>
+                <div class="success">完了済み</div>
               </div>
               <div
                 v-if="
@@ -173,7 +173,7 @@
           </div>
         </div>
       </div>
-      <!-- 订单信息 -->
+      <!-- 注文情報 -->
       <div
         class="container"
         v-if="
@@ -250,7 +250,7 @@ export default {
     //加入购物车
     shoppingcard() {
       this.$message({
-        message: "已加入购物车",
+        message: "カートに追加しました",
         type: "success",
       });
     },

@@ -1,6 +1,6 @@
 import request from "network/request.js"
 
-//検索所有ペットの品種
+//検索所有品種
 export function requestqueryallskind(parameter) {
     return request({
       url: "/skind/queryallskind",
@@ -8,7 +8,7 @@ export function requestqueryallskind(parameter) {
     })
 }
 
-//検索所有ペットの品種
+//検索所有品種
 export function requestaddskind(parameter) {
     return request({
       url: "/skind/addskind",
@@ -17,7 +17,7 @@ export function requestaddskind(parameter) {
     })
 }
 
-//删除品種
+//削除品種
 export function requestdeleteskind(parameter) {
     return request({
       url: "/skind/deleteskind",
@@ -25,7 +25,7 @@ export function requestdeleteskind(parameter) {
     })
 }
 
-//删除品種
+//削除品種
 export function requestupdateskind(parameter) {
     return request({
       url: "/skind/updateskind",

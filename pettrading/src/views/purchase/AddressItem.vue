@@ -4,12 +4,12 @@
     <div v-for="(item,index) in address" :key="index">
       <div class="addresscard" @click="choose(item)">
         <div>受取人：{{item.username}}</div>
-        <div>联系电话：{{item.phone}}</div>
-        <div class="address">地址：{{item.address}}</div>
+        <div>連絡電話番号：{{item.phone}}</div>
+        <div class="address">住所：{{item.address}}</div>
       </div>
     </div>
     <div v-if="address.length === 0" class="noaddress">
-      您还没有存入任何地址
+      まだ住所が登録されていません
     </div>
   </div>
 </template>

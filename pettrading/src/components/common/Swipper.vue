@@ -36,9 +36,9 @@ export default {
   data() {
     return {
       petname: "",
-      content: '切换到検索購入希望',
+      content: '検索購入希望に切り替える',
       turnback: false,
-      placeholder: '購入したいペットの名前を入力してください',
+      placeholder: '購入したい名前を入力してください',
       pk: 0,
       sliders: [
         {
@@ -102,12 +102,12 @@ export default {
     turn() {
       this.turnback = !this.turnback;
       if(this.turnback === true){
-        this.content = '切换到検索販売';
-        this.placeholder = '请输入想検索的購入希望区的ペットの名前';
+        this.content = '検索販売に切り替える';
+        this.placeholder = '検索したい購入希望の名前を入力してください';
         this.pk = 1;
       }else {
-        this.content = '切换到検索購入希望';
-        this.placeholder = '購入したいペットの名前を入力してください';
+        this.content = '検索購入希望に切り替える';
+        this.placeholder = '購入したい名前を入力してください';
         this.pk = 0;
       }
     }

@@ -9,7 +9,7 @@ export function requestaddpetorder(parameter) {
     })
 }
 
-//删除订单请求
+//削除订单请求
 export function requestdeletepetorder(parameter) {
     return request({
         url: "/petorder/deletepetorder",
@@ -17,7 +17,7 @@ export function requestdeletepetorder(parameter) {
     })
 }
 
-//修改订单请求
+//修正订单请求
 export function requestupdatepetorder(parameter) {
     return request({
         url: "/petorder/updatepetorder",

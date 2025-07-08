@@ -2,18 +2,18 @@
 <template>
   <div class='wantbuy'>
     <breadcrumb>
-      <span slot="second" @click="tobuying">購入希望エリア</span> > 发布購入希望
+      <span slot="second" @click="tobuying">購入希望エリア</span> > 購入希望を投稿する
     </breadcrumb>
     <div class="title">
-      <h1>发布購入希望信息</h1>
+      <h1>購入希望情報を投稿する</h1>
     </div>
     <div class="buy">
       <el-form :rules="rules" ref="ruleForm" label-width="80px" :model="form">
-        <el-form-item label="ペットの名前" prop="name">
-          <el-input v-model="form.name" clearable placeholder="请输入ペットの名前"></el-input>
+        <el-form-item label="名前" prop="name">
+          <el-input v-model="form.name" clearable placeholder="名前を入力してください"></el-input>
         </el-form-item>
-        <el-form-item label="ペットの種類" prop="bkid">
-          <el-select @change="bkindchange" style="width: 100%" v-model="form.bkid" clearable filterable placeholder="请选择ペットの種類">
+        <el-form-item label="種類" prop="bkid">
+          <el-select @change="bkindchange" style="width: 100%" v-model="form.bkid" clearable filterable placeholder="種類を選んでください">
             <el-option
               v-for="item in bkind"
               :key="item.bkid"
@@ -22,8 +22,8 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="ペットの品種" prop="skid">
-          <el-select @change="skindchange" style="width: 100%" v-model="form.skid" clearable filterable placeholder="请选择ペットの品種">
+        <el-form-item label="品種" prop="skid">
+          <el-select @change="skindchange" style="width: 100%" v-model="form.skid" clearable filterable placeholder="品種を選んでください">
             <el-option
               v-for="item in fskind"
               :key="item.skid"
@@ -32,39 +32,39 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="宠物性別" prop="sex">
-          <el-radio v-model="form.sex" label="不限">不限</el-radio>
+        <el-form-item label="性別" prop="sex">
+          <el-radio v-model="form.sex" label="不問">不問</el-radio>
           <el-radio v-model="form.sex" label="男">男</el-radio>
           <el-radio v-model="form.sex" label="女">女</el-radio>
         </el-form-item>
-        <el-form-item label="ペットの年齢" prop="age">
+        <el-form-item label="年齢" prop="age">
           <el-radio-group v-model="agelimit" @change="clearage">
-            <el-radio :label=true>不限制</el-radio>
+            <el-radio :label=true>不問</el-radio>
             <el-radio :label=false>限制</el-radio>
           </el-radio-group>
           <div style="width: 100%">
-            <el-input clearable placeholder="请输入ペットの年齢(单位月)" v-model.number="form.age" :disabled="agelimit"></el-input>
+            <el-input clearable placeholder="年齢（月単位）を入力してください" v-model.number="form.age" :disabled="agelimit"></el-input>
           </div>
         </el-form-item>
         <el-form-item label="購入希望価格" prop="price">
           <el-radio-group v-model="pricelimit" @change="clearprice">
-            <el-radio :label=true>不限制</el-radio>
+            <el-radio :label=true>不問</el-radio>
             <el-radio :label=false>限制</el-radio>
           </el-radio-group>
           <div style="width: 100%">
             <!-- <el-input-number v-model="form.minprice" :disabled="pricelimit" controls-position="right" :min="0"></el-input-number>
             ——
             <el-input-number v-model="form.maxprice" :disabled="pricelimit" controls-position="right" :min="0"></el-input-number> -->
-            <el-input v-model="form.price" :disabled="pricelimit" placeholder="请输入可接受的最高価格（单位元）" clearable></el-input>
+            <el-input v-model="form.price" :disabled="pricelimit" placeholder="ご希望の最高価格（円）をご入力ください" clearable></el-input>
           </div>
         </el-form-item>
-        <!-- <el-form-item label="联系电话" prop="phone">
-          <el-input placeholder="请输入手机号" clearable v-model="form.phone"></el-input>
+        <!-- <el-form-item label="連絡電話番号" prop="phone">
+          <el-input placeholder="请输入携帯番号" clearable v-model="form.phone"></el-input>
         </el-form-item> -->
         <el-form-item label="購入希望说明">
-          <el-input type="textarea" placeholder="请输入内容" clearable rows=4 resize="none" show-word-limit v-model="form.desc"></el-input>
+          <el-input type="textarea" placeholder="内容をご入力ください" clearable rows=4 resize="none" show-word-limit v-model="form.desc"></el-input>
         </el-form-item>
-        <el-form-item label="宠物照片" prop="photo">
+        <el-form-item label="ペットの写真" prop="photo">
           <el-upload
             class="upload-demo"
             ref="upload"
@@ -78,7 +78,7 @@
             :file-list="form.photo"
             :auto-upload="false">
             <i class="el-icon-plus"></i>
-            <div slot="tip" class="el-upload__tip">最多上传5张图片,且每张图片不得超过10m</div>
+            <div slot="tip" class="el-upload__tip">最大で5枚の画像をアップロードできます。各画像のサイズは10MB以下にしてください</div>
           </el-upload>
           <el-dialog :visible.sync="dialogVisible">
             <img width="100%" :src="dialogImageUrl" alt="">
@@ -86,8 +86,8 @@
           <!-- <span class="">请选择上传的图片</span> -->
         </el-form-item>
         <el-form-item>
-          <el-button v-if="!$route.query.form" type="primary" @click="request('ruleForm')">立即创建</el-button>
-          <el-button v-if="$route.query.form" type="primary" @click="updatepet('ruleForm')">确认修改</el-button>
+          <el-button v-if="!$route.query.form" type="primary" @click="request('ruleForm')">今すぐ作成</el-button>
+          <el-button v-if="$route.query.form" type="primary" @click="updatepet('ruleForm')">修正確認</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -110,25 +110,25 @@
       Sidebar
     },
     data () {
-      //验证手机号
+      //验证携帯番号
       // var checkphone = (rule, value, callback) => {
       //   if(!value) {
-      //     return callback(new Error('联系电话不能为空'));
+      //     return callback(new Error('連絡電話番号不能为空'));
       //   }
       //   if(/^1\d{10}$/.test(this.form.phone)) {
       //     callback();
       //   }else {
-      //     callback(new Error('请输入11位手机号码，1xx xxxx xxxx'));
+      //     callback(new Error('请输入11位携帯番号，1xx xxxx xxxx'));
       //   }
       // }
       //验证图片
       var checkphoto = (rule, value, callback) => {
         if(value.length > 5) {
-          return callback(new Error('最多上传5张'));
+          return callback(new Error('最大で5枚までアップロード可能です'));
         }else {
           for(let i=0;i<value.length;i++) {
             if(value[i].size / 1024 / 1024 > 10) {
-              return callback(new Error('每张图片不可超过10m'));
+              return callback(new Error('1枚あたりの画像サイズは10MB以下にしてください'));
             }
           }
           callback();
@@ -141,7 +141,7 @@
         }else if(/^\d+(\.\d+)?$/.test(this.form.price)) {
           return callback();
         }else {
-          callback(new Error('请输入数字值'));
+          callback(new Error('数字を入力してください'));
         }
       }
       //验证年齢
@@ -149,7 +149,7 @@
         if(this.agelimit === true) {
           return callback();
         }else if(!Number.isInteger(value)) {
-          return callback(new Error('请输入数字值（单位月）'));
+          return callback(new Error('数字の値（月）を入力してください'));
         }else {
           callback();
         }
@@ -168,7 +168,7 @@
           name:'',
           bkid: '',
           skid: '',
-          sex: '不限',
+          sex: '不問',
           price: '',
           age: '',
           phone: '',
@@ -178,13 +178,13 @@
         },
         rules: {
           name: [
-            { required: true, message: '请输入ペットの名前', trigger: 'blur' }
+            { required: true, message: '名前を入力してください', trigger: 'blur' }
           ],
           bkid: [
-            { required: true, message: '请选择ペットの種類', trigger: 'change' }
+            { required: true, message: '種類を選んでください', trigger: 'change' }
           ],
           skid: [
-            { required: true, message: '请选择ペットの品種', trigger: 'change' }
+            { required: true, message: '品種を選んでください', trigger: 'change' }
           ],
           sex: [
             { required: true, trigger: 'change' }
@@ -209,7 +209,7 @@
       bkindchange() {
         if(this.form.bkid === ""){
           this.fskind = this.skind.filter(n => {
-            return n.skindname != "其他"
+            return n.skindname != "その他"
           })
         }else {
           this.fskind = this.skind.filter(n => {
@@ -265,7 +265,7 @@
         this.$refs[formName].validate((valid) => {
           if (valid) {
             if(this.form.desc == "") {
-              this.form.desc = "暂无"
+              this.form.desc = "該当なし"
             }
             let formData = new FormData();
             formData.append('petname', this.form.name);
@@ -304,7 +304,7 @@
           } else {
             this.$notify({
               title: '失败',
-              message: '请输入正确的宠物信息',
+              message: '正しいペット情報を入力してください',
               type: 'error',
               offset: 100
             });
@@ -312,12 +312,12 @@
           }
         });
       },
-      //修改宠物
+      //修正宠物
       updatepet(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
             if(this.form.desc == "") {
-              this.form.desc = "暂无"
+              this.form.desc = "該当なし"
             }
             let formData = new FormData();
             formData.append('pid', this.form.pid);
@@ -364,7 +364,7 @@
           } else {
             this.$notify({
               title: '失败',
-              message: '请输入正确的宠物信息',
+              message: '正しいペット情報を入力してください',
               type: 'error',
               offset: 100
             });
@@ -377,13 +377,13 @@
       }
     },
     created() {
-      //検索所有ペットの種類及对应品種
+      //検索所有種類及对应品種
       requestqueryBKindandSKind().then(res => {
           this.bkind = res;
         }).catch(err => {
           console.log(err)
         });
-      //検索所有ペットの品種
+      //検索所有品種
       requestqueryallskind().then(res => {
         this.skind = res;
         if(this.$route.params.bkid) {
@@ -393,7 +393,7 @@
           })
         }else {
           this.fskind = this.skind.filter(n => {
-            return n.skindname != "其他"
+            return n.skindname != "その他"
           })
         }
       }).catch(err => {

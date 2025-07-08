@@ -3,7 +3,7 @@
   <div class="selector" :class="{ reduceindex: $store.state.show }">
     <div class="form">
       <div class="title">並び替え</div>
-      <el-select v-model="form.sort" filterable placeholder="请选择並び替え">
+      <el-select v-model="form.sort" filterable placeholder="並び替えを選んでください">
         <el-option
           v-for="item in sort"
           :key="item.value"
@@ -12,19 +12,19 @@
         >
         </el-option>
       </el-select>
-      <div class="title">ペットの名前</div>
+      <div class="title">名前</div>
       <el-input
         clearable
         v-model="form.petname"
-        placeholder="请输入ペットの名前"
+        placeholder="ペットの名前を入力してください"
         @keyup.enter.native="query"
       ></el-input>
-      <div class="title">ペットの種類</div>
+      <div class="title">種類</div>
       <el-select
         v-model="form.bkid"
         clearable
         filterable
-        placeholder="请选择ペットの種類"
+        placeholder="ペットの種類を選んでください"
         @change="bkindchange"
       >
         <el-option
@@ -35,12 +35,12 @@
         >
         </el-option>
       </el-select>
-      <div class="title">ペットの品種</div>
+      <div class="title">品種</div>
       <el-select
         v-model="form.skid"
         clearable
         filterable
-        placeholder="请选择ペットの品種"
+        placeholder="ペットの品種を選んでください"
       >
         <el-option
           v-for="item in fskind"
@@ -50,12 +50,12 @@
         >
         </el-option>
       </el-select>
-      <div class="title">ペットの年齢</div>
+      <div class="title">年齢</div>
       <el-select
         v-model="form.age"
         clearable
         filterable
-        placeholder="请选择ペットの年齢"
+        placeholder="ペットの年齢を選んでください"
       >
         <el-option
           v-for="item in age"
@@ -65,13 +65,13 @@
         >
         </el-option>
       </el-select>
-      <div class="title">ペットの価格</div>
+      <div class="title">価格</div>
       <el-slider :max="maxprice" v-model="form.maxprice"></el-slider>
       <div class="but">
         <el-tooltip
           class="item"
           effect="dark"
-          content="根据上述条件検索"
+          content="上記条件で検索"
           placement="bottom"
         >
           <el-button type="primary" @click="query">検索</el-button>
@@ -93,7 +93,7 @@ export default {
     return {
       sort: [
         {
-          value: "默认排序",
+          value: "デフォルトの並び順",
           sort: null,
         },
         {
@@ -143,7 +143,7 @@ export default {
           });
         } else {
           this.fskind = this.skind.filter((n) => {
-            return n.skindname != "其他";
+            return n.skindname != "その他";
           });
         }
       })
@@ -169,7 +169,7 @@ export default {
         } else {
           res.forEach((value) => {
             if (value.age == -1) {
-              value.age = "不限";
+              value.age = "不問";
             }
           });
           this.age = res;
@@ -184,7 +184,7 @@ export default {
     bkindchange() {
       if (this.form.bkid === "") {
         this.fskind = this.skind.filter((n) => {
-          return n.skindname != "其他";
+          return n.skindname != "その他";
         });
       } else {
         this.fskind = this.skind.filter((n) => {

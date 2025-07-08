@@ -2,8 +2,8 @@
 <template>
   <div class='tail'>
     <div class="mainbar container">
-      <div>联系电话：1xxxxxxxxxx</div>
-      <div>联系邮箱： xxxxxxxxxx.qq.com</div>
+      <div>連絡電話番号：090-1283-4756</div>
+      <div>連絡メールアドレス： limingpu0327@gmail.com</div>
     </div>
   </div>
 </template>

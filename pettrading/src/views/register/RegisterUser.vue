@@ -3,22 +3,22 @@
   <div class='registeruser'>
     <!-- <div class="registerhead">サインアップ</div> -->
     <div>
-      <!-- 手机号 -->
+      <!-- 携帯番号 -->
       <div class="inp">
         <img src="~assets/img/user/phone.png" alt class="img-bg" />
         <input
           type="text"
-          placeholder="手机号码"
+          placeholder="携帯番号"
           v-model="form.telphone"
           @blur="checktelphone"
           :class="{ redborder: check.telphone.flag }"
         />
         <p v-show="check.telphone.flag">{{check.telphone.val}}</p>
       </div>
-      <!-- 密码 -->
+      <!-- パスワード -->
       <div class="inp">
         <img src="~assets/img/password/password.png" alt class="img-bg" />
-        <input :type="types[0].type" placeholder="密码"
+        <input :type="types[0].type" placeholder="パスワード"
         @blur="checkPassword"
         v-model="form.password"
         :class="{ redborder: check.password.flag }"
@@ -26,10 +26,10 @@
         <img v-if="form.password != ''" @click="changetype(0)" :src="types[0].img" alt class="img-bg-right" />
         <p v-show="check.password.flag">{{check.password.val}}</p>
       </div>
-      <!-- 确认密码 -->
+      <!-- 確認密码 -->
       <div class="inp">
         <img src="~assets/img/password/password.png" alt class="img-bg" />
-        <input :type="types[1].type" placeholder="再次输入密码"
+        <input :type="types[1].type" placeholder="パスワードをもう一度入力してください"
         v-model="form.secondpassword"
         @blur="checksecondpassword"
         :class="{ redborder: check.secondpassword.flag }"
@@ -38,10 +38,10 @@
         <p v-show="check.secondpassword.flag">{{check.secondpassword.val}}</p>
       </div>
       <div class="but">
-        <el-tooltip effect="light" content="已有账号？去登録" placement="bottom-start">
+        <el-tooltip effect="light" content="すでにアカウントをお持ちですか？ログインはこちら。" placement="bottom-start">
           <el-button round type="primary" @click="tologin">登録</el-button>
         </el-tooltip>
-        <el-button round type="primary" @click="next">下一步</el-button>
+        <el-button round type="primary" @click="next">次へ</el-button>
       </div>
     </div>
   </div>
@@ -95,7 +95,7 @@
       checkPassword() {
         if(this.form.password === ''){
           this.check.password.flag = true;
-          this.check.password.val = '*密码不能为空';
+          this.check.password.val = '*パスワードは空欄にできません';
         }else if(this.form.secondpassword != ''){
           this.checksecondpassword();
           this.check.password.flag = false;
@@ -103,27 +103,27 @@
           this.check.password.flag = false;
         }
       },
-      // 验证确认密码
+      // 验证確認密码
       checksecondpassword() {
         if(this.form.secondpassword === ''){
           this.check.secondpassword.flag = true;
-          this.check.secondpassword.val = '*确认密码不能为空';
+          this.check.secondpassword.val = '*確認用パスワードは空欄にできません';
         }else if(this.form.secondpassword != this.form.password) {
           this.check.secondpassword.flag = true;
-          this.check.secondpassword.val = '*两次密码不一致';
+          this.check.secondpassword.val = '*パスワードが2回一致しません';
         }else {
           this.check.secondpassword.flag = false;
         }
       },
-      // 验证手机号
+      // 验证携帯番号
       checktelphone() {
         if (this.form.telphone === "") {
-          this.check.telphone.val = "*手机号码不能为空";
+          this.check.telphone.val = "*携帯番号は空欄にできません";
           this.check.telphone.flag = true;
         } else if (/^1\d{10}$/.test(this.form.telphone)) {
           this.check.telphone.flag = false;
         } else {
-          this.check.telphone.val = "*请输入11位手机号码，1xx xxxx xxxx";
+          this.check.telphone.val = "*11桁の携帯番号を入力してください（例：1xx xxxx xxxx";
           this.check.telphone.flag = true;
         }
       },

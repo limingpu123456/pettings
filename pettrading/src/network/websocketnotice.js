@@ -7,7 +7,7 @@ export function createwebsocketnotice(uid) {
       "ws://localhost:8081/message/" + uid
     )
   }else {
-    alert("不支持建立socket连接");
+    alert("Socket接続の確立はサポートされていません");
   }
   return websocket
 }

@@ -40,10 +40,10 @@ export default {
     requestqueryBKind()
       .then((res) => {
         this.bkind = res.filter((n) => {
-          return n.bkindname != "其他";
+          return n.bkindname != "その他";
         });
         this.other = res.filter((n) => {
-          return n.bkindname === "其他";
+          return n.bkindname === "その他";
         });
       })
       .catch((err) => {

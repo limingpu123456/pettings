@@ -17,7 +17,7 @@
         </div>
       </div>
     </el-drawer> -->
-    <div class="close" @click="close">点击此处关闭</div>
+    <div class="close" @click="close">ここをクリックで閉じる</div>
     <div class="drawerborder" v-if="$store.state.show">
       <div class="mainbar">
         <div v-if="$store.state.logshow">

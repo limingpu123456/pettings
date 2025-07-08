@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="982d3eb6-8683-4384-bdd4-07f4834a48e6" name="Default Changelist" comment="修改静态资源配置">
-      <change beforePath="$PROJECT_DIR$/.." beforeDir="false" afterPath="$PROJECT_DIR$/.." afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../找工作列表.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../找工作列表.xlsx" afterDir="false" />
-    </list>
+    <list default="true" id="982d3eb6-8683-4384-bdd4-07f4834a48e6" name="Default Changelist" comment="修改静态资源配置" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -165,6 +162,7 @@
       <workItem from="1751705404147" duration="326000" />
       <workItem from="1751941007187" duration="436000" />
       <workItem from="1751942718555" duration="1877000" />
+      <workItem from="1751958031565" duration="3133000" />
     </task>
     <task id="LOCAL-00001" summary="修改静态资源配置">
       <created>1655084872968</created>

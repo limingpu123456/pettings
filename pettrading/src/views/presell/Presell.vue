@@ -8,7 +8,7 @@
           <el-tooltip
             class="item"
             effect="dark"
-            content="我也要販売"
+            content="私も販売したいです"
             placement="bottom"
           >
             <el-button type="primary" @click="towantsell">販売</el-button>
@@ -16,7 +16,7 @@
         </selector>
         <div class="rightcard">
           <div v-if="lists.length === 0 && show === true" class="nolists">
-            没有您要搜索的宠物
+            お探しのペットは見つかりませんでした
           </div>
           <carditem :lists="lists"></carditem>
         </div>

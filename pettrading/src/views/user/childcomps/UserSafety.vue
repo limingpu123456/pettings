@@ -4,15 +4,15 @@
     <el-collapse accordion>
       <el-collapse-item>
         <template slot="title">
-          <div class="collapsetitle">修改密码</div>
+          <div class="collapsetitle">修正パスワード</div>
         </template>
         <changepwd></changepwd>
       </el-collapse-item>
       <el-collapse-item>
         <template slot="title">
           <div class="collapsetitle">
-            实名认证
-            <span class="done"> (已认证)</span>
+            実名認証
+            <span class="done"> (認証済み)</span>
           </div>
         </template>
         <verifyrealname></verifyrealname>
@@ -20,8 +20,8 @@
       <el-collapse-item>
         <template slot="title">
           <div class="collapsetitle">
-            绑定手机号
-            <span class="done">(已绑定)</span>
+            携帯番号を連携する
+            <span class="done">(連携済み)</span>
           </div>
         </template>
         <change-phone></change-phone>

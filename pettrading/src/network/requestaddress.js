@@ -1,6 +1,6 @@
 import request from "network/request.js"
 
-//增加地址
+//增加住所
 export function requestaddAddress(parameter) {
     return request({
         url: "/address/addAddress",
@@ -9,7 +9,7 @@ export function requestaddAddress(parameter) {
     })
 }
 
-//删除地址
+//削除住所
 export function requestdeleteAddress(parameter) {
     return request({
         url: "/address/deleteAddress",
@@ -17,7 +17,7 @@ export function requestdeleteAddress(parameter) {
     })
 }
 
-//修改地址
+//修改住所
 export function requestupdateAddress(parameter) {
     return request({
         url: "/address/updateAddress",
@@ -26,7 +26,7 @@ export function requestupdateAddress(parameter) {
     })
 }
 
-//検索用户所有地址
+//検索用户所有住所
 export function requestqueryAddressbyuid(parameter) {
     return request({
         url: "/address/queryAddressbyuid",
@@ -34,7 +34,7 @@ export function requestqueryAddressbyuid(parameter) {
     })
 }
 
-//根据条件検索所有地址
+//根据条件検索所有住所
 export function requestqueryaddress(parameter) {
     return request({
         url: "/address/queryaddress",

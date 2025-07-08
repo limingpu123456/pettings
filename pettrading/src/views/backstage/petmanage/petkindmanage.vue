@@ -1,4 +1,4 @@
-<!--ペットの種類管理-->
+<!--種類管理-->
 <template>
   <div class="petkindmanage">
     <div class="bkindbar">
@@ -74,25 +74,25 @@
                   size="mini"
                   type="primary"
                   @click="updatebkind(scope.$index, scope.row)"
-                  >确认</el-button
+                  >確認</el-button
                 >
                 <el-button size="mini" type="info" @click="showbkindindex = -1"
-                  >取消</el-button
+                  >キャンセル</el-button
                 >
               </span>
               <span v-if="showbkindindex != scope.$index">
                 <el-button
                   size="mini"
                   @click="handleEditbkind(scope.$index, scope.row)"
-                  >编辑</el-button
+                  >編集</el-button
                 >
                 <el-popconfirm
-                  confirmButtonText="确定"
-                  cancelButtonText="取消"
+                  confirmButtonText="確定"
+                  cancelButtonText="キャンセル"
                   placement="top"
                   icon="el-icon-info"
                   iconColor="red"
-                  title="确定删除该用户吗？"
+                  title="このユーザーを削除してもよろしいですか"
                   @confirm="handleDeletebkind(scope.$index, scope.row)"
                 >
                   <el-button
@@ -101,7 +101,7 @@
                     size="mini"
                     type="danger"
                     slot="reference"
-                    >删除</el-button
+                    >削除</el-button
                   >
                 </el-popconfirm>
               </span>
@@ -129,12 +129,12 @@
               placeholder="タイプid"
             ></el-input>
           </el-form-item>
-          <el-form-item label="品種名称">
+          <el-form-item label="品種名">
             <el-input
               style="width: 180px"
               clearable
               v-model="skindform.skindname"
-              placeholder="品種名称"
+              placeholder="品種名"
             ></el-input>
           </el-form-item>
           <el-form-item>
@@ -156,12 +156,12 @@
               placeholder="タイプid"
             ></el-input>
           </el-form-item>
-          <el-form-item label="品種名称">
+          <el-form-item label="品種名">
             <el-input
               style="width: 180px"
               clearable
               v-model="skindaddform.skindname"
-              placeholder="品種名称"
+              placeholder="品種名"
             ></el-input>
           </el-form-item>
           <el-form-item>
@@ -179,7 +179,7 @@
         <el-table :data="skind" border style="width: 721px">
           <el-table-column prop="skid" label="品種id" sortable width="180">
           </el-table-column>
-          <el-table-column label="对应タイプid" width="180">
+          <el-table-column label="対応タイプID" width="180">
             <template slot-scope="scope">
               <span v-if="showskindindex != scope.$index">{{
                 scope.row.bkid
@@ -192,7 +192,7 @@
               ></el-input>
             </template>
           </el-table-column>
-          <el-table-column label="品種名称" width="180">
+          <el-table-column label="品種名" width="180">
             <template slot-scope="scope">
               <span v-if="showskindindex != scope.$index">{{
                 scope.row.skindname
@@ -212,25 +212,25 @@
                   size="mini"
                   type="primary"
                   @click="updateskind(scope.$index, scope.row)"
-                  >确认</el-button
+                  >確認</el-button
                 >
                 <el-button size="mini" type="info" @click="showskindindex = -1"
-                  >取消</el-button
+                  >キャンセル</el-button
                 >
               </span>
               <span v-if="showskindindex != scope.$index">
                 <el-button
                   size="mini"
                   @click="handleEditskind(scope.$index, scope.row)"
-                  >编辑</el-button
+                  >編集</el-button
                 >
                 <el-popconfirm
-                  confirmButtonText="确定"
-                  cancelButtonText="取消"
+                  confirmButtonText="確定"
+                  cancelButtonText="キャンセル"
                   placement="top"
                   icon="el-icon-info"
                   iconColor="red"
-                  title="确定删除该用户吗？"
+                  title="このユーザーを削除してもよろしいですか"
                   @confirm="handleDeleteskind(scope.$index, scope.row)"
                 >
                   <el-button
@@ -238,7 +238,7 @@
                     size="mini"
                     type="danger"
                     slot="reference"
-                    >删除</el-button
+                    >削除</el-button
                   >
                 </el-popconfirm>
               </span>
@@ -315,7 +315,7 @@ export default {
       })
         .then((res) => {
           this.$notify({
-            title: "添加成功",
+            title: "追加に成功しました",
             message: res.msg,
             type: "success",
             offset: 100,
@@ -348,7 +348,7 @@ export default {
       })
         .then((res) => {
           this.$notify({
-            title: "添加成功",
+            title: "追加に成功しました",
             message: res.msg,
             type: "success",
             offset: 100,
@@ -373,7 +373,7 @@ export default {
       })
         .then((res) => {
           this.$notify({
-            title: "修改成功",
+            title: "変更が完了しました",
             message: res,
             type: "success",
             offset: 100,
@@ -391,7 +391,7 @@ export default {
       })
         .then((res) => {
           this.$notify({
-            title: "删除成功",
+            title: "削除が成功しました",
             message: res,
             type: "success",
             offset: 100,
@@ -415,7 +415,7 @@ export default {
       })
         .then((res) => {
           this.$notify({
-            title: "修改成功",
+            title: "編集が成功しました",
             message: res,
             type: "success",
             offset: 100,
@@ -434,7 +434,7 @@ export default {
       })
         .then((res) => {
           this.$notify({
-            title: "删除成功",
+            title: "削除が成功しました",
             message: res,
             type: "success",
             offset: 100,

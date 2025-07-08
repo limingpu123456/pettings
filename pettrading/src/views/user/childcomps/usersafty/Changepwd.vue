@@ -2,33 +2,33 @@
 <template>
   <div class='changepwd'>
     <div>
-      <!-- 旧密码 -->
+      <!-- 旧パスワード -->
       <div class="inp">
         <img src="~assets/img/password/password.png" alt class="img-bg" />
-        <input :type="types[0].type" placeholder="旧密码" 
+        <input :type="types[0].type" placeholder="旧パスワード"
         @blur="checkoldpassword"
-        v-model="form.oldpassword" 
+        v-model="form.oldpassword"
         :class="{ redborder: check.oldpassword.flag }"
         />
         <img v-if="form.oldpassword != ''" @click="changetype(0)" :src="types[0].img" alt class="img-bg-right" />
         <p v-show="check.oldpassword.flag">{{check.oldpassword.val}}</p>
       </div>
-      <!-- 新密码 -->
+      <!-- 新パスワード -->
       <div class="inp">
         <img src="~assets/img/password/password.png" alt class="img-bg" />
-        <input :type="types[1].type" placeholder="新密码" 
+        <input :type="types[1].type" placeholder="新パスワード"
         @blur="checkPassword"
-        v-model="form.password" 
+        v-model="form.password"
         :class="{ redborder: check.password.flag }"
         />
         <img v-if="form.password != ''" @click="changetype(1)" :src="types[1].img" alt class="img-bg-right" />
         <p v-show="check.password.flag">{{check.password.val}}</p>
       </div>
-      <!-- 确认密码 -->
+      <!-- 確認パスワード -->
       <div class="inp">
         <img src="~assets/img/password/password.png" alt class="img-bg" />
-        <input :type="types[2].type" placeholder="再次输入新密码" 
-        v-model="form.secondpassword" 
+        <input :type="types[2].type" placeholder="新しいパスワードをもう一度入力してください"
+        v-model="form.secondpassword"
         @blur="checksecondpassword"
         :class="{ redborder: check.secondpassword.flag }"
         />
@@ -36,7 +36,7 @@
         <p v-show="check.secondpassword.flag">{{check.secondpassword.val}}</p>
       </div>
       <div class="but">
-        <el-button type="primary" @click="request">确认更改</el-button>
+        <el-button type="primary" @click="request">変更を確認する</el-button>
       </div>
     </div>
   </div>
@@ -83,7 +83,7 @@
       }
     },
     methods: {
-      //改变密码框状态
+      //改变パスワード框状态
       changetype(index) {
         if (this.types[index].type === "text") {
           this.types[index].img = require('assets/img/password/close.png')
@@ -93,20 +93,20 @@
           this.types[index].type = 'text'
         }
       },
-      //验证旧密码
+      //验证旧パスワード
       checkoldpassword() {
         if(this.form.oldpassword === ''){
           this.check.oldpassword.flag = true;
-          this.check.oldpassword.val = '*旧密码不能为空';
+          this.check.oldpassword.val = '*旧パスワード空にできません';
         }else {
           this.check.oldpassword.flag = false;
         }
       },
-      //验证密码
+      //验证パスワード
       checkPassword() {
         if(this.form.password === ''){
           this.check.password.flag = true;
-          this.check.password.val = '*新密码不能为空';
+          this.check.password.val = '*新パスワード空にできません';
         }else if(this.form.secondpassword != ''){
           this.checksecondpassword();
           this.check.password.flag = false;
@@ -114,14 +114,14 @@
           this.check.password.flag = false;
         }
       },
-      // 验证确认密码
+      // 验证確認パスワード
       checksecondpassword() {
         if(this.form.secondpassword === ''){
           this.check.secondpassword.flag = true;
-          this.check.secondpassword.val = '*确认密码不能为空';
+          this.check.secondpassword.val = '*確認パスワード空にできません';
         }else if(this.form.secondpassword != this.form.password) {
           this.check.secondpassword.flag = true;
-          this.check.secondpassword.val = '*两次密码不一致';
+          this.check.secondpassword.val = '*两次パスワード不一致';
         }else {
           this.check.secondpassword.flag = false;
         }

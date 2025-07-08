@@ -1,13 +1,13 @@
 <!---->
 <template>
   <div class='ChangePhone'>
-    <el-input :disabled="disabled" v-model="phone" clearable placeholder="请输入要绑定的手机号" ref="inputphone" ></el-input>
+    <el-input :disabled="disabled" v-model="phone" clearable placeholder="連携する携帯番号を入力してください" ref="inputphone" ></el-input>
     <div class="but" v-if="ischange === false">
-      <el-button type="primary" @click="tochange">去修改</el-button>
+      <el-button type="primary" @click="tochange">修正しに行く</el-button>
     </div>
     <div class="but" v-if="ischange === true">
-      <el-button type="primary" @click="request">确认</el-button>
-      <el-button type="primary" @click="cancel">取消</el-button>
+      <el-button type="primary" @click="request">確認</el-button>
+      <el-button type="primary" @click="cancel">キャンセル</el-button>
     </div>
   </div>
 </template>
@@ -16,7 +16,7 @@
  import {requestqueryuser,requestupdateuser} from 'network/requestuser.js'
 
   export default {
-      
+
     name: 'ChangePhone',
     data () {
       return {
@@ -28,11 +28,11 @@
       }
     },
     methods: {
-      // 验证手机号
+      // 验证携帯番号
       checktelphone() {
         if (this.phone === "") {
           this.$message({
-            message: "手机号不能为空",
+            message: "携帯番号空にできません",
             type: "error",
             showClose: true
           })
@@ -40,7 +40,7 @@
           this.flag = true;
         } else {
           this.$message({
-            message: "请输入11位手机号码，1xx xxxx xxxx",
+            message: "11桁の携帯番号（1xx xxxx xxxx）を入力してください",
             type: "error",
             showClose: true
           })
@@ -81,7 +81,7 @@
                 type: 'error'
               })
             }
-            
+
           }).catch(err => {
             console.log(err)
           })

@@ -1,34 +1,34 @@
-<!--订单管理-->
+<!--注文管理-->
 <template>
   <div class="petordermanage">
     <div class="selectbar">
       <el-form :inline="true" :model="form">
-        <el-form-item label="订单id">
+        <el-form-item label="注文ID">
           <el-input
             clearable
             v-model="form.poid"
-            placeholder="宠物id"
+            placeholder="ペットID"
           ></el-input>
         </el-form-item>
-        <el-form-item label="订单宠物id">
+        <el-form-item label="注文ペットID">
           <el-input
             clearable
             v-model="form.pid"
-            placeholder="ペットの名前"
+            placeholder="名前"
           ></el-input>
         </el-form-item>
-        <el-form-item label="下单用户id">
+        <el-form-item label="注文ユーザーID">
           <el-input
             clearable
             v-model="form.uid"
-            placeholder="用户id"
+            placeholder="ユーザーID"
           ></el-input>
         </el-form-item>
-        <el-form-item label="收件人">
+        <el-form-item label="受取人">
           <el-input
             clearable
             v-model="form.recipientname"
-            placeholder="收件人"
+            placeholder="受取人"
           ></el-input>
         </el-form-item>
         <el-form-item label="配送住所">
@@ -38,20 +38,20 @@
             placeholder="配送住所"
           ></el-input>
         </el-form-item>
-        <el-form-item label="联系电话">
+        <el-form-item label="連絡電話番号">
           <el-input
             clearable
             v-model="form.phone"
-            placeholder="联系电话"
+            placeholder="連絡電話番号"
           ></el-input>
         </el-form-item>
-        <el-form-item label="宠物状态">
+        <el-form-item label="ペット状態">
           <el-select
             style="width: 100%"
             v-model="form.postatu"
             clearable
             filterable
-            placeholder="宠物状态"
+            placeholder="ペット状態"
           >
             <el-option
               v-for="item in postatus"
@@ -62,12 +62,12 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="下单时间">
+        <el-form-item label="注文日時">
           <el-date-picker
             type="date"
             format="yyyy-MM-dd"
             value-format="yyyy-MM-dd"
-            placeholder="选择日期"
+            placeholder="日付選択"
             v-model="form.date"
           ></el-date-picker>
         </el-form-item>
@@ -83,56 +83,56 @@
     </div>
     <div>
       <el-table :data="petorder" style="width: 100%">
-        <el-table-column prop="poid" label="订单id" sortable width="90">
+        <el-table-column prop="poid" label="注文ID" sortable width="90">
         </el-table-column>
-        <el-table-column prop="pid" label="宠物id" width="90">
+        <el-table-column prop="pid" label="ペットID" width="90">
         </el-table-column>
-        <el-table-column prop="pet.petname" label="ペットの名前" width="130">
+        <el-table-column prop="pet.petname" label="名前" width="130">
         </el-table-column>
-        <el-table-column prop="uid" label="下单用户id" width="100">
+        <el-table-column prop="uid" label="注文ユーザーID" width="100">
         </el-table-column>
-        <el-table-column prop="user.username" label="下单用户名" width="130">
+        <el-table-column prop="user.username" label="下单ユーザー名" width="130">
         </el-table-column>
-        <el-table-column prop="recipientname" label="收件人" width="100">
+        <el-table-column prop="recipientname" label="受取人" width="100">
         </el-table-column>
         <el-table-column prop="address" label="配送住所"> </el-table-column>
-        <el-table-column prop="phone" label="联系电话" width="150">
+        <el-table-column prop="phone" label="連絡電話番号" width="150">
         </el-table-column>
-        <el-table-column width="100" label="订单状态">
+        <el-table-column width="100" label="注文状況">
           <template slot-scope="scope">
             <span style="color: rgb(255, 194, 8)" v-if="scope.row.postatu == 0"
-              >进行中</span
+              >進行中</span
             >
             <span style="color: rgb(33, 213, 168)" v-if="scope.row.postatu == 1"
-              >已完成</span
+              >完了済み</span
             >
             <span
               style="color: rgb(204, 203, 203)"
               v-if="scope.row.postatu == 2"
-              >已取消</span
+              >キャンセル</span
             >
             <span
               style="color: rgb(102, 177, 255)"
               v-if="scope.row.postatu == 3"
-              >修改中</span
+              >変更中</span
             >
-            <span style="color: red" v-if="scope.row.postatu == 4">取消中</span>
+            <span style="color: red" v-if="scope.row.postatu == 4">キャンセル中</span>
           </template>
         </el-table-column>
-        <el-table-column prop="date" sortable label="下单时间" width="180">
+        <el-table-column prop="date" sortable label="注文日時" width="180">
         </el-table-column>
         <el-table-column label="操作" width="150">
           <template slot-scope="scope">
             <el-button size="mini" @click="handleEdit(scope.$index, scope.row)"
-              >编辑</el-button
+              >編集</el-button
             >
             <el-popconfirm
-              confirmButtonText="确定"
-              cancelButtonText="取消"
+              confirmButtonText="確定"
+              cancelButtonText="キャンセル"
               placement="top"
               icon="el-icon-info"
               iconColor="red"
-              title="确定删除该用户吗？"
+              title="このユーザーを削除してもよろしいですか"
               @confirm="handleDelete(scope.$index, scope.row)"
             >
               <el-button
@@ -140,7 +140,7 @@
                 size="mini"
                 type="danger"
                 slot="reference"
-                >删除</el-button
+                >削除</el-button
               >
             </el-popconfirm>
           </template>
@@ -162,7 +162,7 @@
     <el-drawer :visible.sync="drawer" direction="rtl" size="50%">
       <div class="updatebar">
         <el-form :model="updateform" label-width="80px">
-          <el-form-item label="收件人">
+          <el-form-item label="受取人">
             <el-input
               v-model="updateform.recipientname"
               placeholder="受取人"
@@ -176,20 +176,20 @@
               clearable
             ></el-input>
           </el-form-item>
-          <el-form-item label="联系电话">
+          <el-form-item label="連絡電話番号">
             <el-input
               v-model="updateform.phone"
-              placeholder="联系电话"
+              placeholder="連絡電話番号"
               clearable
             ></el-input>
           </el-form-item>
-          <el-form-item label="订单状态">
+          <el-form-item label="注文状況">
             <el-select
               style="width: 100%"
               v-model="updateform.postatu"
               clearable
               filterable
-              placeholder="宠物状态"
+              placeholder="ペット状態"
             >
               <el-option
                 v-for="item in postatus"
@@ -202,8 +202,8 @@
           </el-form-item>
           <el-form-item>
             <div class="but">
-              <el-button type="primary" @click="update">提交</el-button>
-              <el-button type="primary" @click="drawer = false">取消</el-button>
+              <el-button type="primary" @click="update">提出</el-button>
+              <el-button type="primary" @click="drawer = false">キャンセル</el-button>
             </div>
           </el-form-item>
         </el-form>
@@ -227,27 +227,27 @@ export default {
       pagercount: 5,
       total: 10,
       currentpage: 1,
-      //0-进行中，1-已完成，2-已取消，3-修改中，4-取消中
+      //0-进行中，1-完了済み，2-已キャンセル，3-修正中，4-キャンセル中
       postatus: [
         {
           postatu: 0,
-          postatuname: "进行中",
+          postatuname: "進行中",
         },
         {
           postatu: 1,
-          postatuname: "已完成",
+          postatuname: "完了済み",
         },
         {
           postatu: 2,
-          postatuname: "已取消",
+          postatuname: "キャンセル",
         },
         {
           postatu: 3,
-          postatuname: "修改中",
+          postatuname: "変更中",
         },
         {
           postatu: 4,
-          postatuname: "取消中",
+          postatuname: "キャンセル中",
         },
       ],
       form: {},
@@ -326,7 +326,7 @@ export default {
       })
         .then((res) => {
           this.$notify({
-            title: "删除成功",
+            title: "削除成功",
             message: res,
             offset: 100,
             type: "success",
@@ -365,8 +365,8 @@ export default {
       })
         .then((res) => {
           this.$notify({
-            title: "修改成功",
-            message: "订单修改成功",
+            title: "変更が完了しました",
+            message: "注文の変更が完了しました",
             type: "success",
             offset: 100,
           });

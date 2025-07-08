@@ -3,7 +3,7 @@
   <div class='purchase'>
     <div class="title">
       <h1>
-        <slot>提交订单</slot>
+        <slot>注文を提出する</slot>
       </h1>
     </div>
     <div class="mainbar">
@@ -19,14 +19,14 @@
         </el-form-item>
         <el-form-item>
           <div class="but">
-            <el-button type="primary" @click="request('ruleForm')">提交</el-button>
-            <el-tooltip effect="dark" content="该地址为新地址，添加到地址列表中" placement="bottom">
-              <el-button type="primary" @click="addaddress('ruleForm')">存入到新地址</el-button>
+            <el-button type="primary" @click="request('ruleForm')">提出</el-button>
+            <el-tooltip effect="dark" content="この住所は新しい住所です。住所リストに追加します" placement="bottom">
+              <el-button type="primary" @click="addaddress('ruleForm')">新しい住所に保存する</el-button>
             </el-tooltip>
           </div>
         </el-form-item>
       </el-form>
-      <div class="chooseaddress">已有地址（可点击选择）</div>
+      <div class="chooseaddress">既存の住所を選択</div>
       <address-item @choose="choose"></address-item>
     </div>
     <!-- <sidebar></sidebar> -->
@@ -54,11 +54,11 @@
     data () {
       var checkphone = (rule, value, callback) => {
         if(!value) {
-          return callback(new Error('手机号不能为空'))
+          return callback(new Error('携帯番号空にできません'))
         }else if(/^1\d{10}$/.test(value)) {
           callback();
         }else {
-          callback(new Error('请输入11位手机号码，1xx xxxx xxxx'))
+          callback(new Error('11桁の携帯番号を入力してください（例：1xx xxxx xxxx）'))
         }
       }
       return {
@@ -69,24 +69,24 @@
         },
         rules: {
           address: [
-            { required: true, message: '地址不能为空' , trigger: 'blur'}
+            { required: true, message: '住所空にできません' , trigger: 'blur'}
           ],
           phone: [
             { required: true, validator: checkphone, trigger: 'blur'}
           ],
           recipientname: [
-            { required: true, message: '受取人不能为空' , trigger: 'blur'}
+            { required: true, message: '受取人空にできません' , trigger: 'blur'}
           ]
         }
       }
     },
     methods: {
-      //提交订单
+      //提出订单
       request(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
             if(this.orderform) {
-              //修改订单
+              //修正订单
               requestupdatepetorder({
                 // pid: this.$route.query.pid,
                 // uid: this.$store.state.uid,
@@ -101,13 +101,13 @@
                 this.$emit("successupdate",this.form)
                 let purchasemsg = {}
                 purchasemsg.type = 2
-                purchasemsg.msg = '我想修改一个的订单，点击前往查看'
+                purchasemsg.msg = '注文を1件修正したいです。クリックして確認してください'
                 purchasemsg.touid = this.orderform.touid
                 purchasemsg.pid = this.orderform.pid
                 bus.$emit("purchase",purchasemsg)
                 this.$router.go(-1)
                 this.$notify({
-                  title: '修改中',
+                  title: '変更中',
                   message: res,
                   type: 'warning',
                   offset: 100
@@ -116,7 +116,7 @@
                 console.log(err)
               })
             }else {
-              //提交订单
+              //提出订单
               requestaddpetorder({
                 pid: this.$route.query.pid,
                 uid: this.$store.state.uid,
@@ -130,7 +130,7 @@
                 if(res.flag == 1) {
                   let purchasemsg = {}
                   purchasemsg.type = 1
-                  purchasemsg.msg = '我购买了你的宠物，点击前往查看'
+                  purchasemsg.msg = 'あなたのペットを購入しました。クリックして確認してください'
                   purchasemsg.touid = this.$route.query.uid
                   purchasemsg.pid = this.$route.query.pid
                   bus.$emit("purchase",purchasemsg)
@@ -157,7 +157,7 @@
           }
         });
       },
-      //增加新地址
+      //增加新住所
       addaddress(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
@@ -183,7 +183,7 @@
           }
         });
       },
-      //选择地址
+      //选择住所
       choose(item) {
         this.$refs['ruleForm'].clearValidate()
         this.form.recipientname = item.username

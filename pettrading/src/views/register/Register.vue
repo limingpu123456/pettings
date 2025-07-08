@@ -2,9 +2,9 @@
 <template>
   <div class='register'>
     <el-steps :active="active" align-center :process-status="process" finish-status="success">
-      <el-step title="サインアップ账号"></el-step>
-      <el-step title="实名验证"></el-step>
-      <el-step title="完成サインアップ"></el-step>
+      <el-step title="サインアップアカウント"></el-step>
+      <el-step title="実名認証"></el-step>
+      <el-step title="サインアップ完了"></el-step>
     </el-steps>
     <div v-if="active === 0">
       <register-user
@@ -71,7 +71,7 @@
         this.active--;
       },
       register() {
-        this.form.username = "用户"+this.form.telphone
+        this.form.username = "ユーザー"+this.form.telphone
         requestregister({
           username: this.form.username,
           password: this.form.password,

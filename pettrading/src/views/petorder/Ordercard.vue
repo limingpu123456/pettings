@@ -12,76 +12,76 @@
       </div>
     </div>
     <div class="orderstatu">
-      <div v-if="statu === 0" class="doing">进行中</div>
-      <div v-if="statu === 1" class="success">已完成</div>
-      <div v-if="statu === 2" class="cancel">已取消</div>
-      <div v-if="statu === 3" class="changing">修改中</div>
-      <div v-if="statu === 4" class="cancelimg">取消中</div>
+      <div v-if="statu === 0" class="doing">進行中</div>
+      <div v-if="statu === 1" class="success">完了済み</div>
+      <div v-if="statu === 2" class="cancel">キャンセル</div>
+      <div v-if="statu === 3" class="changing">変更中</div>
+      <div v-if="statu === 4" class="cancelimg">キャンセル中</div>
     </div>
     </div>
     <div class="message">
       <div class="mbar">
-        <div class="title">收件人：</div>
+        <div class="title">宛先：</div>
         <div class="val">{{item.recipientname}}</div>
       </div>
       <div class="mbar">
-        <div class="title">联系电话：</div>
+        <div class="title">連絡電話番号：</div>
         <div class="val">{{item.phone}}</div>
       </div>
       <div class="mbar">
-        <div class="title">地址：</div>
+        <div class="title">住所：</div>
         <div class="address">{{item.address}}</div>
       </div>
       <div class="time">
         <div>{{item.date}}</div>
       </div>
       <div class="but">
-        <!-- 修改 -->
-        <el-button v-if="statu === 0" type="primary" size="small" @click="changepetorder">修改</el-button>
+        <!-- 修正 -->
+        <el-button v-if="statu === 0" type="primary" size="small" @click="changepetorder">修正</el-button>
         <!-- 完成 -->
         <el-popover v-if="statu === 0"
           placement="top"
           width="160"
           v-model="showcomplete">
-          <p>已收到货，订单完成</p>
+          <p>商品を受け取りました。注文が完了しました</p>
           <div style="text-align: right; margin: 0">
-            <el-button size="mini" type="text" @click="showcomplete = false">取消</el-button>
-            <el-button type="primary" size="mini" @click="complete">确定</el-button>
+            <el-button size="mini" type="text" @click="showcomplete = false">キャンセル</el-button>
+            <el-button type="primary" size="mini" @click="complete">確定</el-button>
           </div>
           <el-button v-if="statu === 0" type="primary" size="small" slot="reference">完成</el-button>
         </el-popover>
-        <!-- 取消订单 -->
+        <!-- キャンセル订单 -->
         <el-popover v-if="statu === 0"
           placement="top"
           width="160"
           v-model="cancelorder">
-          <p>确定要取消订单吗？</p>
+          <p>本当に注文をキャンセルしますか？</p>
           <div style="text-align: right; margin: 0">
-            <el-button size="mini" type="text" @click="cancelorder = false">取消</el-button>
-            <el-button type="primary" size="mini" @click="cancelpetorder">确定</el-button>
+            <el-button size="mini" type="text" @click="cancelorder = false">キャンセル</el-button>
+            <el-button type="primary" size="mini" @click="cancelpetorder">確定</el-button>
           </div>
-          <el-button v-if="statu === 0" type="danger" size="small" slot="reference">取消订单</el-button>
+          <el-button v-if="statu === 0" type="danger" size="small" slot="reference">注文をキャンセルする</el-button>
         </el-popover>
-        <!-- 删除 -->
+        <!-- 削除 -->
         <el-popover v-if="statu === 1 || statu === 2"
           placement="top"
           width="160"
           v-model="visible">
-          <p>删除后将无法恢复，确定删除吗？</p>
+          <p>削除すると復元できません。削除してもよろしいですか</p>
           <div style="text-align: right; margin: 0">
-            <el-button size="mini" type="text" @click="visible = false">取消</el-button>
-            <el-button type="primary" size="mini" @click="deletepetorder">确定</el-button>
+            <el-button size="mini" type="text" @click="visible = false">キャンセル</el-button>
+            <el-button type="primary" size="mini" @click="deletepetorder">確定</el-button>
           </div>
-          <el-button v-if="statu === 1 || statu === 2" type="danger" size="small" slot="reference">删除</el-button>
+          <el-button v-if="statu === 1 || statu === 2" type="danger" size="small" slot="reference">削除</el-button>
         </el-popover>
       </div>
     </div>
-    <!-- 修改订单 -->
+    <!-- 注文を修正する -->
     <div v-if="change === true">
       <div class="changepetorder" @click="closechange">
       </div>
       <div class="purchasebar" id="purchasescroll">
-        <purchase :orderform="form" @totop="totop" @successupdate="successupdate">修改订单</purchase>
+        <purchase :orderform="form" @totop="totop" @successupdate="successupdate">注文を修正する</purchase>
       </div>
     </div>
   </div>
@@ -107,8 +107,8 @@
     },
     data () {
       return {
-        showcomplete: false,//完成按钮的二次确认
-        cancelorder: false,//取消订单的二次确认
+        showcomplete: false,//完成按钮的二次確認
+        cancelorder: false,//キャンセル订单的二次確認
         visible: false,
         change: false,
         form: {
@@ -176,14 +176,14 @@
           pk: 2
         }).then(res => {
           this.$notify({
-            title: '订单完成',
+            title: '注文完了',
             message: res,
             type: 'success'
           })
           this.item.postatu = 1
           let message = {}
           message.type = 4
-          message.msg = '订单已成功，点击前往查看'
+          message.msg = '注文が成功しました。クリックして確認してください'
           message.touid = this.form.touid
           message.pid = this.form.pid
           bus.$emit("purchase",message)
@@ -191,7 +191,7 @@
           console.log(err)
         })
       },
-      //删除按钮
+      //削除按钮
       deletepetorder() {
         this.visible = false
         requestdeletepetorder({
@@ -208,7 +208,7 @@
           console.log(err)
         })
       },
-      //取消订单
+      //キャンセル订单
       cancelpetorder() {
         this.cancelorder = false
         requestupdatepetorder({
@@ -218,14 +218,14 @@
         }).then(res => {
           this.item.postatu = 4
           this.$notify({
-            title: "取消中",
+            title: "キャンセル中",
             message: res,
             type: 'warning',
             offset: 100
           })
           let message = {}
           message.type = 3
-          message.msg = '我想取消这个订单，点击前往查看'
+          message.msg = 'この注文をキャンセルしたいです。クリックして確認してください'
           message.touid = this.form.touid
           message.pid = this.form.pid
           bus.$emit("purchase",message)

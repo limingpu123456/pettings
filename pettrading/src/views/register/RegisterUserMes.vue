@@ -2,24 +2,24 @@
 <template>
   <div class='registerusermes'>
     <div>
-      <!-- 真实姓名 -->
+      <!-- 本名 -->
       <div class="inp">
         <img src="~assets/img/user/user.png" alt class="img-bg" />
         <input
           type="text"
-          placeholder="真实姓名"
+          placeholder="本名"
           v-model="form.realname"
           @blur="checkrealname" 
           :class="{ redborder: check.realname.flag }"
         />
         <p v-show="check.realname.flag">{{check.realname.val}}</p>
       </div>
-      <!-- 身份证号 -->
+      <!-- 身分証明書号 -->
       <div class="inp">
         <img src="~assets/img/user/idcard.png" alt class="img-bg" />
         <input
           type="text"
-          placeholder="身份证号"
+          placeholder="身分証明書号"
           v-model="form.idcard"
           @blur="checkidcard" 
           :class="{ redborder: check.idcard.flag }"
@@ -27,8 +27,8 @@
         <p v-show="check.idcard.flag">{{check.idcard.val}}</p>
       </div>
       <div class="but">
-        <el-button round type="primary" @click="previous">上一步</el-button>
-        <el-button round type="primary" @click="next">下一步</el-button>
+        <el-button round type="primary" @click="previous">前へ</el-button>
+        <el-button round type="primary" @click="next">次へ</el-button>
       </div>
     </div>
   </div>
@@ -55,19 +55,19 @@
       }
     },
     methods: {
-      //检验真实姓名
+      //检验本名
       checkrealname() {
         if (this.form.realname === "") {
-          this.check.realname.val = "*真实姓名不能为空";
+          this.check.realname.val = "*本名空にできません";
           this.check.realname.flag = true;
         } else {
           this.check.realname.flag = false;
         }
       },
-      //检验身份证号
+      //检验身分証明書号
       checkidcard() {
         if (this.form.idcard === "") {
-        this.check.idcard.val = "*身份证号不能为空";
+        this.check.idcard.val = "*身分証明書号空にできません";
         this.check.idcard.flag = true;
         } else if (
             /^[1-9]\d{5}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(
@@ -76,7 +76,7 @@
         ) {
             this.check.idcard.flag = false;
         } else {
-            this.check.idcard.val = "*请正确输入18位身份证号";
+            this.check.idcard.val = "*正しく18桁の身分証明書番号を入力してください";
             this.check.idcard.flag = true;
         }
       },

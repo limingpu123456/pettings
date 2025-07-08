@@ -3,7 +3,7 @@
   <div class="login">
     <div class="loginhead">登録</div>
     <div>
-      <!-- 用户名 -->
+      <!-- ユーザー名 -->
       <div class="inp">
         <img src="~assets/img/user/user.png" alt class="img-bg" />
         <input
@@ -11,20 +11,20 @@
           @blur="checkUsername"
           :class="{ redborder: check.username.flag }"
           autofocus="autofocus"
-          placeholder="用户名/手机号/邮箱"
+          placeholder="ユーザー名/携帯番号/メール"
           required="required"
           v-model="form.username"
         />
         <p v-show="check.username.flag">{{ check.username.val }}</p>
       </div>
-      <!-- 密码 -->
+      <!-- パスワード -->
       <div class="inp">
         <img src="~assets/img/password/password.png" alt class="img-bg" />
         <input
           @blur="checkPassword"
           :class="{ redborder: check.password.flag }"
           :type="types.type"
-          placeholder="密码"
+          placeholder="パスワード"
           required="required"
           v-model="form.password"
           @keyup.enter="request"
@@ -42,7 +42,7 @@
         <el-button type="primary" round @click="request">登録</el-button>
         <el-tooltip
           effect="light"
-          content="没有账号？去サインアップ"
+          content="アカウントがありませんか？新規登録はこちら"
           placement="bottom-start"
         >
           <el-button round type="primary" @click="toregister">サインアップ</el-button>
@@ -70,7 +70,7 @@ export default {
           val: "",
         },
       },
-      // 密码输入框タイプ，改变眼睛开闭
+      // パスワード输入框タイプ，改变眼睛开闭
       types: {
         type: "password",
         img: require("assets/img/password/close.png"),
@@ -92,20 +92,20 @@ export default {
         this.types.type = "text";
       }
     },
-    //验证用户名
+    //验证ユーザー名
     checkUsername() {
       if (this.form.username === "") {
         this.check.username.flag = true;
-        this.check.username.val = "*不能为空";
+        this.check.username.val = "*空にできません";
       } else {
         this.check.username.flag = false;
       }
     },
-    //验证密码
+    //验证パスワード
     checkPassword() {
       if (this.form.password === "") {
         this.check.password.flag = true;
-        this.check.password.val = "*密码不能为空";
+        this.check.password.val = "*パスワードは必須入力です";
       } else {
         this.check.password.flag = false;
       }

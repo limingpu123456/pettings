@@ -30,13 +30,13 @@
                   <div class="triangle"></div>
                   <div class="useraction">
                     <div class="blank"></div>
-                    <div @click="$router.push('/usercenters')">个人中心</div>
-                    <!-- <div @click="$router.push('/user/changemessage')">修改资料</div>
-                    <div @click="$router.push('/user/userplace')">地址管理</div>
+                    <div @click="$router.push('/usercenters')">個人センター</div>
+                    <!-- <div @click="$router.push('/user/changemessage')">修正资料</div>
+                    <div @click="$router.push('/user/userplace')">住所管理</div>
                     <div @click="$router.push('/user/safety')">安全中心</div> -->
-                    <div @click="$router.push('/usercenters/petorder')">我的订单</div>
-                    <div @click="$router.push('/usercenters/pet')">我的宠物</div>
-                    <div @click="tologout">注销</div>
+                    <div @click="$router.push('/usercenters/petorder')">注文履歴</div>
+                    <div @click="$router.push('/usercenters/pet')">マイペット</div>
+                    <div @click="tologout">解約</div>
                   </div>
                 </div>
               </transition>
@@ -314,9 +314,9 @@
       },
       //注销
       tologout() {
-        this.$confirm('确定要退出登録？', '注销', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('登録を解除してもよろしいですか？', '退会', {
+          confirmButtonText: '確定',
+          cancelButtonText: 'キャンセル',
           type: 'warning',
           center: true
         }).then(() => {
@@ -334,7 +334,7 @@
       sendpet(form) {
         var msg = {type: form.type ,fromavatar: this.$store.state.avatar.substring(5) ,msg: form.msg, touid: form.touid , pid: form.pid}
         this.websocket.send(JSON.stringify(msg))
-        console.log("发送成功")
+        console.log("送信成功")
       },
       send(form) {
         var msg = {type: form.type ,fromavatar: this.$store.state.avatar.substring(5) ,msg: form.message, touid: form.touid}

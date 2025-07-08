@@ -1,4 +1,4 @@
-<!--后台个人管理-->
+<!--后台個人管理-->
 <template>
   <div class="mymanage">
     <div class="main">
@@ -26,21 +26,21 @@
       <!-- 个人信息 -->
       <div class="changeform">
         <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-          <el-form-item label="用户名" prop="username">
+          <el-form-item label="ユーザー名" prop="username">
             <el-input
               clearable
               v-model="form.username"
-              placeholder="请输入用户名"
+              placeholder="ユーザー名を入力してください"
             ></el-input>
           </el-form-item>
-          <el-form-item label="登録密码">
+          <el-form-item label="パスワード登録">
             <el-input
               clearable
               v-model="form.password"
-              placeholder="请输入登録密码"
+              placeholder="登録用のパスワードを入力してください"
             ></el-input>
           </el-form-item>
-          <el-button type="primary" @click="request('form')">修改</el-button>
+          <el-button type="primary" @click="request('form')">修正</el-button>
         </el-form>
       </div>
     </div>
@@ -56,11 +56,11 @@ export default {
     //验证用户名
     var checkusername = (rule, value, callback) => {
       if (!value) {
-        return callback(new Error("用户名不能为空"));
+        return callback(new Error("ユーザー名は空にできません"));
       } else if (/^[A-Za-z0-9_\u4e00-\u9fa5]{3,16}$/.test(value)) {
         callback();
       } else {
-        return callback(new Error("用户名只能是3到16位的字母,数字和中文"));
+        return callback(new Error("ユーザー名は3〜16文字の英数字および漢字のみ使用可能です"));
       }
     };
     return {
@@ -122,14 +122,14 @@ export default {
                   this.$store.commit("setavatar", "/api/" + res.avatar);
                 }
                 this.$notify({
-                  title: "修改成功",
+                  title: "成功",
                   message: res.msg,
                   type: "success",
                   offset: 100,
                 });
               } else {
                 this.$notify({
-                  title: "修改失败",
+                  title: "失败",
                   message: res.msg,
                   type: "error",
                   offset: 100,

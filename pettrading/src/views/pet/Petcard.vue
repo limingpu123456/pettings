@@ -9,13 +9,13 @@
         <div class="time">{{item.date}}</div>
         <div class="petstatu">
             <div class="first" v-if="statu == 0">販売中</div>
-            <div class="second" v-if="statu == 1">已販売</div>
-            <div class="finish" v-if="statu == 2">已完成</div>
+            <div class="second" v-if="statu == 1">販売完了</div>
+            <div class="finish" v-if="statu == 2">完了済み</div>
             <div class="wantbuy" v-if="statu == 3">購入希望中</div>
         </div>
         <div class="petname">{{item.petname}}</div>
         <div class="price" v-if="item.price != -1">{{item.price}}</div>
-        <div class="price" v-if="item.price == -1">不限</div>
+        <div class="price" v-if="item.price == -1">不問</div>
         </div>
     </div>
   </div>

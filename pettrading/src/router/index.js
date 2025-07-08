@@ -47,14 +47,14 @@ const routes = [
     path: "/home",
     component: Home,
     meta: {
-      title: "宠物交易",
+      title: "ペットの売買",
     },
   },
   {
     path: "/buying",
     component: Buying,
     meta: {
-      title: "宠物購入希望",
+      title: "ペット購入希望",
     },
   },
   {
@@ -68,14 +68,14 @@ const routes = [
     path: "/login",
     component: Login,
     meta: {
-      title: "宠物交易-登録",
+      title: "ペット取引・登録",
     },
   },
   {
     path: "/register",
     component: Register,
     meta: {
-      title: "宠物交易-サインアップ",
+      title: "ペット取引-サインアップ",
     },
   },
   {
@@ -87,35 +87,35 @@ const routes = [
     name: "wantbuy",
     component: Wantbuy,
     meta: {
-      title: "宠物交易-購入希望",
+      title: "ペット取引-購入希望",
     },
   },
   {
     path: "/wantsell",
     component: Wantsell,
     meta: {
-      title: "宠物交易-販売",
+      title: "ペット取引-販売",
     },
   },
   {
     path: "/detail",
     component: Detail,
     meta: {
-      title: "宠物交易-ペット詳細情報",
+      title: "ペット取引-ペット詳細情報",
     },
   },
   {
     path: "/purchase",
     component: purchase,
     meta: {
-      title: "购买",
+      title: "購入",
     },
   },
   {
     path: "/usercenters",
     component: Usercenters,
     meta: {
-      title: "用户管理",
+      title: "ユーザー管理",
     },
     children: [
       {
@@ -126,7 +126,7 @@ const routes = [
         path: "user",
         component: User,
         meta: {
-          title: "宠物交易-个人中心",
+          title: "ペット取引 - マイページ",
         },
         children: [
           {
@@ -137,28 +137,28 @@ const routes = [
             path: "message",
             component: UserMessage,
             meta: {
-              title: "个人信息",
+              title: "個人情報",
             },
           },
           {
             path: "changemessage",
             component: UserChangeMes,
             meta: {
-              title: "修改资料",
+              title: "情報を更新する",
             },
           },
           {
             path: "userplace",
             component: UserPlace,
             meta: {
-              title: "地址管理",
+              title: "住所管理",
             },
           },
           {
             path: "safety",
             component: UserSafety,
             meta: {
-              title: "安全中心",
+              title: "セキュリティセンター",
             },
           },
         ],
@@ -167,14 +167,14 @@ const routes = [
         path: "petorder",
         component: PetOrder,
         meta: {
-          title: "我的订单",
+          title: "注文履歴",
         },
       },
       {
         path: "pet",
         component: Pet,
         meta: {
-          title: "我的宠物",
+          title: "マイペット",
         },
       },
     ],
@@ -183,7 +183,7 @@ const routes = [
     path: "/backstage",
     component: backstage,
     meta: {
-      title: "后台管理",
+      title: "管理画面",
     },
     children: [
       {
@@ -194,42 +194,42 @@ const routes = [
         path: "mymanage",
         component: mymanage,
         meta: {
-          title: "个人管理",
+          title: "個人管理",
         },
       },
       {
         path: "usermanage",
         component: usermanage,
         meta: {
-          title: "用户管理",
+          title: "ユーザー管理",
         },
       },
       {
         path: "addressmanage",
         component: addressmanage,
         meta: {
-          title: "地址管理",
+          title: "住所管理",
         },
       },
       {
         path: "petmanage",
         component: petmanage,
         meta: {
-          title: "宠物管理",
+          title: "ペット管理",
         },
       },
       {
         path: "petkindmanage",
         component: petkindmanage,
         meta: {
-          title: "宠物种类管理",
+          title: "ペット種類管理",
         },
       },
       {
         path: "petordermanage",
         component: petordermanage,
         meta: {
-          title: "订单管理",
+          title: "注文管理",
         },
       },
     ],

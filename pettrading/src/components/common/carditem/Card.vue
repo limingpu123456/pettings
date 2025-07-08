@@ -8,10 +8,10 @@
       <div class="petname">{{ item.petname }}</div>
       <div>タイプ：{{ item.bkind.bkindname }}</div>
       <div>品種：{{ item.skind.skindname }}</div>
-      <div v-if="item.age === -1">年齢：不限</div>
+      <div v-if="item.age === -1">年齢：不問</div>
       <div v-if="item.age != -1">年齢：{{ item.age }}ヶ月</div>
       <div>投稿者：{{ item.user.username }}</div>
-      <div v-if="item.price === -1" class="price">不限</div>
+      <div v-if="item.price === -1" class="price">不問</div>
       <div v-if="item.price != -1" class="price">{{ item.price }}</div>
       <div class="time">
         <span>{{ item.date }}</span>

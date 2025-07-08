@@ -24,7 +24,7 @@ export function requestaddBKind(parameter) {
     })
 }
 
-//删除タイプ
+//削除タイプ
 export function requestdeleteBKind(parameter) {
     return request({
         url: "/bkind/deleteBKind",
@@ -32,7 +32,7 @@ export function requestdeleteBKind(parameter) {
     })
 }
 
-//修改タイプ
+//修正タイプ
 export function requestupdateBKind(parameter) {
     return request({
         url: "/bkind/updateBKind",

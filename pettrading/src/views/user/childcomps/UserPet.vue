@@ -1,9 +1,9 @@
 <!--我的宠物-->
 <template>
   <div class='userpet container'>
-    <div>我的宠物</div>
+    <div>マイペット</div>
     <div>販売中</div>
-    <div>已販売</div>
+    <div>販売完了</div>
     <div>購入希望中</div>
   </div>
 </template>

@@ -6,7 +6,7 @@ export default function request(config) {
         timeout: 5000,
     })
     instance.interceptors.response.use((res) => {
-        console.log("11111"+JSON.stringify(res));
+        // console.log("11111"+JSON.stringify(res));
         return res.data;
     }, (err) => {
         return Promise.reject(err)

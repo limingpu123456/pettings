@@ -16,43 +16,43 @@
         <el-submenu index="4">
           <template slot="title">
             <i class="el-icon-s-custom"></i>
-            <span slot="title">个人管理</span>
+            <span slot="title">個人管理</span>
           </template>
-          <el-menu-item index="/backstage/mymanage">修改我的信息</el-menu-item>
+          <el-menu-item index="/backstage/mymanage">自分の情報を更新する</el-menu-item>
         </el-submenu>
         <el-submenu index="1">
           <template slot="title">
             <i class="el-icon-s-custom"></i>
-            <span slot="title">用户管理模块</span>
+            <span slot="title">ユーザー管理モジュール</span>
           </template>
           <el-menu-item-group>
-            <template slot="title">用户信息</template>
-            <el-menu-item index="/backstage/usermanage">用户管理</el-menu-item>
+            <template slot="title">ユーザー情報</template>
+            <el-menu-item index="/backstage/usermanage">ユーザー管理</el-menu-item>
           </el-menu-item-group>
           <el-menu-item-group>
-            <template slot="title">用户地址</template>
-            <el-menu-item index="/backstage/addressmanage">地址管理</el-menu-item>
+            <template slot="title">ユーザー住所</template>
+            <el-menu-item index="/backstage/addressmanage">住所管理</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
         <el-submenu index="2">
           <template slot="title">
             <i class="el-icon-shopping-bag-1"></i>
-            <span>宠物管理模块</span>
+            <span>ペット管理モジュール</span>
           </template>
           <el-menu-item-group>
-            <template slot="title">用户宠物</template>
-            <el-menu-item index="/backstage/petmanage">宠物管理</el-menu-item>
+            <template slot="title">ユーザーペット</template>
+            <el-menu-item index="/backstage/petmanage">ペット管理</el-menu-item>
           </el-menu-item-group>
-          <el-menu-item-group title="宠物种类">
-            <el-menu-item index="/backstage/petkindmanage">宠物种类管理</el-menu-item>
+          <el-menu-item-group title="ペットの種類">
+            <el-menu-item index="/backstage/petkindmanage">ペット種類管理</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
         <el-submenu index="3">
           <template slot="title">
             <i class="el-icon-s-order"></i>
-            <span slot="title">订单管理模块</span>
+            <span slot="title">注文管理モジュール</span>
           </template>
-          <el-menu-item index="/backstage/petordermanage">订单管理</el-menu-item>
+          <el-menu-item index="/backstage/petordermanage">注文管理</el-menu-item>
         </el-submenu>
       </el-menu>
     </div>
@@ -68,7 +68,7 @@
         </div>
         <div class="logoutbut" @click="tologout">
           <i class="el-icon-switch-button" style="color: red;font-size: 3.5em;width: 100%;margin-top: 0.4em"></i>
-          <div class="clicklogout">退出登録</div>
+          <div class="clicklogout">登録解除</div>
         </div>
       </div>
       <div class="mainbar">
@@ -112,9 +112,9 @@
         }
       },
       tologout() {
-        this.$confirm('确定要退出登録？', '注销', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('本当に登録を解除してもよろしいですか？', '退会', {
+          confirmButtonText: '確定',
+          cancelButtonText: 'キャンセル',
           type: 'warning',
           center: true
         }).then(() => {

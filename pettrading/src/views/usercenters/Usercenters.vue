@@ -3,9 +3,9 @@
   <div class='usercenters'>
     <breadcrumb>{{$route.meta.title}}</breadcrumb>
     <div class="navmeun container">
-      <div :class="{active: isactive('/usercenters/user/')}" @click="toactive('/usercenters')">个人中心</div>
-      <div :class="{active: this.$route.path === '/usercenters/petorder'}" @click="toactive('/usercenters/petorder')">我的订单</div>
-      <div :class="{active: this.$route.path === '/usercenters/pet'}" @click="toactive('/usercenters/pet')">我的宠物</div>
+      <div :class="{active: isactive('/usercenters/user/')}" @click="toactive('/usercenters')">個人センター</div>
+      <div :class="{active: this.$route.path === '/usercenters/petorder'}" @click="toactive('/usercenters/petorder')">注文履歴</div>
+      <div :class="{active: this.$route.path === '/usercenters/pet'}" @click="toactive('/usercenters/pet')">私のペット</div>
     </div>
     <div>
       <router-view></router-view>

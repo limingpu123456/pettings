@@ -3,45 +3,46 @@
   <div class='mypetdetail'>
     <div>
       <div class="title">
-        <div>订单信息：</div>
+        <div>注文情報：</div>
       </div>
-      <div class="ordertitle" v-if="shownew">旧订单：</div>
+      <div class="ordertitle" v-if="shownew">過去の注文：</div>
        <el-table
         :data="tableData"
         style="width: 100%">
         <el-table-column
           prop="user.username"
-          label="下单用户"
-          width="110">
+          label="注文ユーザー"
+          width="180">
         </el-table-column>
         <el-table-column
           prop="recipientname"
-          label="收件人"
-          width="110">
+          label="受取人"
+          width="180">
         </el-table-column>
         <el-table-column
           prop="phone"
-          label="手机号"
-          width="120">
+          label="携帯番号"
+          width="180">
         </el-table-column>
         <el-table-column
           prop="address"
-          label="详细地址">
+          label="詳細住所"
+          width="300">
         </el-table-column>
         <el-table-column
           prop="price"
           width="100"
-          label="下单时価格">
+          label="注文金額">
         </el-table-column>
         <el-table-column
           prop="date"
           width="160"
-          label="下单时间">
+          label="注文日時">
         </el-table-column>
         <el-table-column
           v-if="showorderchat"
           width="110"
-          label="联系下单用户">
+          label="联系注文ユーザー">
           <template>
             <div class="chat" @click="tochat">
               <img src="~assets/img/chat/petorderchat.png" alt="">
@@ -50,42 +51,42 @@
         </el-table-column>
       </el-table>
       <div v-if="shownew">
-        <div class="ordertitle">新订单：</div>
+        <div class="ordertitle">新規注文:</div>
         <el-table
           :data="tableData"
           style="width: 100%">
           <el-table-column
             prop="user.username"
-            label="下单用户"
+            label="注文ユーザー"
             width="110">
           </el-table-column>
           <el-table-column
             prop="newrecipientname"
-            label="收件人"
+            label="受取人"
             width="110">
           </el-table-column>
           <el-table-column
             prop="newphone"
-            label="手机号"
+            label="携帯番号"
             width="120">
           </el-table-column>
           <el-table-column
             prop="newaddress"
-            label="详细地址">
+            label="詳細住所">
           </el-table-column>
           <el-table-column
             prop="price"
             width="100"
-            label="下单时価格">
+            label="注文金額">
           </el-table-column>
           <el-table-column
             prop="date"
             width="160"
-            label="下单时间">
+            label="注文日時">
           </el-table-column>
           <el-table-column
             width="110"
-            label="联系下单用户">
+            label="联系注文ユーザー">
             <template>
               <div class="chat" @click="tochat">
                 <img src="~assets/img/chat/petorderchat.png" alt="">
@@ -95,14 +96,14 @@
         </el-table>
         <div class="butbar">
           <div class="changebut">
-            <el-button @click="agreeupdatepetorder" type="primary" round>同意修改</el-button>
+            <el-button @click="agreeupdatepetorder" type="primary" round>修正に同意する</el-button>
           </div>
         </div>
       </div>
       <div v-if="showcancel">
         <div class="butbar">
           <div class="changebut">
-            <el-button @click="agreecancelpetorder" type="danger" round>同意取消</el-button>
+            <el-button @click="agreecancelpetorder" type="danger" round>キャンセル</el-button>
           </div>
         </div>
       </div>
@@ -167,7 +168,7 @@
           console.log(err)
         })
       },
-      //同意修改订单
+      //同意修正订单
       agreeupdatepetorder() {
         requestupdatepetorder({
           poid: this.tableData[0].poid,
@@ -184,14 +185,14 @@
           this.tableData[0].recipientname = this.tableData[0].newrecipientname
           this.shownew = false
           this.$notify({
-            title: '同意修改',
+            title: '修正に同意する',
             message: res,
             type: 'success',
             offset: 100
           })
           let message = {}
           message.type = 5
-          message.msg = '订单修改成功，点击前往查看'
+          message.msg = '注文の変更が完了しました，クリックしてご覧ください'
           message.touid = this.tableData[0].user.uid
           message.pid = this.tableData[0].pid
           bus.$emit("purchase",message)
@@ -199,7 +200,7 @@
           console.log(err)
         })
       },
-      //同意取消订单
+      //同意キャンセル订单
       agreecancelpetorder() {
         requestupdatepetorder({
           poid: this.tableData[0].poid,
@@ -208,14 +209,14 @@
           pk: 0
         }).then(res => {
           this.$notify({
-            title: '同意取消',
+            title: 'キャンセル',
             message: res,
             type: 'success',
             offset: 100
           })
           let message = {}
           message.type = 5
-          message.msg = '订单取消成功，点击前往查看'
+          message.msg = '注文のキャンセルに成功しました。クリックして確認してください'
           message.touid = this.tableData[0].user.uid
           message.pid = this.tableData[0].pid
           bus.$emit("purchase",message)

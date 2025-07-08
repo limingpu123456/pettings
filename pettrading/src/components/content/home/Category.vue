@@ -8,8 +8,8 @@
     </div>
     <carditem :lists="lists" v-if="lists.length > 0"></carditem>
     <div v-if="lists.length == 0">
-      <div class="nolists">该种类暂无预售宠物</div>
-      <div class="wantbuy"><a @click="towantbuy(bkind.bkid)">前往購入希望</a></div>
+      <div class="nolists">この種類の予約販売ペットはありません</div>
+      <div class="wantbuy"><a @click="towantbuy(bkind.bkid)">購入希望へ進む</a></div>
     </div>
   </div>
 </template>

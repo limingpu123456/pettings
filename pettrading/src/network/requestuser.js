@@ -17,7 +17,7 @@ export function requestupdateuser(parameter) {
     })
 }
 
-// 修改密码
+// 修正パスワード
 export function requestchangepassword(parameter) {
     return request({
         url: "/user/changepassword",
@@ -50,7 +50,7 @@ export function requestqueryuserby(parameter) {
     })
 }
 
-//删除用户
+//削除用户
 export function requestdeleteUser(parameter) {
     return request({
       url: '/user/deleteUser',

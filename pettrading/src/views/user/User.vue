@@ -3,11 +3,11 @@
   <div class='user'>
     <div class="usermain container">
       <div class="userbar">
-        <div :class="{active: $route.path === '/usercenters/user/message'}" @click="$router.push('/usercenters')">个人信息</div>
-        <div :class="{active: $route.path === '/usercenters/user/changemessage'}" @click="$router.push('/usercenters/user/changemessage')">修改资料</div>
-        <div :class="{active: $route.path === '/usercenters/user/userplace'}" @click="$router.push('/usercenters/user/userplace')">地址管理</div>
-        <div :class="{active: $route.path === '/usercenters/user/safety'}" @click="$router.push('/usercenters/user/safety')">安全中心</div>
-        <div @click="tologout">注销</div>
+        <div :class="{active: $route.path === '/usercenters/user/message'}" @click="$router.push('/usercenters')">個人情報</div>
+        <div :class="{active: $route.path === '/usercenters/user/changemessage'}" @click="$router.push('/usercenters/user/changemessage')">情報を修正する</div>
+        <div :class="{active: $route.path === '/usercenters/user/userplace'}" @click="$router.push('/usercenters/user/userplace')">住所管理</div>
+        <div :class="{active: $route.path === '/usercenters/user/safety'}" @click="$router.push('/usercenters/user/safety')">セキュリティセンター</div>
+        <div @click="tologout">ログアウト</div>
       </div>
       <div class="views">
         <router-view></router-view>
@@ -34,9 +34,9 @@
     methods: {
       //注销
       tologout() {
-        this.$confirm('确定要退出登録？', '注销', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('本当にログアウトしますか？', 'ログアウト', {
+          confirmButtonText: '確定',
+          cancelButtonText: 'キャンセル',
           type: 'warning',
           center: true
         }).then(() => {

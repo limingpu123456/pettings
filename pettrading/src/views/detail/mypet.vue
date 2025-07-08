@@ -6,7 +6,7 @@
       <div v-for="(item, index) in petlists" :key="index">
         <el-popconfirm
           placement="top-start"
-          title="将该宠物信息发送给该用户？"
+          title="そのペットの情報をそのユーザーに送信しますか"
           @confirm="select(index, item)"
         >
           <div slot="reference">
@@ -51,14 +51,14 @@ export default {
   methods: {
     select(index, item) {
       this.$notify({
-        title: "发送成功",
-        message: "该宠物已推荐给对方",
+        title: "送信が成功しました",
+        message: "そのペットは既に相手におすすめされています",
         type: "success",
         offset: 100,
       });
       let message = {};
       message.type = 7;
-      message.msg = "我这有你想要的宠物，点击前往查看";
+      message.msg = "ご希望のペットがあります。クリックしてご覧ください";
       message.touid = this.touid;
       message.pid = item.pid;
       bus.$emit("purchase", message);

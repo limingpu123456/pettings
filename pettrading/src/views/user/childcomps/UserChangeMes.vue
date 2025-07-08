@@ -26,31 +26,31 @@
       <!-- 个人信息 -->
       <div class="changeform">
         <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-          <el-form-item label="用户名" prop="username">
+          <el-form-item label="ユーザー名" prop="username">
             <el-input
               clearable
               v-model="form.username"
-              placeholder="请输入用户名"
+              placeholder="ユーザー名を入力してください"
             ></el-input>
           </el-form-item>
-          <!-- <el-form-item label="真实姓名">
+          <!-- <el-form-item label="本名">
             <el-input :disabled="true" v-model="form.realname"></el-input>
           </el-form-item>
-          <el-form-item label="身份证号">
+          <el-form-item label="身分証明書号">
             <el-input :disabled="true" v-model="form.idcard"></el-input>
           </el-form-item> -->
           <el-form-item label="性別">
-            <el-radio v-model="form.sex" label="保密">保密</el-radio>
+            <el-radio v-model="form.sex" label="秘密保持">秘密保持</el-radio>
             <el-radio v-model="form.sex" label="男">男</el-radio>
             <el-radio v-model="form.sex" label="女">女</el-radio>
           </el-form-item>
-          <!-- <el-form-item label="手机号" prop="telphone">
+          <!-- <el-form-item label="携帯番号" prop="telphone">
             <el-input v-model="form.telphone" placeholder="请输入电话号码"></el-input>
           </el-form-item>
           <el-form-item label="配送住所">
             <el-input v-model="form.address" placeholder="住所を入力してください"></el-input>
           </el-form-item> -->
-          <el-button type="primary" @click="request('form')">提交</el-button>
+          <el-button type="primary" @click="request('form')">提出</el-button>
         </el-form>
       </div>
     </div>
@@ -63,24 +63,24 @@ import { requestqueryuser, requestupdateuser } from "network/requestuser.js";
 export default {
   name: "UserChangeMes",
   data() {
-    //验证用户名
+    //验证ユーザー名
     var checkusername = (rule, value, callback) => {
       if (!value) {
-        return callback(new Error("用户名不能为空"));
+        return callback(new Error("ユーザー名空にできません"));
       } else if (/^[A-Za-z0-9_\u4e00-\u9fa5]{3,16}$/.test(value)) {
         callback();
       } else {
-        return callback(new Error("用户名只能是3到16位的字母,数字和中文"));
+        return callback(new Error("ユーザー名は3〜16文字の英字・数字・漢字のみ使用できます"));
       }
     };
-    //验证手机号
+    //验证携帯番号
     var checktelphone = (rule, value, callback) => {
       if (value === "") {
-        return callback(new Error("手机号不能为空"));
+        return callback(new Error("携帯番号空にできません"));
       } else if (/^1\d{10}$/.test(value)) {
         callback();
       } else {
-        return callback(new Error("请输入11位手机号码，1xx xxxx xxxx"));
+        return callback(new Error("11桁の携帯番号（1xx xxxx xxxx）を入力してください"));
       }
     };
     return {

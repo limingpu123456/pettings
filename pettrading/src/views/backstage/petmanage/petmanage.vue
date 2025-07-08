@@ -3,27 +3,27 @@
   <div class="petmanage">
     <div class="selectbar">
       <el-form :inline="true" :model="form">
-        <el-form-item label="宠物id">
+        <el-form-item label="ペットID">
           <el-input
             clearable
             v-model="form.pid"
-            placeholder="宠物id"
+            placeholder="ペットID"
           ></el-input>
         </el-form-item>
-        <el-form-item label="用户id">
+        <el-form-item label="ユーザーID">
           <el-input
             clearable
             v-model="form.uid"
-            placeholder="用户id"
+            placeholder="ユーザーID"
           ></el-input>
         </el-form-item>
-        <el-form-item label="宠物状态">
+        <el-form-item label="ペット状態">
           <el-select
             style="width: 100%"
             v-model="form.pk"
             clearable
             filterable
-            placeholder="宠物状态"
+            placeholder="ペット状態"
           >
             <el-option
               v-for="item in pk"
@@ -34,21 +34,21 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="ペットの名前">
+        <el-form-item label="名前">
           <el-input
             clearable
             v-model="form.petname"
-            placeholder="ペットの名前"
+            placeholder="名前"
           ></el-input>
         </el-form-item>
-        <el-form-item label="ペットの種類">
+        <el-form-item label="種類">
           <el-select
             @change="bkindchange"
             style="width: 100%"
             v-model="form.bkid"
             clearable
             filterable
-            placeholder="ペットの種類"
+            placeholder="種類"
           >
             <el-option
               v-for="item in bkind"
@@ -59,14 +59,14 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="ペットの品種">
+        <el-form-item label="品種">
           <el-select
             @change="skindchange"
             style="width: 100%"
             v-model="form.skid"
             clearable
             filterable
-            placeholder="ペットの品種"
+            placeholder="品種"
           >
             <el-option
               v-for="item in fskind"
@@ -77,18 +77,18 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="ペットの年齢">
+        <el-form-item label="年齢">
           <el-input
             clearable
             v-model="form.age"
-            placeholder="ペットの年齢"
+            placeholder="年齢"
           ></el-input>
         </el-form-item>
-        <el-form-item label="ペットの価格">
+        <el-form-item label="価格">
           <el-input
             clearable
             v-model="form.price"
-            placeholder="ペットの価格"
+            placeholder="価格"
           ></el-input>
         </el-form-item>
         <el-form-item label="投稿日">
@@ -96,7 +96,7 @@
             type="date"
             format="yyyy-MM-dd"
             value-format="yyyy-MM-dd"
-            placeholder="选择日期"
+            placeholder="日付選択"
             v-model="form.date"
           ></el-date-picker>
         </el-form-item>
@@ -112,18 +112,18 @@
     </div>
     <div>
       <el-table :data="pet" style="width: 100%">
-        <el-table-column prop="pid" sortable label="宠物id" width="86">
+        <el-table-column prop="pid" sortable label="ペットID" width="86">
         </el-table-column>
-        <el-table-column label="用户id" prop="uid" width="86">
+        <el-table-column label="ユーザーID" prop="uid" width="86">
         </el-table-column>
-        <el-table-column label="宠物主图" width="100">
+        <el-table-column label="ペットメイン画像" width="100">
           <template slot-scope="scope">
             <div class="photo">
               <img :src="'/api/' + scope.row.photo[0].url" alt="" />
             </div>
           </template>
         </el-table-column>
-        <el-table-column prop="petname" label="ペットの名前" width="180">
+        <el-table-column prop="petname" label="名前" width="180">
         </el-table-column>
         <el-table-column prop="bkind.bkindname" label="タイプ" width="100">
         </el-table-column>
@@ -133,13 +133,13 @@
         <el-table-column width="100" label="年齢">
           <template slot-scope="scope">
             <span v-if="scope.row.age != -1">{{ scope.row.age }}ヶ月</span>
-            <span v-if="scope.row.age == -1">不限</span>
+            <span v-if="scope.row.age == -1">不問</span>
           </template>
         </el-table-column>
         <el-table-column width="100" label="価格">
           <template slot-scope="scope">
             <span v-if="scope.row.price != -1">{{ scope.row.price }}</span>
-            <span v-if="scope.row.price == -1">不限</span>
+            <span v-if="scope.row.price == -1">不問</span>
           </template>
         </el-table-column>
         <el-table-column prop="description" label="公開説明"> </el-table-column>
@@ -149,10 +149,10 @@
               >販売中</span
             >
             <span style="color: rgb(102, 177, 255)" v-if="scope.row.pk == 1"
-              >已販売</span
+              >販売完了</span
             >
             <span style="color: rgb(33, 213, 168)" v-if="scope.row.pk == 2"
-              >已完成</span
+              >完了済み</span
             >
             <span style="color: pink" v-if="scope.row.pk == 3">購入希望中</span>
           </template>
@@ -162,15 +162,15 @@
         <el-table-column label="操作" width="150">
           <template slot-scope="scope">
             <el-button size="mini" @click="handleEdit(scope.$index, scope.row)"
-              >编辑</el-button
+              >編集</el-button
             >
             <el-popconfirm
-              confirmButtonText="确定"
-              cancelButtonText="取消"
+              confirmButtonText="確定"
+              cancelButtonText="キャンセル"
               placement="top"
               icon="el-icon-info"
               iconColor="red"
-              title="确定删除该用户吗？"
+              title="このユーザーを削除してもよろしいですか"
               @confirm="handleDelete(scope.$index, scope.row)"
             >
               <el-button
@@ -178,7 +178,7 @@
                 size="mini"
                 type="danger"
                 slot="reference"
-                >删除</el-button
+                >削除</el-button
               >
             </el-popconfirm>
           </template>
@@ -200,21 +200,21 @@
     <el-drawer :visible.sync="drawer" direction="rtl" size="50%">
       <div class="updatebar">
         <el-form :model="updateform" label-width="80px">
-          <el-form-item label="ペットの名前">
+          <el-form-item label="名前">
             <el-input
               v-model="updateform.petname"
-              placeholder="ペットの名前"
+              placeholder="名前"
               clearable
             ></el-input>
           </el-form-item>
-          <el-form-item label="ペットの種類">
+          <el-form-item label="種類">
             <el-select
               @change="updatebkindchange"
               style="width: 100%"
               v-model="updateform.bkid"
               clearable
               filterable
-              placeholder="ペットの種類"
+              placeholder="種類"
             >
               <el-option
                 v-for="item in bkind"
@@ -225,14 +225,14 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="ペットの品種">
+          <el-form-item label="品種">
             <el-select
               @change="updateskindchange"
               style="width: 100%"
               v-model="updateform.skid"
               clearable
               filterable
-              placeholder="ペットの品種"
+              placeholder="品種"
             >
               <el-option
                 v-for="item in fskind"
@@ -245,7 +245,7 @@
           </el-form-item>
           <el-form-item label="性別">
             <el-radio-group v-model="updateform.sex">
-              <el-radio label="不限">不限</el-radio>
+              <el-radio label="不問">不問</el-radio>
               <el-radio label="男">男</el-radio>
               <el-radio label="女">女</el-radio>
             </el-radio-group>
@@ -264,13 +264,13 @@
               clearable
             ></el-input>
           </el-form-item>
-          <el-form-item label="宠物状态">
+          <el-form-item label="ペット状態">
             <el-select
               style="width: 100%"
               v-model="updateform.pk"
               clearable
               filterable
-              placeholder="宠物状态"
+              placeholder="ペット状態"
             >
               <el-option
                 v-for="item in pk"
@@ -294,8 +294,8 @@
           </el-form-item>
           <el-form-item>
             <div class="but">
-              <el-button type="primary" @click="update">提交</el-button>
-              <el-button type="primary" @click="drawer = false">取消</el-button>
+              <el-button type="primary" @click="update">提出</el-button>
+              <el-button type="primary" @click="drawer = false">キャンセル</el-button>
             </div>
           </el-form-item>
         </el-form>
@@ -342,11 +342,11 @@ export default {
         },
         {
           pkid: 1,
-          pkname: "已販売",
+          pkname: "販売完了",
         },
         {
           pkid: 2,
-          pkname: "已完成",
+          pkname: "完了済み",
         },
         {
           pkid: 3,
@@ -374,7 +374,7 @@ export default {
       .catch((err) => {
         console.log(err);
       });
-    //検索所有ペットの種類及对应品種
+    //検索所有種類及对应品種
     requestqueryBKindandSKind()
       .then((res) => {
         this.bkind = res;
@@ -382,12 +382,12 @@ export default {
       .catch((err) => {
         console.log(err);
       });
-    //検索所有ペットの品種
+    //検索所有品種
     requestqueryallskind()
       .then((res) => {
         this.skind = res;
         this.fskind = this.skind.filter((n) => {
-          return n.skindname != "其他";
+          return n.skindname != "その他";
         });
       })
       .catch((err) => {
@@ -428,7 +428,7 @@ export default {
       })
         .then((res) => {
           this.$notify({
-            title: "删除成功",
+            title: "削除成功",
             message: res,
             offset: 100,
             type: "success",
@@ -463,7 +463,7 @@ export default {
     bkindchange() {
       if (this.form.bkid === "") {
         this.fskind = this.skind.filter((n) => {
-          return n.skindname != "其他";
+          return n.skindname != "その他";
         });
       } else {
         this.fskind = this.skind.filter((n) => {
@@ -489,7 +489,7 @@ export default {
     updatebkindchange() {
       if (this.updateform.bkid === "") {
         this.fskind = this.skind.filter((n) => {
-          return n.skindname != "其他";
+          return n.skindname != "その他";
         });
       } else {
         this.fskind = this.skind.filter((n) => {
@@ -565,8 +565,8 @@ export default {
       requestupdatePet(formData)
         .then((res) => {
           this.$notify({
-            title: "修改成功",
-            message: "该宠物信息修改成功",
+            title: "変更が完了しました",
+            message: "ペット情報の変更が成功しました",
             type: "success",
             offset: 100,
           });
