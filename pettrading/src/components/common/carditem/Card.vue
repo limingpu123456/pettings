@@ -6,11 +6,11 @@
     </div>
     <div class="cardbar">
       <div class="petname">{{ item.petname }}</div>
-      <div>类型：{{ item.bkind.bkindname }}</div>
-      <div>品种：{{ item.skind.skindname }}</div>
-      <div v-if="item.age === -1">年龄：不限</div>
-      <div v-if="item.age != -1">年龄：{{ item.age }}个月</div>
-      <div>发布人：{{ item.user.username }}</div>
+      <div>タイプ：{{ item.bkind.bkindname }}</div>
+      <div>品種：{{ item.skind.skindname }}</div>
+      <div v-if="item.age === -1">年齢：不限</div>
+      <div v-if="item.age != -1">年齢：{{ item.age }}ヶ月</div>
+      <div>投稿者：{{ item.user.username }}</div>
       <div v-if="item.price === -1" class="price">不限</div>
       <div v-if="item.price != -1" class="price">{{ item.price }}</div>
       <div class="time">

@@ -4,12 +4,12 @@
       <div class="classify">
         {{ bkind.bkindname }}
       </div>
-      <div @click="tomoresell">更多>></div>
+      <div @click="tomoresell">more>></div>
     </div>
     <carditem :lists="lists" v-if="lists.length > 0"></carditem>
     <div v-if="lists.length == 0">
       <div class="nolists">该种类暂无预售宠物</div>
-      <div class="wantbuy"><a @click="towantbuy(bkind.bkid)">前往求购</a></div>
+      <div class="wantbuy"><a @click="towantbuy(bkind.bkid)">前往購入希望</a></div>
     </div>
   </div>
 </template>

@@ -2,8 +2,8 @@
 <template>
   <div class="detail">
     <breadcrumb>
-      <!-- <span slot="second">买卖专区</span> >  -->
-      宠物详情
+      <!-- <span slot="second">購入エリア</span> >  -->
+      ペット詳細情報
     </breadcrumb>
     <div v-if="nopet == true">
       <div class="notexixtpet">该宠物不存在</div>
@@ -26,30 +26,30 @@
         </div>
         <div class="message">
           <div class="mbar">
-            <div class="title">宠物名称：</div>
+            <div class="title">ペットの名前：</div>
             <div class="val">{{ pet.petname }}</div>
           </div>
           <div class="mbar">
-            <div class="title" v-if="pet.pk != 3">价格：</div>
-            <div class="title" v-if="pet.pk == 3">最高价格：</div>
+            <div class="title" v-if="pet.pk != 3">価格：</div>
+            <div class="title" v-if="pet.pk == 3">最高価格：</div>
             <div class="val" v-if="pet.price != -1">{{ pet.price }}</div>
             <div class="val" v-if="pet.price == -1">不限</div>
           </div>
           <div class="mbar">
-            <div class="title">类型：</div>
+            <div class="title">タイプ：</div>
             <div class="val">{{ bkind.bkindname }}</div>
           </div>
           <div class="mbar">
-            <div class="title">品种：</div>
+            <div class="title">品種：</div>
             <div class="val">{{ skind.skindname }}</div>
           </div>
           <div class="mbar">
-            <div class="title">性别：</div>
+            <div class="title">性別：</div>
             <div class="val">{{ pet.sex }}</div>
           </div>
           <div class="mbar">
-            <div class="title">年龄：</div>
-            <div class="val" v-if="pet.age != -1">{{ pet.age }}个月</div>
+            <div class="title">年齢：</div>
+            <div class="val" v-if="pet.age != -1">{{ pet.age }}ヶ月</div>
             <div class="val" v-if="pet.age == -1">不限</div>
           </div>
           <!-- <div class="mbar">
@@ -57,17 +57,17 @@
             <div class="val">{{pet.count}}</div>
           </div> -->
           <div class="mbar">
-            <div class="title">发布人：</div>
+            <div class="title">投稿者：</div>
             <div class="val">
               <div>{{ user.username }}</div>
             </div>
           </div>
           <div class="mbar">
-            <div class="title">发布说明：</div>
+            <div class="title">公開説明：</div>
             <div class="desc">{{ pet.description }}</div>
           </div>
           <div class="mbar">
-            <div class="title">发布时间：</div>
+            <div class="title">投稿日：</div>
             <div class="val">{{ pet.date }}</div>
           </div>
           <div class="but">
@@ -102,7 +102,7 @@
             </div>
             <div v-if="user.uid != $store.state.uid && pet.pk == 3">
               <el-button type="primary" @click="selectmypet"
-                >我这里有</el-button
+                >持っています</el-button
               >
             </div>
             <div
@@ -111,7 +111,7 @@
               "
             >
               <el-button type="primary" @click="updatepet"
-                >修改宠物信息</el-button
+                >ペット情報を変更する</el-button
               >
             </div>
             <div v-if="user.uid == $store.state.uid && pet.pk != 1">
@@ -125,7 +125,7 @@
                     >确定</el-button
                   >
                 </div>
-                <el-button type="danger" slot="reference">删除该宠物</el-button>
+                <el-button type="danger" slot="reference">このペットを削除する</el-button>
               </el-popover>
             </div>
             <div>
@@ -137,10 +137,10 @@
                   pet.pk != 3
                 "
               >
-                <div class="done">已出售</div>
+                <div class="done">已販売</div>
               </div>
               <div v-if="user.uid == $store.state.uid && pet.pk == 0">
-                <div class="doing">出售中</div>
+                <div class="doing">販売中</div>
               </div>
               <div
                 v-if="
@@ -149,7 +149,7 @@
                   pet.pk == 1
                 "
               >
-                <div class="done">已出售</div>
+                <div class="done">已販売</div>
               </div>
               <div
                 v-if="
@@ -167,7 +167,7 @@
                   pet.pk == 3
                 "
               >
-                <div class="wantbuy">求购中</div>
+                <div class="wantbuy">購入希望中</div>
               </div>
             </div>
           </div>
@@ -306,7 +306,7 @@ export default {
         }
       }
     },
-    //修改宠物信息
+    //ペット情報を変更する
     updatepet() {
       let form = {};
       form.pid = this.pet.pid;

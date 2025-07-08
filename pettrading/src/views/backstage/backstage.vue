@@ -68,7 +68,7 @@
         </div>
         <div class="logoutbut" @click="tologout">
           <i class="el-icon-switch-button" style="color: red;font-size: 3.5em;width: 100%;margin-top: 0.4em"></i>
-          <div class="clicklogout">退出登录</div>
+          <div class="clicklogout">退出登録</div>
         </div>
       </div>
       <div class="mainbar">
@@ -112,7 +112,7 @@
         }
       },
       tologout() {
-        this.$confirm('确定要退出登录？', '注销', {
+        this.$confirm('确定要退出登録？', '注销', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning',

@@ -1,12 +1,12 @@
 <!---->
 <template>
   <div class='sidebar'>
-    <el-tooltip class="item" effect="dark" content="发布想要出售宠物" placement="left">
-      <button class="but" @click="tosell">出售</button>
+    <el-tooltip class="item" effect="dark" content="发布想要販売宠物" placement="left">
+      <button class="but" @click="tosell">販売</button>
     </el-tooltip>
     <el-tooltip class="item" effect="dark"  placement="left">
       <div slot="content">没找到想要的宠物？<br/>发布宠物请求试试</div>
-      <button class="but" @click="tobuy">求购</button>
+      <button class="but" @click="tobuy">購入希望</button>
     </el-tooltip>
   </div>
 </template>

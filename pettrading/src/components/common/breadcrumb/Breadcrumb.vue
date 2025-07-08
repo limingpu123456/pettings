@@ -3,7 +3,7 @@
   <div class='breadcrumb'>
     <div class="mainbar container">
       <div class="left">
-        <span class="tohome" @click="tohome()">首页</span> >
+        <span class="tohome" @click="tohome()">ホーム</span> >
         <span class="second">
           <slot name="second"></slot>
         </span>

@@ -1,6 +1,6 @@
 import request from "network/request.js"
 
-//登录
+//登録
 export function requestLogin(parameter) {
     return request({
         url: "/user/login",
@@ -8,7 +8,7 @@ export function requestLogin(parameter) {
     })
 }
 
-// 注册前验证账号是否已被注册
+// サインアップ前验证账号是否已被サインアップ
 export function requestcheckuser(parameter) {
     return request({
         url: "/user/checkuser",
@@ -16,7 +16,7 @@ export function requestcheckuser(parameter) {
     })
 }
 
-// 注册
+// サインアップ
 export function requestregister(parameter) {
     return request({
         url: "/user/register",

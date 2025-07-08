@@ -1,23 +1,23 @@
-<!--宠物类型管理-->
+<!--ペットの種類管理-->
 <template>
   <div class="petkindmanage">
     <div class="bkindbar">
       <div class="selectbar">
         <el-form :inline="true" :model="bkindform">
-          <el-form-item label="类型id">
+          <el-form-item label="タイプid">
             <el-input
               style="width: 180px"
               clearable
               v-model="bkindform.bkid"
-              placeholder="类型id"
+              placeholder="タイプid"
             ></el-input>
           </el-form-item>
-          <el-form-item label="类型名称">
+          <el-form-item label="タイプ名称">
             <el-input
               style="width: 180px"
               clearable
               v-model="bkindform.bkindname"
-              placeholder="类型名称"
+              placeholder="タイプ名称"
             ></el-input>
           </el-form-item>
           <el-form-item>
@@ -31,12 +31,12 @@
           </el-form-item>
         </el-form>
         <el-form :inline="true" :model="bkindaddform">
-          <el-form-item label="类型名称">
+          <el-form-item label="タイプ名称">
             <el-input
               style="width: 180px"
               clearable
               v-model="bkindaddform.bkindname"
-              placeholder="类型名称"
+              placeholder="タイプ名称"
             ></el-input>
           </el-form-item>
           <el-form-item>
@@ -52,9 +52,9 @@
       </div>
       <div class="bkind">
         <el-table :data="bkind" border style="width: 541px">
-          <el-table-column prop="bkid" label="类型id" sortable width="180">
+          <el-table-column prop="bkid" label="タイプid" sortable width="180">
           </el-table-column>
-          <el-table-column label="类型名称" width="180">
+          <el-table-column label="タイプ名称" width="180">
             <template slot-scope="scope">
               <span v-if="showbkindindex != scope.$index">{{
                 scope.row.bkindname
@@ -113,28 +113,28 @@
     <div class="skindbar">
       <div class="selectbar">
         <el-form :inline="true" :model="skindform">
-          <el-form-item label="品种id">
+          <el-form-item label="品種id">
             <el-input
               style="width: 180px"
               clearable
               v-model="skindform.skid"
-              placeholder="品种id"
+              placeholder="品種id"
             ></el-input>
           </el-form-item>
-          <el-form-item label="对应类型id">
+          <el-form-item label="对应タイプid">
             <el-input
               style="width: 180px"
               clearable
               v-model="skindform.bkid"
-              placeholder="类型id"
+              placeholder="タイプid"
             ></el-input>
           </el-form-item>
-          <el-form-item label="品种名称">
+          <el-form-item label="品種名称">
             <el-input
               style="width: 180px"
               clearable
               v-model="skindform.skindname"
-              placeholder="品种名称"
+              placeholder="品種名称"
             ></el-input>
           </el-form-item>
           <el-form-item>
@@ -148,20 +148,20 @@
           </el-form-item>
         </el-form>
         <el-form :inline="true" :model="skindaddform">
-          <el-form-item label="对应类型id">
+          <el-form-item label="对应タイプid">
             <el-input
               style="width: 180px"
               clearable
               v-model="skindaddform.bkid"
-              placeholder="类型id"
+              placeholder="タイプid"
             ></el-input>
           </el-form-item>
-          <el-form-item label="品种名称">
+          <el-form-item label="品種名称">
             <el-input
               style="width: 180px"
               clearable
               v-model="skindaddform.skindname"
-              placeholder="品种名称"
+              placeholder="品種名称"
             ></el-input>
           </el-form-item>
           <el-form-item>
@@ -177,9 +177,9 @@
       </div>
       <div class="skind">
         <el-table :data="skind" border style="width: 721px">
-          <el-table-column prop="skid" label="品种id" sortable width="180">
+          <el-table-column prop="skid" label="品種id" sortable width="180">
           </el-table-column>
-          <el-table-column label="对应类型id" width="180">
+          <el-table-column label="对应タイプid" width="180">
             <template slot-scope="scope">
               <span v-if="showskindindex != scope.$index">{{
                 scope.row.bkid
@@ -192,7 +192,7 @@
               ></el-input>
             </template>
           </el-table-column>
-          <el-table-column label="品种名称" width="180">
+          <el-table-column label="品種名称" width="180">
             <template slot-scope="scope">
               <span v-if="showskindindex != scope.$index">{{
                 scope.row.skindname

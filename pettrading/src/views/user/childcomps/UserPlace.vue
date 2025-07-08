@@ -22,7 +22,7 @@
             v-model="form.username"
             clearable
             v-if="show === scope.$index"
-            placeholder="请输入收件人"
+            placeholder="受取人を入力してください"
           ></el-input>
         </template>
       </el-table-column>
@@ -34,7 +34,7 @@
             v-model="form.address"
             clearable
             v-if="show === scope.$index"
-            placeholder="请输入地址"
+            placeholder="住所を入力してください"
           ></el-input>
         </template>
       </el-table-column>

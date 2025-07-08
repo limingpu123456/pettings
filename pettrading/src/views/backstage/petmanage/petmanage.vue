@@ -34,21 +34,21 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="宠物名称">
+        <el-form-item label="ペットの名前">
           <el-input
             clearable
             v-model="form.petname"
-            placeholder="宠物名称"
+            placeholder="ペットの名前"
           ></el-input>
         </el-form-item>
-        <el-form-item label="宠物类型">
+        <el-form-item label="ペットの種類">
           <el-select
             @change="bkindchange"
             style="width: 100%"
             v-model="form.bkid"
             clearable
             filterable
-            placeholder="宠物类型"
+            placeholder="ペットの種類"
           >
             <el-option
               v-for="item in bkind"
@@ -59,14 +59,14 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="宠物品种">
+        <el-form-item label="ペットの品種">
           <el-select
             @change="skindchange"
             style="width: 100%"
             v-model="form.skid"
             clearable
             filterable
-            placeholder="宠物品种"
+            placeholder="ペットの品種"
           >
             <el-option
               v-for="item in fskind"
@@ -77,21 +77,21 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="宠物年龄">
+        <el-form-item label="ペットの年齢">
           <el-input
             clearable
             v-model="form.age"
-            placeholder="宠物年龄"
+            placeholder="ペットの年齢"
           ></el-input>
         </el-form-item>
-        <el-form-item label="宠物价格">
+        <el-form-item label="ペットの価格">
           <el-input
             clearable
             v-model="form.price"
-            placeholder="宠物价格"
+            placeholder="ペットの価格"
           ></el-input>
         </el-form-item>
-        <el-form-item label="发布时间">
+        <el-form-item label="投稿日">
           <el-date-picker
             type="date"
             format="yyyy-MM-dd"
@@ -123,41 +123,41 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column prop="petname" label="宠物名称" width="180">
+        <el-table-column prop="petname" label="ペットの名前" width="180">
         </el-table-column>
-        <el-table-column prop="bkind.bkindname" label="类型" width="100">
+        <el-table-column prop="bkind.bkindname" label="タイプ" width="100">
         </el-table-column>
-        <el-table-column prop="skind.skindname" label="品种" width="100">
+        <el-table-column prop="skind.skindname" label="品種" width="100">
         </el-table-column>
-        <el-table-column prop="sex" label="性别" width="80"> </el-table-column>
-        <el-table-column width="100" label="年龄">
+        <el-table-column prop="sex" label="性別" width="80"> </el-table-column>
+        <el-table-column width="100" label="年齢">
           <template slot-scope="scope">
-            <span v-if="scope.row.age != -1">{{ scope.row.age }}个月</span>
+            <span v-if="scope.row.age != -1">{{ scope.row.age }}ヶ月</span>
             <span v-if="scope.row.age == -1">不限</span>
           </template>
         </el-table-column>
-        <el-table-column width="100" label="价格">
+        <el-table-column width="100" label="価格">
           <template slot-scope="scope">
             <span v-if="scope.row.price != -1">{{ scope.row.price }}</span>
             <span v-if="scope.row.price == -1">不限</span>
           </template>
         </el-table-column>
-        <el-table-column prop="description" label="发布说明"> </el-table-column>
+        <el-table-column prop="description" label="公開説明"> </el-table-column>
         <el-table-column width="100" label="状态">
           <template slot-scope="scope">
             <span style="color: rgb(255, 194, 8)" v-if="scope.row.pk == 0"
-              >出售中</span
+              >販売中</span
             >
             <span style="color: rgb(102, 177, 255)" v-if="scope.row.pk == 1"
-              >已出售</span
+              >已販売</span
             >
             <span style="color: rgb(33, 213, 168)" v-if="scope.row.pk == 2"
               >已完成</span
             >
-            <span style="color: pink" v-if="scope.row.pk == 3">求购中</span>
+            <span style="color: pink" v-if="scope.row.pk == 3">購入希望中</span>
           </template>
         </el-table-column>
-        <el-table-column prop="date" width="180" sortable label="发布时间">
+        <el-table-column prop="date" width="180" sortable label="投稿日">
         </el-table-column>
         <el-table-column label="操作" width="150">
           <template slot-scope="scope">
@@ -200,21 +200,21 @@
     <el-drawer :visible.sync="drawer" direction="rtl" size="50%">
       <div class="updatebar">
         <el-form :model="updateform" label-width="80px">
-          <el-form-item label="宠物名称">
+          <el-form-item label="ペットの名前">
             <el-input
               v-model="updateform.petname"
-              placeholder="宠物名称"
+              placeholder="ペットの名前"
               clearable
             ></el-input>
           </el-form-item>
-          <el-form-item label="宠物类型">
+          <el-form-item label="ペットの種類">
             <el-select
               @change="updatebkindchange"
               style="width: 100%"
               v-model="updateform.bkid"
               clearable
               filterable
-              placeholder="宠物类型"
+              placeholder="ペットの種類"
             >
               <el-option
                 v-for="item in bkind"
@@ -225,14 +225,14 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="宠物品种">
+          <el-form-item label="ペットの品種">
             <el-select
               @change="updateskindchange"
               style="width: 100%"
               v-model="updateform.skid"
               clearable
               filterable
-              placeholder="宠物品种"
+              placeholder="ペットの品種"
             >
               <el-option
                 v-for="item in fskind"
@@ -243,24 +243,24 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="性别">
+          <el-form-item label="性別">
             <el-radio-group v-model="updateform.sex">
               <el-radio label="不限">不限</el-radio>
               <el-radio label="男">男</el-radio>
               <el-radio label="女">女</el-radio>
             </el-radio-group>
           </el-form-item>
-          <el-form-item label="年龄">
+          <el-form-item label="年齢">
             <el-input
               v-model="updateform.age"
-              placeholder="年龄"
+              placeholder="年齢"
               clearable
             ></el-input>
           </el-form-item>
-          <el-form-item label="价格">
+          <el-form-item label="価格">
             <el-input
               v-model="updateform.price"
-              placeholder="价格"
+              placeholder="価格"
               clearable
             ></el-input>
           </el-form-item>
@@ -281,10 +281,10 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="发布说明">
+          <el-form-item label="公開説明">
             <el-input
               type="textarea"
-              placeholder="发布说明"
+              placeholder="公開説明"
               clearable
               rows="4"
               resize="none"
@@ -338,11 +338,11 @@ export default {
       pk: [
         {
           pkid: 0,
-          pkname: "出售中",
+          pkname: "販売中",
         },
         {
           pkid: 1,
-          pkname: "已出售",
+          pkname: "已販売",
         },
         {
           pkid: 2,
@@ -350,7 +350,7 @@ export default {
         },
         {
           pkid: 3,
-          pkname: "求购中",
+          pkname: "購入希望中",
         },
       ],
       drawer: false,
@@ -374,7 +374,7 @@ export default {
       .catch((err) => {
         console.log(err);
       });
-    //查询所有宠物类型及对应品种
+    //検索所有ペットの種類及对应品種
     requestqueryBKindandSKind()
       .then((res) => {
         this.bkind = res;
@@ -382,7 +382,7 @@ export default {
       .catch((err) => {
         console.log(err);
       });
-    //查询所有宠物品种
+    //検索所有ペットの品種
     requestqueryallskind()
       .then((res) => {
         this.skind = res;
@@ -459,7 +459,7 @@ export default {
           console.log(err);
         });
     },
-    //选中类型时，筛选出对应品种
+    //选中タイプ时，筛选出对应品種
     bkindchange() {
       if (this.form.bkid === "") {
         this.fskind = this.skind.filter((n) => {
@@ -477,7 +477,7 @@ export default {
         }
       }
     },
-    //选中品种时，选中对应类型
+    //选中品種时，选中对应タイプ
     skindchange() {
       if (this.form.skid != "") {
         let sbk = this.fskind.find((n) => {
@@ -503,7 +503,7 @@ export default {
         }
       }
     },
-    //选中品种时，选中对应类型
+    //选中品種时，选中对应タイプ
     updateskindchange() {
       if (this.updateform.skid != "") {
         let sbk = this.fskind.find((n) => {

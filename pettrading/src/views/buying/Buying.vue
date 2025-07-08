@@ -1,12 +1,12 @@
 <!---->
 <template>
   <div class='buying'>
-    <breadcrumb>宠物求购</breadcrumb>
+    <breadcrumb>宠物購入希望</breadcrumb>
     <div class="container">
       <div class="mainbuy">
         <selector @query="query">
-          <el-tooltip class="item" effect="dark" content="我也要求购" placement="bottom">
-            <el-button type="primary" @click="towantbuy">求购</el-button>
+          <el-tooltip class="item" effect="dark" content="我也要購入希望" placement="bottom">
+            <el-button type="primary" @click="towantbuy">購入希望</el-button>
           </el-tooltip>
         </selector>
         <div class="rightcard">
@@ -44,7 +44,7 @@
     data () {
       return {
         show: false,
-        //求购专区标志
+        //購入希望エリア标志
         pk: 3,
        //当前页的宠物数据
         lists: [],
@@ -84,7 +84,7 @@
       },
       newpetpage(val) {
         this.currentpage = val;
-        //查询新的一页条数据
+        //検索新的一页条数据
         requestquerypetpage({
           page: this.currentpage,
           count: this.pagesize,
@@ -107,7 +107,7 @@
         if(this.form.age == "不限") {
           this.form.age = -1
         }
-        //更加条件查询数据
+        //更加条件検索数据
         requestquerypetpage({
           page: this.currentpage,
           count: this.pagesize,
@@ -144,7 +144,7 @@
       if(this.$route.query.petname){
         this.form.petname = this.$route.query.petname;
       };
-      //首次进入查询数据
+      //首次进入検索数据
       requestquerypetpage({
         // page: this.$store.state.sellpage,
         page: this.currentpage,
@@ -157,7 +157,7 @@
       }).catch(err => {
         console.log(err)
       });
-      // 查询可购买宠物的条数
+      // 検索可购买宠物的条数
       requestquerypetcount({
         pk: this.pk,
         petname: this.form.petname

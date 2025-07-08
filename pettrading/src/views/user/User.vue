@@ -34,7 +34,7 @@
     methods: {
       //注销
       tologout() {
-        this.$confirm('确定要退出登录？', '注销', {
+        this.$confirm('确定要退出登録？', '注销', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning',

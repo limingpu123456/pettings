@@ -1,17 +1,17 @@
 <!---->
 <template>
   <div class="presell">
-    <breadcrumb>宠物预售</breadcrumb>
+    <breadcrumb>ペットの予約販売</breadcrumb>
     <div class="container">
       <div class="mainsell">
         <selector @query="query">
           <el-tooltip
             class="item"
             effect="dark"
-            content="我也要出售"
+            content="我也要販売"
             placement="bottom"
           >
-            <el-button type="primary" @click="towantsell">出售</el-button>
+            <el-button type="primary" @click="towantsell">販売</el-button>
           </el-tooltip>
         </selector>
         <div class="rightcard">
@@ -55,7 +55,7 @@ export default {
   data() {
     return {
       show: false,
-      //买卖专区标志
+      //購入エリア标志
       pk: 0,
       //当前页的宠物数据
       lists: [],
@@ -87,7 +87,7 @@ export default {
   methods: {
     newpetpage(val) {
       this.currentpage = val;
-      //查询新的一页的10条数据
+      //検索新的一页的10条数据
       requestquerypetpage({
         page: this.currentpage,
         count: this.pagesize,
@@ -117,7 +117,7 @@ export default {
     query(form) {
       this.currentpage = 1;
       this.form = form;
-      //更加条件查询数据
+      //更加条件検索数据
       requestquerypetpage({
         page: this.currentpage,
         count: this.pagesize,
@@ -161,7 +161,7 @@ export default {
     //   this.$store.commit('setsellpage', 1)
     // }
     // console.log(this.$store.state.sellpage);
-    //首次进入查询数据
+    //首次进入検索数据
     requestquerypetpage({
       // page: this.$store.state.sellpage,
       page: this.currentpage,
@@ -176,7 +176,7 @@ export default {
       .catch((err) => {
         console.log(err);
       });
-    // 查询可购买宠物的条数
+    // 検索可购买宠物的条数
     requestquerypetcount({
       pk: this.pk,
       bkid: this.form.bkid,

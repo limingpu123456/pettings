@@ -62,9 +62,9 @@
         </el-table-column>
         <el-table-column prop="username" label="用户名" width="180">
         </el-table-column>
-        <el-table-column prop="password" label="登录密码" width="150">
+        <el-table-column prop="password" label="登録密码" width="150">
         </el-table-column>
-        <el-table-column prop="sex" label="性别" width="100"> </el-table-column>
+        <el-table-column prop="sex" label="性別" width="100"> </el-table-column>
         <el-table-column prop="realname" label="真实姓名" width="180">
         </el-table-column>
         <el-table-column prop="idcard" width="200" label="身份证号">
@@ -119,14 +119,14 @@
               clearable
             ></el-input>
           </el-form-item>
-          <el-form-item label="登录密码">
+          <el-form-item label="登録密码">
             <el-input
               v-model="updateform.password"
-              placeholder="登录密码"
+              placeholder="登録密码"
               clearable
             ></el-input>
           </el-form-item>
-          <el-form-item label="性别">
+          <el-form-item label="性別">
             <el-radio-group v-model="updateform.sex">
               <el-radio label="保密">保密</el-radio>
               <el-radio label="男">男</el-radio>

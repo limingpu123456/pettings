@@ -38,9 +38,9 @@
             />
           </div>
         </li>
-        <!-- 性别 -->
+        <!-- 性別 -->
         <li>
-          <p class="type">性别 </p>
+          <p class="type">性別 </p>
           <div class="inp">
             <img src="~assets/img/user/sex.png" alt class="img-bg" />
             <input

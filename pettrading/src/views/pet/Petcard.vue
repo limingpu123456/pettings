@@ -8,10 +8,10 @@
         <div>
         <div class="time">{{item.date}}</div>
         <div class="petstatu">
-            <div class="first" v-if="statu == 0">出售中</div>
-            <div class="second" v-if="statu == 1">已出售</div>
+            <div class="first" v-if="statu == 0">販売中</div>
+            <div class="second" v-if="statu == 1">已販売</div>
             <div class="finish" v-if="statu == 2">已完成</div>
-            <div class="wantbuy" v-if="statu == 3">求购中</div>
+            <div class="wantbuy" v-if="statu == 3">購入希望中</div>
         </div>
         <div class="petname">{{item.petname}}</div>
         <div class="price" v-if="item.price != -1">{{item.price}}</div>

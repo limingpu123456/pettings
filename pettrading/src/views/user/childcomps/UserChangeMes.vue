@@ -39,7 +39,7 @@
           <el-form-item label="身份证号">
             <el-input :disabled="true" v-model="form.idcard"></el-input>
           </el-form-item> -->
-          <el-form-item label="性别">
+          <el-form-item label="性別">
             <el-radio v-model="form.sex" label="保密">保密</el-radio>
             <el-radio v-model="form.sex" label="男">男</el-radio>
             <el-radio v-model="form.sex" label="女">女</el-radio>
@@ -47,8 +47,8 @@
           <!-- <el-form-item label="手机号" prop="telphone">
             <el-input v-model="form.telphone" placeholder="请输入电话号码"></el-input>
           </el-form-item>
-          <el-form-item label="收货地址">
-            <el-input v-model="form.address" placeholder="请输入地址"></el-input>
+          <el-form-item label="配送住所">
+            <el-input v-model="form.address" placeholder="住所を入力してください"></el-input>
           </el-form-item> -->
           <el-button type="primary" @click="request('form')">提交</el-button>
         </el-form>

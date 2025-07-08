@@ -54,28 +54,28 @@ const routes = [
     path: "/buying",
     component: Buying,
     meta: {
-      title: "宠物求购",
+      title: "宠物購入希望",
     },
   },
   {
     path: "/presell",
     component: Presell,
     meta: {
-      title: "宠物预售",
+      title: "ペットの予約販売",
     },
   },
   {
     path: "/login",
     component: Login,
     meta: {
-      title: "宠物交易-登录",
+      title: "宠物交易-登録",
     },
   },
   {
     path: "/register",
     component: Register,
     meta: {
-      title: "宠物交易-注册",
+      title: "宠物交易-サインアップ",
     },
   },
   {
@@ -87,21 +87,21 @@ const routes = [
     name: "wantbuy",
     component: Wantbuy,
     meta: {
-      title: "宠物交易-求购",
+      title: "宠物交易-購入希望",
     },
   },
   {
     path: "/wantsell",
     component: Wantsell,
     meta: {
-      title: "宠物交易-出售",
+      title: "宠物交易-販売",
     },
   },
   {
     path: "/detail",
     component: Detail,
     meta: {
-      title: "宠物交易-宠物详情",
+      title: "宠物交易-ペット詳細情報",
     },
   },
   {

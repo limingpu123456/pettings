@@ -1,13 +1,13 @@
 import request from "network/request.js"
 
-//查询所有宠物种类
+//検索所有宠物种类
 export function requestqueryBKind() {
     return request({
         url: "/bkind/queryBKind"
     })
 }
 
-//查询所有宠物种类及对应品种
+//検索所有宠物种类及对应品種
 export function requestqueryBKindandSKind(parameter) {
     return request({
         url: "/bkind/queryBKindandSKind",
@@ -15,7 +15,7 @@ export function requestqueryBKindandSKind(parameter) {
     })
 }
 
-//增加类型
+//增加タイプ
 export function requestaddBKind(parameter) {
     return request({
         url: "/bkind/addBKind",
@@ -24,7 +24,7 @@ export function requestaddBKind(parameter) {
     })
 }
 
-//删除类型
+//删除タイプ
 export function requestdeleteBKind(parameter) {
     return request({
         url: "/bkind/deleteBKind",
@@ -32,7 +32,7 @@ export function requestdeleteBKind(parameter) {
     })
 }
 
-//修改类型
+//修改タイプ
 export function requestupdateBKind(parameter) {
     return request({
         url: "/bkind/updateBKind",

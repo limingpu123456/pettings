@@ -2,9 +2,9 @@
 <template>
   <div class='userpet container'>
     <div>我的宠物</div>
-    <div>出售中</div>
-    <div>已出售</div>
-    <div>求购中</div>
+    <div>販売中</div>
+    <div>已販売</div>
+    <div>購入希望中</div>
   </div>
 </template>
 

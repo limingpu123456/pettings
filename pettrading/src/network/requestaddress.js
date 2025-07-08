@@ -26,7 +26,7 @@ export function requestupdateAddress(parameter) {
     })
 }
 
-//查询用户所有地址
+//検索用户所有地址
 export function requestqueryAddressbyuid(parameter) {
     return request({
         url: "/address/queryAddressbyuid",
@@ -34,7 +34,7 @@ export function requestqueryAddressbyuid(parameter) {
     })
 }
 
-//根据条件查询所有地址
+//根据条件検索所有地址
 export function requestqueryaddress(parameter) {
     return request({
         url: "/address/queryaddress",

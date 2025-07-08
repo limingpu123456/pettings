@@ -31,7 +31,7 @@
         <el-table-column
           prop="price"
           width="100"
-          label="下单时价格">
+          label="下单时価格">
         </el-table-column>
         <el-table-column
           prop="date"
@@ -76,7 +76,7 @@
           <el-table-column
             prop="price"
             width="100"
-            label="下单时价格">
+            label="下单时価格">
           </el-table-column>
           <el-table-column
             prop="date"

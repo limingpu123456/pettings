@@ -2,8 +2,8 @@
 <template>
   <div class="selector" :class="{ reduceindex: $store.state.show }">
     <div class="form">
-      <div class="title">排序方式</div>
-      <el-select v-model="form.sort" filterable placeholder="请选择排序方式">
+      <div class="title">並び替え</div>
+      <el-select v-model="form.sort" filterable placeholder="请选择並び替え">
         <el-option
           v-for="item in sort"
           :key="item.value"
@@ -12,19 +12,19 @@
         >
         </el-option>
       </el-select>
-      <div class="title">宠物名称</div>
+      <div class="title">ペットの名前</div>
       <el-input
         clearable
         v-model="form.petname"
-        placeholder="请输入宠物名称"
+        placeholder="请输入ペットの名前"
         @keyup.enter.native="query"
       ></el-input>
-      <div class="title">宠物类型</div>
+      <div class="title">ペットの種類</div>
       <el-select
         v-model="form.bkid"
         clearable
         filterable
-        placeholder="请选择宠物类型"
+        placeholder="请选择ペットの種類"
         @change="bkindchange"
       >
         <el-option
@@ -35,12 +35,12 @@
         >
         </el-option>
       </el-select>
-      <div class="title">宠物品种</div>
+      <div class="title">ペットの品種</div>
       <el-select
         v-model="form.skid"
         clearable
         filterable
-        placeholder="请选择宠物品种"
+        placeholder="请选择ペットの品種"
       >
         <el-option
           v-for="item in fskind"
@@ -50,12 +50,12 @@
         >
         </el-option>
       </el-select>
-      <div class="title">宠物年龄</div>
+      <div class="title">ペットの年齢</div>
       <el-select
         v-model="form.age"
         clearable
         filterable
-        placeholder="请选择宠物年龄"
+        placeholder="请选择ペットの年齢"
       >
         <el-option
           v-for="item in age"
@@ -65,16 +65,16 @@
         >
         </el-option>
       </el-select>
-      <div class="title">宠物价格</div>
+      <div class="title">ペットの価格</div>
       <el-slider :max="maxprice" v-model="form.maxprice"></el-slider>
       <div class="but">
         <el-tooltip
           class="item"
           effect="dark"
-          content="根据上述条件查询"
+          content="根据上述条件検索"
           placement="bottom"
         >
-          <el-button type="primary" @click="query">查询</el-button>
+          <el-button type="primary" @click="query">検索</el-button>
         </el-tooltip>
         <slot></slot>
       </div>
@@ -97,11 +97,11 @@ export default {
           sort: null,
         },
         {
-          value: "价格最低",
+          value: "価格最低",
           sort: "price",
         },
         {
-          value: "价格最高",
+          value: "価格最高",
           sort: "price desc",
         },
       ],
@@ -121,7 +121,7 @@ export default {
     };
   },
   created() {
-    //查询所有宠物类型及对应品种
+    //検索所有ペットの種類及对应品種
     requestqueryBKindandSKind()
       .then((res) => {
         this.bkind = res;
@@ -132,7 +132,7 @@ export default {
     if (this.$route.query.petname) {
       this.form.petname = this.$route.query.petname;
     }
-    //查询所有宠物品种
+    //検索所有ペットの品種
     requestqueryallskind()
       .then((res) => {
         this.skind = res;
@@ -150,7 +150,7 @@ export default {
       .catch((err) => {
         console.log(err);
       });
-    //查询宠物最高价
+    //検索宠物最高价
     requestqueryMaxPrice()
       .then((res) => {
         this.maxprice = res;
@@ -159,7 +159,7 @@ export default {
       .catch((err) => {
         console.log(err);
       });
-    //查询宠物所有年龄
+    //検索宠物所有年齢
     requestqueryage()
       .then((res) => {
         if (this.$route.path.indexOf("/presell") != -1) {
@@ -180,7 +180,7 @@ export default {
       });
   },
   methods: {
-    //选中类型时，筛选出对应品种
+    //选中タイプ时，筛选出对应品種
     bkindchange() {
       if (this.form.bkid === "") {
         this.fskind = this.skind.filter((n) => {

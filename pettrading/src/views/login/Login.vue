@@ -1,7 +1,7 @@
 <!---->
 <template>
   <div class="login">
-    <div class="loginhead">登录</div>
+    <div class="loginhead">登録</div>
     <div>
       <!-- 用户名 -->
       <div class="inp">
@@ -39,13 +39,13 @@
         <p v-show="check.password.flag">{{ check.password.val }}</p>
       </div>
       <div class="but">
-        <el-button type="primary" round @click="request">登录</el-button>
+        <el-button type="primary" round @click="request">登録</el-button>
         <el-tooltip
           effect="light"
-          content="没有账号？去注册"
+          content="没有账号？去サインアップ"
           placement="bottom-start"
         >
-          <el-button round type="primary" @click="toregister">注册</el-button>
+          <el-button round type="primary" @click="toregister">サインアップ</el-button>
         </el-tooltip>
       </div>
     </div>
@@ -70,7 +70,7 @@ export default {
           val: "",
         },
       },
-      // 密码输入框类型，改变眼睛开闭
+      // 密码输入框タイプ，改变眼睛开闭
       types: {
         type: "password",
         img: require("assets/img/password/close.png"),
@@ -110,7 +110,7 @@ export default {
         this.check.password.flag = false;
       }
     },
-    //登录
+    //登録
     request() {
       this.checkUsername();
       this.checkPassword();

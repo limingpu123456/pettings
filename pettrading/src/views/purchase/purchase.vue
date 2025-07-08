@@ -8,14 +8,14 @@
     </div>
     <div class="mainbar">
       <el-form :rules="rules" ref="ruleForm" label-width="80px" :model="form">
-        <el-form-item label="收货地址" prop="address">
-          <el-input v-model="form.address" clearable placeholder="请输入地址"></el-input>
+        <el-form-item label="配送住所" prop="address">
+          <el-input v-model="form.address" clearable placeholder="住所を入力してください"></el-input>
         </el-form-item>
-        <el-form-item label="联系方式" prop="phone">
-          <el-input v-model="form.phone" clearable placeholder="请输入手机号码"></el-input>
+        <el-form-item label="電話番号" prop="phone">
+          <el-input v-model="form.phone" clearable placeholder="携帯電話番号を入力してください"></el-input>
         </el-form-item>
-        <el-form-item label="收货人" prop="recipientname">
-          <el-input v-model="form.recipientname" clearable placeholder="请输入收件人"></el-input>
+        <el-form-item label="受取人" prop="recipientname">
+          <el-input v-model="form.recipientname" clearable placeholder="受取人を入力してください"></el-input>
         </el-form-item>
         <el-form-item>
           <div class="but">
@@ -75,7 +75,7 @@
             { required: true, validator: checkphone, trigger: 'blur'}
           ],
           recipientname: [
-            { required: true, message: '收货人不能为空' , trigger: 'blur'}
+            { required: true, message: '受取人不能为空' , trigger: 'blur'}
           ]
         }
       }

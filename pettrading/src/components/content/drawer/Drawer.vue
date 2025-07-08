@@ -22,7 +22,7 @@
       <div class="mainbar">
         <div v-if="$store.state.logshow">
         <!-- <login @toregister="toregister"></login> -->
-          <!-- <div>前往登录页面</div> -->
+          <!-- <div>前往登録页面</div> -->
           <login></login>
         </div>
         <div v-if="$store.state.regshow">

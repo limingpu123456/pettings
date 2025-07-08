@@ -14,7 +14,7 @@
           <el-input
             clearable
             v-model="form.pid"
-            placeholder="宠物名称"
+            placeholder="ペットの名前"
           ></el-input>
         </el-form-item>
         <el-form-item label="下单用户id">
@@ -31,11 +31,11 @@
             placeholder="收件人"
           ></el-input>
         </el-form-item>
-        <el-form-item label="收货地址">
+        <el-form-item label="配送住所">
           <el-input
             clearable
             v-model="form.address"
-            placeholder="收货地址"
+            placeholder="配送住所"
           ></el-input>
         </el-form-item>
         <el-form-item label="联系电话">
@@ -87,7 +87,7 @@
         </el-table-column>
         <el-table-column prop="pid" label="宠物id" width="90">
         </el-table-column>
-        <el-table-column prop="pet.petname" label="宠物名称" width="130">
+        <el-table-column prop="pet.petname" label="ペットの名前" width="130">
         </el-table-column>
         <el-table-column prop="uid" label="下单用户id" width="100">
         </el-table-column>
@@ -95,7 +95,7 @@
         </el-table-column>
         <el-table-column prop="recipientname" label="收件人" width="100">
         </el-table-column>
-        <el-table-column prop="address" label="收货地址"> </el-table-column>
+        <el-table-column prop="address" label="配送住所"> </el-table-column>
         <el-table-column prop="phone" label="联系电话" width="150">
         </el-table-column>
         <el-table-column width="100" label="订单状态">
@@ -165,14 +165,14 @@
           <el-form-item label="收件人">
             <el-input
               v-model="updateform.recipientname"
-              placeholder="收货人"
+              placeholder="受取人"
               clearable
             ></el-input>
           </el-form-item>
-          <el-form-item label="收货地址">
+          <el-form-item label="配送住所">
             <el-input
               v-model="updateform.address"
-              placeholder="收货地址"
+              placeholder="配送住所"
               clearable
             ></el-input>
           </el-form-item>

@@ -2,18 +2,18 @@
 <template>
   <div class='wantsell'>
     <breadcrumb>
-      <span slot="second" @click="topresell">买卖专区</span> > 发布出售
+      <span slot="second" @click="topresell">購入エリア</span> > 发布販売
     </breadcrumb>
     <div class="title">
-      <h1>发布出售信息</h1>
+      <h1>发布販売信息</h1>
     </div>
     <div class="sell">
       <el-form label-width="80px" ref="ruleForm" :model="form" :rules="rules">
-        <el-form-item label="宠物名称" prop="name">
-          <el-input v-model="form.name" placeholder="请输入宠物名称"></el-input>
+        <el-form-item label="ペットの名前" prop="name">
+          <el-input v-model="form.name" placeholder="请输入ペットの名前"></el-input>
         </el-form-item>
-        <el-form-item label="宠物类型" prop="bkid">
-          <el-select style="width: 100%" v-model="form.bkid" clearable filterable placeholder="请选择宠物类型"  @change="bkindchange">
+        <el-form-item label="ペットの種類" prop="bkid">
+          <el-select style="width: 100%" v-model="form.bkid" clearable filterable placeholder="请选择ペットの種類"  @change="bkindchange">
             <el-option
               v-for="item in bkind"
               :key="item.bkid"
@@ -22,8 +22,8 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="宠物品种" prop="skid">
-          <el-select style="width: 100%" v-model="form.skid" clearable filterable placeholder="请选择宠物品种" @change="skindchange">
+        <el-form-item label="ペットの品種" prop="skid">
+          <el-select style="width: 100%" v-model="form.skid" clearable filterable placeholder="请选择ペットの品種" @change="skindchange">
             <el-option
               v-for="item in fskind"
               :key="item.skid"
@@ -32,23 +32,23 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="宠物性别" prop="sex">
+        <el-form-item label="宠物性別" prop="sex">
           <el-radio v-model="form.sex" label="男">男</el-radio>
           <el-radio v-model="form.sex" label="女">女</el-radio>
         </el-form-item>
-        <el-form-item label="宠物年龄" prop="age">
-          <el-input v-model.number="form.age" placeholder="请输入宠物年龄(单位月)" clearable></el-input>
+        <el-form-item label="ペットの年齢" prop="age">
+          <el-input v-model.number="form.age" placeholder="请输入ペットの年齢(单位月)" clearable></el-input>
         </el-form-item>
-        <el-form-item label="宠物价格" prop="price">
-          <el-input v-model="form.price" placeholder="请输入出售的价格（单位元）" clearable></el-input>
+        <el-form-item label="ペットの価格" prop="price">
+          <el-input v-model="form.price" placeholder="请输入販売的価格（单位元）" clearable></el-input>
         </el-form-item>
         <!-- <el-form-item label="宠物数量" prop="count">
-          <el-input v-model.number="form.count" placeholder="请输入出售的数量（单位个）" clearable></el-input>
+          <el-input v-model.number="form.count" placeholder="请输入販売的数量（单位个）" clearable></el-input>
         </el-form-item> -->
         <!-- <el-form-item label="联系电话" prop="phone">
           <el-input placeholder="请输入手机号" clearable v-model="form.phone"></el-input>
         </el-form-item> -->
-        <el-form-item label="出售说明">
+        <el-form-item label="販売说明">
           <el-input type="textarea" placeholder="请输入内容" clearable rows=4 resize="none" show-word-limit v-model="form.desc"></el-input>
         </el-form-item>
         <el-form-item label="宠物照片" prop="photo">
@@ -99,10 +99,10 @@
       Sidebar
     },
     data () {
-      //验证年龄
+      //验证年齢
       var checkage = (rule, value, callback) => {
         if(!value) {
-          return callback(new Error('年龄不能为空（单位月）'));
+          return callback(new Error('年齢不能为空（单位月）'));
         }
         if(!Number.isInteger(value)) {
           callback(new Error('请输入数字值（单位月）'));
@@ -110,10 +110,10 @@
           callback();
         }
       }
-      //验证价格
+      //验证価格
       var checkprice = (rule, value, callback) => {
         if(!value) {
-          return callback(new Error('价格不能为空'));
+          return callback(new Error('価格不能为空'));
         }
         if(/^\d+(\.\d+)?$/.test(this.form.price)) {
           callback();
@@ -183,13 +183,13 @@
         },
         rules: {
           name: [
-            { required: true, message: '请输入宠物名称', trigger: 'blur'}
+            { required: true, message: '请输入ペットの名前', trigger: 'blur'}
           ],
           bkid: [
-            { required: true, message: '请选择宠物类型', trigger: 'change' }
+            { required: true, message: '请选择ペットの種類', trigger: 'change' }
           ],
           skid: [
-            { required: true, message: '请选择宠物品种', trigger: 'change' }
+            { required: true, message: '请选择ペットの品種', trigger: 'change' }
           ],
           sex: [
             { required: true, trigger: 'change' }
@@ -213,7 +213,7 @@
       }
     },
     methods: {
-      //选中类型时，筛选出对应品种
+      //选中タイプ时，筛选出对应品種
       bkindchange() {
         if(this.form.bkid === ""){
           this.fskind = this.skind.filter(n => {
@@ -231,7 +231,7 @@
           }
         }
       },
-      //选中品种时，选中对应类型
+      //选中品種时，选中对应タイプ
       skindchange() {
         if(this.form.skid != ""){
           let sbk = this.fskind.find(n => {
@@ -364,13 +364,13 @@
       }
     },
     created() {
-      //查询所有宠物类型及对应品种
+      //検索所有ペットの種類及对应品種
       requestqueryBKindandSKind().then(res => {
           this.bkind = res;
         }).catch(err => {
           console.log(err)
         });
-      //查询所有宠物品种
+      //検索所有ペットの品種
       requestqueryallskind().then(res => {
           this.skind = res;
           this.fskind = this.skind.filter(n => {

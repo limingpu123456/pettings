@@ -1,7 +1,7 @@
 <!---->
 <template>
   <div class='registeruser'>
-    <!-- <div class="registerhead">注册</div> -->
+    <!-- <div class="registerhead">サインアップ</div> -->
     <div>
       <!-- 手机号 -->
       <div class="inp">
@@ -10,7 +10,7 @@
           type="text"
           placeholder="手机号码"
           v-model="form.telphone"
-          @blur="checktelphone" 
+          @blur="checktelphone"
           :class="{ redborder: check.telphone.flag }"
         />
         <p v-show="check.telphone.flag">{{check.telphone.val}}</p>
@@ -18,9 +18,9 @@
       <!-- 密码 -->
       <div class="inp">
         <img src="~assets/img/password/password.png" alt class="img-bg" />
-        <input :type="types[0].type" placeholder="密码" 
+        <input :type="types[0].type" placeholder="密码"
         @blur="checkPassword"
-        v-model="form.password" 
+        v-model="form.password"
         :class="{ redborder: check.password.flag }"
         />
         <img v-if="form.password != ''" @click="changetype(0)" :src="types[0].img" alt class="img-bg-right" />
@@ -29,8 +29,8 @@
       <!-- 确认密码 -->
       <div class="inp">
         <img src="~assets/img/password/password.png" alt class="img-bg" />
-        <input :type="types[1].type" placeholder="再次输入密码" 
-        v-model="form.secondpassword" 
+        <input :type="types[1].type" placeholder="再次输入密码"
+        v-model="form.secondpassword"
         @blur="checksecondpassword"
         :class="{ redborder: check.secondpassword.flag }"
         />
@@ -38,8 +38,8 @@
         <p v-show="check.secondpassword.flag">{{check.secondpassword.val}}</p>
       </div>
       <div class="but">
-        <el-tooltip effect="light" content="已有账号？去登录" placement="bottom-start">
-          <el-button round type="primary" @click="tologin">登录</el-button>
+        <el-tooltip effect="light" content="已有账号？去登録" placement="bottom-start">
+          <el-button round type="primary" @click="tologin">登録</el-button>
         </el-tooltip>
         <el-button round type="primary" @click="next">下一步</el-button>
       </div>
@@ -127,7 +127,7 @@
           this.check.telphone.flag = true;
         }
       },
-      //跳转到登录
+      //跳转到登録
       tologin() {
         if(this.$store.state.show === true){
           this.$store.state.logshow = true;

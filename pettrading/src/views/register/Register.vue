@@ -2,20 +2,20 @@
 <template>
   <div class='register'>
     <el-steps :active="active" align-center :process-status="process" finish-status="success">
-      <el-step title="注册账号"></el-step>
+      <el-step title="サインアップ账号"></el-step>
       <el-step title="实名验证"></el-step>
-      <el-step title="完成注册"></el-step>
+      <el-step title="完成サインアップ"></el-step>
     </el-steps>
     <div v-if="active === 0">
-      <register-user 
-      @next="next" 
+      <register-user
+      @next="next"
       :form.sync="form"
       ></register-user>
     </div>
     <div v-if="active === 1">
-      <register-user-mes 
-      :form.sync="form" 
-      @next="next" 
+      <register-user-mes
+      :form.sync="form"
+      @next="next"
       @previous="previous"
       @register="register"
       ></register-user-mes>
@@ -64,7 +64,7 @@
             this.process = "success"
           }
           this.active++;
-        }    
+        }
       },
       previous() {
         this.process = 'finish';

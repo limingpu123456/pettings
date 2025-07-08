@@ -26,7 +26,7 @@ export function requestupdatepetorder(parameter) {
     })
 }
 
-//查询订单请求
+//検索订单请求
 export function requestquerypetorder(parameter) {
     return request({
         url: "/petorder/querypetorder",
@@ -34,7 +34,7 @@ export function requestquerypetorder(parameter) {
     })
 }
 
-//查询订单请求
+//検索订单请求
 export function requestquerypetorderpage(parameter) {
     return request({
         url: "/petorder/querypetorderpage",

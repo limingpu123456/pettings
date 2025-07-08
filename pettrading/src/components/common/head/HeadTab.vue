@@ -8,8 +8,8 @@
       </div>
       <div class="right">
         <div v-if="$store.state.uid === null">
-          <span class="loginbut" @click="showlogin">登录</span>
-          <span @click="showregister">注册</span>
+          <span class="loginbut" @click="showlogin">登録</span>
+          <span @click="showregister">サインアップ</span>
         </div>
         <div v-if="$store.state.uid != null" class="last">
           <div class="notice" @click="changeshowchat">
@@ -45,7 +45,7 @@
       </div>
     </div>
     <!-- <keep-alive> -->
-      <chat :chatuser="chatuser" :messagelist="messagelist" :active.sync="active" :activeuser.sync="activeuser" @send="send" 
+      <chat :chatuser="chatuser" :messagelist="messagelist" :active.sync="active" :activeuser.sync="activeuser" @send="send"
       @clearnoread="clearnoread" v-if="$store.state.showchat == true"></chat>
     <!-- </keep-alive> -->
   </div>
@@ -78,20 +78,21 @@
         chatuser: [],
         messagelist: [],
         lists: [{
-            title: "首页",
+            title: "ホーム",
             path: "/home"
           },
           {
-            title: "买卖专区",
+            title: "購入エリア",
             path: "/presell"
           },
           {
-            title: "求购专区",
+            title: "購入希望エリア",
             path: "/buying"
-          },{
-            title: "关于",
-            path: "/about"
-          }
+          },
+        // {
+        //  title: "关于",
+        //path: "/about"
+        // }
         ],
         showdropdown: false,
         lockReconnect: false, //是否真正建立连接
@@ -231,7 +232,7 @@
           // that.reconnect();
         }
         this.websocket.onerror = function () {
-          console.log("出现错误")
+          console.log("エラーが発生しました")
           that.reconnect()
         }
       },
@@ -313,7 +314,7 @@
       },
       //注销
       tologout() {
-        this.$confirm('确定要退出登录？', '注销', {
+        this.$confirm('确定要退出登録？', '注销', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning',

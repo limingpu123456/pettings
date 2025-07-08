@@ -3,7 +3,7 @@
   <div class='addressitem'>
     <div v-for="(item,index) in address" :key="index">
       <div class="addresscard" @click="choose(item)">
-        <div>收货人：{{item.username}}</div>
+        <div>受取人：{{item.username}}</div>
         <div>联系电话：{{item.phone}}</div>
         <div class="address">地址：{{item.address}}</div>
       </div>

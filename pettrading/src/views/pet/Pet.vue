@@ -6,10 +6,10 @@
         <el-menu :default-active="activeIndex" mode="horizontal" background-color="#f2f2f2"
         @select="handleSelect">
           <el-menu-item class="el-menu-item" index="-1">全部</el-menu-item>
-          <el-menu-item class="el-menu-item" index="0">出售中</el-menu-item>
-          <el-menu-item class="el-menu-item" index="1">已出售</el-menu-item>
+          <el-menu-item class="el-menu-item" index="0">販売中</el-menu-item>
+          <el-menu-item class="el-menu-item" index="1">已販売</el-menu-item>
           <el-menu-item class="el-menu-item" index="2">已完成</el-menu-item>
-          <el-menu-item class="el-menu-item" index="3">求购中</el-menu-item>
+          <el-menu-item class="el-menu-item" index="3">購入希望中</el-menu-item>
         </el-menu>
       </div>
     </div>
