@@ -8,7 +8,7 @@
       <img src="~assets/img/success/hook.png" alt="">
     </div>
     <div class="but">
-      <el-button type="primary" @click="finish">登録</el-button>
+      <el-button type="primary" @click="finish">ログイン</el-button>
     </div>
   </div>
 </template>

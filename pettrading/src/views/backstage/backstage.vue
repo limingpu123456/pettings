@@ -68,7 +68,7 @@
         </div>
         <div class="logoutbut" @click="tologout">
           <i class="el-icon-switch-button" style="color: red;font-size: 3.5em;width: 100%;margin-top: 0.4em"></i>
-          <div class="clicklogout">登録解除</div>
+          <div class="clicklogout">ログイン解除</div>
         </div>
       </div>
       <div class="mainbar">
@@ -112,7 +112,7 @@
         }
       },
       tologout() {
-        this.$confirm('本当に登録を解除してもよろしいですか？', '退会', {
+        this.$confirm('本当にログインを解除してもよろしいですか？', '退会', {
           confirmButtonText: '確定',
           cancelButtonText: 'キャンセル',
           type: 'warning',

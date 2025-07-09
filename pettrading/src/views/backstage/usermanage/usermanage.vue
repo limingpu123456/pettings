@@ -62,7 +62,7 @@
         </el-table-column>
         <el-table-column prop="username" label="ユーザー名" width="180">
         </el-table-column>
-        <el-table-column prop="password" label="パスワード登録" width="150">
+        <el-table-column prop="password" label="パスワードログイン" width="150">
         </el-table-column>
         <el-table-column prop="sex" label="性別" width="100"> </el-table-column>
         <el-table-column prop="realname" label="本名" width="180">
@@ -119,10 +119,10 @@
               clearable
             ></el-input>
           </el-form-item>
-          <el-form-item label="パスワード登録">
+          <el-form-item label="パスワードログイン">
             <el-input
               v-model="updateform.password"
-              placeholder="パスワード登録"
+              placeholder="パスワードログイン"
               clearable
             ></el-input>
           </el-form-item>

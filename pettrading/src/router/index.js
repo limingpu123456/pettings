@@ -68,7 +68,7 @@ const routes = [
     path: "/login",
     component: Login,
     meta: {
-      title: "ペット取引・登録",
+      title: "ペット取引・ログイン",
     },
   },
   {

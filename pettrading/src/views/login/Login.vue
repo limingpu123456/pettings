@@ -1,7 +1,7 @@
 <!---->
 <template>
   <div class="login">
-    <div class="loginhead">登録</div>
+    <div class="loginhead">ログイン</div>
     <div>
       <!-- ユーザー名 -->
       <div class="inp">
@@ -39,10 +39,10 @@
         <p v-show="check.password.flag">{{ check.password.val }}</p>
       </div>
       <div class="but">
-        <el-button type="primary" round @click="request">登録</el-button>
+        <el-button type="primary" round @click="request">ログイン</el-button>
         <el-tooltip
           effect="light"
-          content="アカウントがありませんか？新規登録はこちら"
+          content="アカウントがありませんか？新規ログインはこちら"
           placement="bottom-start"
         >
           <el-button round type="primary" @click="toregister">サインアップ</el-button>
@@ -110,7 +110,7 @@ export default {
         this.check.password.flag = false;
       }
     },
-    //登録
+    //ログイン
     request() {
       this.checkUsername();
       this.checkPassword();

@@ -33,11 +33,11 @@
               placeholder="ユーザー名を入力してください"
             ></el-input>
           </el-form-item>
-          <el-form-item label="パスワード登録">
+          <el-form-item label="パスワードログイン">
             <el-input
               clearable
               v-model="form.password"
-              placeholder="登録用のパスワードを入力してください"
+              placeholder="ログイン用のパスワードを入力してください"
             ></el-input>
           </el-form-item>
           <el-button type="primary" @click="request('form')">修正</el-button>

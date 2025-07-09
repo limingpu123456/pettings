@@ -39,7 +39,7 @@
       </div>
       <div class="but">
         <el-tooltip effect="light" content="すでにアカウントをお持ちですか？ログインはこちら。" placement="bottom-start">
-          <el-button round type="primary" @click="tologin">登録</el-button>
+          <el-button round type="primary" @click="tologin">ログイン</el-button>
         </el-tooltip>
         <el-button round type="primary" @click="next">次へ</el-button>
       </div>
@@ -127,7 +127,7 @@
           this.check.telphone.flag = true;
         }
       },
-      //跳转到登録
+      //跳转到ログイン
       tologin() {
         if(this.$store.state.show === true){
           this.$store.state.logshow = true;

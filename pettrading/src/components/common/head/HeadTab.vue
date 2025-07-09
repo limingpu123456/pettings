@@ -8,7 +8,7 @@
       </div>
       <div class="right">
         <div v-if="$store.state.uid === null">
-          <span class="loginbut" @click="showlogin">登録</span>
+          <span class="loginbut" @click="showlogin">ログイン</span>
           <span @click="showregister">サインアップ</span>
         </div>
         <div v-if="$store.state.uid != null" class="last">
@@ -314,7 +314,7 @@
       },
       //注销
       tologout() {
-        this.$confirm('登録を解除してもよろしいですか？', '退会', {
+        this.$confirm('ログインを解除してもよろしいですか？', '退会', {
           confirmButtonText: '確定',
           cancelButtonText: 'キャンセル',
           type: 'warning',

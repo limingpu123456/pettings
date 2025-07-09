@@ -1,6 +1,6 @@
 import request from "network/request.js"
 
-//登録
+//ログイン
 export function requestLogin(parameter) {
     return request({
         url: "/user/login",

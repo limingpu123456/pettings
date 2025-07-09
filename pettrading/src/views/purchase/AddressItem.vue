@@ -9,7 +9,7 @@
       </div>
     </div>
     <div v-if="address.length === 0" class="noaddress">
-      まだ住所が登録されていません
+      まだ住所がログインされていません
     </div>
   </div>
 </template>
