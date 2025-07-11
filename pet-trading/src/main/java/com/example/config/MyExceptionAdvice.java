@@ -6,12 +6,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
 
-/**
- * Description：
- * User: lmp
- * Date: 2023-07-22
- * Time: 16:54(李明浦)
- */
 //统一异常拦截器
 @ControllerAdvice
 @ResponseBody
