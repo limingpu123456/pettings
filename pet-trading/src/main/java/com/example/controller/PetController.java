@@ -32,7 +32,7 @@ public class PetController {
     @Autowired
     private PetorderService petorderService;
 
-    //发布宠物出售或购买请求
+    //ペットの販売または購入リクエストを投稿する（发布宠物出售或购买请求）
     @PostMapping("/addPet")
     public String addPet(@RequestParam(name = "files",required = false) MultipartFile[] files,Pet pet) throws IOException {
         Date date = new Date();
@@ -43,12 +43,15 @@ public class PetController {
         if (files != null){
             if (files.length > 0){
                 for (int i=0;i< files.length;i++){
-                    //获取当前项目路径
+                    // 現在のプロジェクトパスを取得する（获取当前项目路径）
                     String path = System.getProperty("user.dir") + "\\src\\main\\resources\\resources\\petimg\\";
+                    //前にUUIDを付けるのは、名前の重複を防ぐためです。
                     //前面拼接uiid是为了防止名字重复，获取文件的后缀名，不使用原文件名是防止文件名格式导致无法显示
                     String filename = createUUID.getUUID() + files[i].getOriginalFilename().substring(files[i].getOriginalFilename().lastIndexOf("."));
+                    //ファイルオブジェクトを作成し、ファイルの保存パスを設定する
                     //创建文件对象，设置文件保存路径
                     File dest = new File(path + filename);
+                    //ファイルオブジェクトを実際のファイルに変換する
                     //将文件对象转化为文件
                     files[i].transferTo(dest);
                     photo.setUrl("petimg/" + filename);
@@ -60,10 +63,10 @@ public class PetController {
                 photoService.addPhoto(photo);
             }
         }
-        return "发布成功";
+        return "投稿に成功しました";
     }
 
-    //删除宠物
+    //ペットを削除する
     @GetMapping("/deletePet")
     public String deletePet(@RequestParam(name = "uid",required = false) Long uid, @RequestParam(name = "pid",required = false) Long pid){
         Map map = new HashMap();
@@ -78,20 +81,20 @@ public class PetController {
         if(petorder.size() == 0){
             petService.deletePet(map);
             photoService.deletePhoto(map);
-            return "删除成功";
+            return "削除に成功しました";
         }else {
-            return "该宠物已被购买，无法删除";
+            return "このペットはすでに購入されているため、削除できません";
         }
     }
 
-    //更新宠物信息
+    // ペット情報を更新する（更新宠物信息)
     @PostMapping("/updatePet")
     public String updatePet(@RequestParam(name = "files",required = false) MultipartFile[] files,@RequestParam(name = "ppid",required = false) Long[] ppid, Pet pet) throws IOException {
         Date date = new Date();
         pet.setDate(date);
         Photo photo = new Photo();
         photo.setPid(pet.getPid());
-        //删除图片
+        //写真を削除する(删除图片)
         if(ppid != null) {
             if(ppid.length > 0) {
                 Map photomap = new HashMap();
@@ -102,25 +105,29 @@ public class PetController {
                 }
             }
         }
-        //增加图片
+        //写真を追加する（增加图片）
         if(files != null) {
             if(files.length > 0) {
                 for (int i=0;i< files.length;i++){
-                    //获取当前项目路径
+                    //現在のプロジェクトパスを取得する（获取当前项目路径）
                     String path = System.getProperty("user.dir") + "\\src\\main\\resources\\resources\\petimg\\";
-                    //获取文件名字,前面拼接uiid是为了防止名字重复
+                    //前にUUIDを付けるのは、名前の重複を防ぐためです。
+                    //前面拼接uiid是为了防止名字重复，获取文件的后缀名，不使用原文件名是防止文件名格式导致无法显示
                     String filename = createUUID.getUUID() + files[i].getOriginalFilename();
+                    //ファイルオブジェクトを作成し、ファイルの保存パスを設定する
                     //创建文件对象，设置文件保存路径
                     File dest = new File(path + filename);
+                    //ファイルオブジェクトを実際のファイルに変換する
                     //将文件对象转化为文件
                     files[i].transferTo(dest);
                     photo.setUrl("petimg/" + filename);
                     photoService.addPhoto(photo);
                 }
             } else {
-                System.out.println("没有新加图片");
+                System.out.println("新しい写真は追加されていません");
             }
         }
+        //ペットが購入希望の場合、画像がない場合は「データなし」の写真を追加する
         //宠物为求购时，若没有图片，增加无数据图片
         if(pet.getPk() == 3) {
             List<Photo> photos = photoService.queryPhotobypid(pet.getPid());
@@ -130,24 +137,24 @@ public class PetController {
             }
         }
         petService.updatePet(pet);
-        return "修改完成";
+        return "修正完了";
     }
 
-    //根据id查询宠物
+    //IDでペットを検索する（根据id查询宠物）
     @GetMapping("/querypetbyid")
     public Pet queryPetById(Long pid){
         Pet pet = petService.queryPetById(pid);
         return pet;
     }
 
-    //根据名字模糊查询
+    // 名前であいまい検索を行う(根据名字模糊查询)
     @GetMapping("/queryPetByName")
     public List<Pet> queryPetByName(String petname){
         List<Pet> pets = petService.queryPetByName(petname);
         return pets;
     }
 
-    //查询所有宠物
+    // すべてのペットを検索する(查询所有宠物)
     @GetMapping("/queryAllPet")
     public List<Pet> queryAllPet(@RequestParam(name = "uid",required = false)Long uid,@RequestParam(name = "pk",required = false)Integer pk){
         Map map = new HashMap();
@@ -161,7 +168,7 @@ public class PetController {
         return pet;
     }
 
-    //分页查询宠物
+    //ペットのページネーション検索を行う(分页查询宠物)
     @GetMapping("/querypetpage")
     public List<Pet> querypetpage(int page,int count,
                                   @RequestParam(name = "pid",required = false) Integer pid,
@@ -214,7 +221,7 @@ public class PetController {
         return pet;
     }
 
-    //查询宠物条数
+    //ペットの件数を取得する(查询宠物条数)
     @GetMapping("/querypetcount")
     public int querypetcount(@RequestParam(name = "pid",required = false) Integer pid,
                              @RequestParam(name = "uid",required = false) Integer uid,
@@ -255,13 +262,13 @@ public class PetController {
         return petService.querypetcount(map);
     }
 
-    //查询所有宠物的最高价
+    //すべてのペットの最高価格を取得する(查询所有宠物的最高价)
     @GetMapping("/queryMaxPrice")
     public String queryMaxPrice(){
         return petService.queryMaxPrice();
     }
 
-    //查询所有宠物年龄
+    // すべてのペットの年齢を取得する(查询所有宠物年龄)
     @GetMapping("/queryage")
     public List<Map> queryage(){
         return petService.queryage();

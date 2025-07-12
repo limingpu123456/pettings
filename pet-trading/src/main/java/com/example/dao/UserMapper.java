@@ -14,27 +14,27 @@ import java.util.Map;
 @Mapper
 public interface UserMapper {
 
-    //增加用户
+    //ユーザーを追加する（增加用户）
     int addUser(User user);
 
-    //查找单个用户
+    //単一ユーザーを検索する（查找单个用户）
     User queryUser (Map map);
 
-    //修改用户信息
+    //ユーザー情報を更新する（修改用户信息）
     int updateUser(User user);
 
-    //删除用户
+    //ユーザーを削除する（删除用户）
     int deleteUser(Map map);
 
-    //查找所有普通用户
+    //すべての一般ユーザーを検索する（查找所有普通用户）
     List<User> queryAllUser(Map map);
 
-    //添加用户数量
+    //ユーザー数をカウントする
     int countuser(Map map);
 
-    //查找用户最近联系人
+    //ユーザーの最近の連絡先を取得する（查找用户最近联系人）
     List<ContactUser> querycontactuser(Long uid);
 
-    //更加条件查询用户
+    //条件に基づいてユーザーを検索する（更加条件查询用户）
     List<User> queryuserby(Map map);
 }

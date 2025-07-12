@@ -24,7 +24,7 @@ public class SKindController {
         sKindService.addSKind(skind);
         Map map = new HashMap();
         map.put("skid",skind.getSkid());
-        map.put("msg","种类添加成功");
+        map.put("msg","種類の追加に成功しました");
         return map;
     }
 
@@ -33,13 +33,13 @@ public class SKindController {
         Map map = new HashMap();
         map.put("skid",skid);
         sKindService.deleteSKind(map);
-        return "品种删除成功";
+        return "品種の削除に成功しました";
     }
 
     @PostMapping("/updateskind")
     public String updateSKind(SKind skind){
         sKindService.updateSKind(skind);
-        return "种类修改成功";
+        return "種類の変更に成功しました";
     }
 
     @GetMapping("/queryallskind")

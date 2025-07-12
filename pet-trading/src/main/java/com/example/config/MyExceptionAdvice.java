@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
 
-//统一异常拦截器
+//Spring Boot の共通例外(れいがい)ハンドリングを実装する（统一异常拦截器）
 @ControllerAdvice
 @ResponseBody
 public class MyExceptionAdvice {
@@ -15,7 +15,7 @@ public class MyExceptionAdvice {
     public Object ExceptionAdvice(Exception e){
         HashMap<String,Object> result  = new HashMap<>();
         result.put("state",-1);
-        result.put("msg","程序出现异常" + e.getMessage());
+        result.put("msg","プログラムで例外が発生しました" + e.getMessage());
         return result;
     }
 }

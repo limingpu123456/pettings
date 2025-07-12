@@ -30,12 +30,12 @@
         where pid=#{pid}
     </update>
 
-    <!--根据名字模糊查询-->
+    <!--名前によるあいまい検索-->
     <select id="queryPetByName" resultType="pet">
         select * from pet where petname LIKE "%"#{petname}"%"
     </select>
 
-    <!--查询所有宠物，可加入uid等条件-->
+    <!--すべてのペットを検索し、UIDなどの条件を追加することができます-->
     <select id="queryAllPet" parameterType="map" resultMap="petMapper">
         select * from pet
         <where>
@@ -50,7 +50,7 @@
         where p.pid=#{pid} and p.skid=s.skid and p.bkid=b.bkid and p.uid=u.uid and s.bkid=b.bkid and p.pid=ph.pid
     </select>
 
-    <!--分页查询-->
+    <!--ページネーション検索（分页查询）-->
     <resultMap id="petMapper" type="pet">
         <id property="pid" column="pid"></id>
         <result property="petname" column="petname"></result>
@@ -113,7 +113,7 @@
       SELECT * FROM photo WHERE pid=#{pid}
     </select>
 
-    <!--查询宠物总条目数-->
+    <!--ペットの総件数を取得する（查询宠物总条目数）-->
     <select id="querypetcount" resultType="int" parameterType="map">
         select count(*) from pet
         <where>

@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-//映射的mapper位置
+//mapper の位置を指定する
 @MapperScan(basePackages = "com.example.dao")
 public class PetTradingApplication {
     public static void main(String[] args) {

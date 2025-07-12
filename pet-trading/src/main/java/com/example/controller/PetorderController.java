@@ -28,7 +28,7 @@ public class PetorderController {
         Map map = new HashMap();
         if(spet == null) {
             map.put("flag",0);
-            map.put("msg","卖方已删除该宠物");
+            map.put("msg","販売者がこのペットを削除しました");
             return map;
         }else {
             if(spet.getPk() == 0){
@@ -40,11 +40,11 @@ public class PetorderController {
                 petService.updatePet(pet);
                 petorderService.addpetorder(petorder);
                 map.put("flag",1);
-                map.put("msg","订单提交成功");
+                map.put("msg","注文の送信に成功しました");
                 return map;
             }else {
                 map.put("flag",0);
-                map.put("msg","该宠物已被人购买");
+                map.put("msg","このペットはすでに購入されています");
                 return map;
             }
         }
@@ -60,7 +60,7 @@ public class PetorderController {
             map.put("uid",uid);
         }
         petorderService.deletepetorder(map);
-        return "删除成功";
+        return "削除に成功しました";
     }
 
     @PostMapping("/updatepetorder")
@@ -75,15 +75,15 @@ public class PetorderController {
             petService.updatePet(pet);
         }
         if(petorder.getPostatu() == 3){
-            return "订单修改中，等待卖家确认";
+            return "注文は修正中で、販売者の確認を待っています";
         }else if(petorder.getPostatu() == 0){
-            return "订单已修改成功";
+            return "注文は正常に修正されました";
         }else if(petorder.getPostatu() == 2){
-            return "订单已取消";
+            return "注文はキャンセルされました";
         }else if(petorder.getPostatu() == 4){
-            return "订单正在取消，等待卖方确认";
+            return " 注文をキャンセル中です。販売者の確認をお待ちください";
         }else {
-            return "订单已完成";
+            return "注文完了";
         }
     }
 

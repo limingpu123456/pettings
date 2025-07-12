@@ -30,7 +30,7 @@ public class BKindController {
         BKindService.addBKind(bkind);
         Map map = new HashMap();
         map.put("bkid",bkind.getBkid());
-        map.put("msg","类型添加成功");
+        map.put("msg","種類の追加に成功しました");
         return map;
     }
 
@@ -41,13 +41,13 @@ public class BKindController {
         map.put("bkid",bkid);
         sKindService.deleteSKind(map);
         BKindService.deleteBKind(bkid);
-        return "类型删除成功";
+        return "種類の削除に成功しました";
     }
 
     @GetMapping("/updateBKind")
     public String updateBKind(BKind kind){
         BKindService.updateBKind(kind);
-        return "类型修改成功";
+        return "種類の変更に成功しました";
     }
 
     @GetMapping("/queryBKind")

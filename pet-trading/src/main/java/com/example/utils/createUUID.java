@@ -4,13 +4,9 @@ import java.util.UUID;
 
 public class createUUID {
 
-    /**
-     * 获得一个UUID
-     * @return String UUID
-     */
     public static String getUUID() {
         String uuid = UUID.randomUUID().toString();
-        //去掉“-”符号
+        //「-」記号(きごう)を削除（さくじょ）する
         return uuid.replaceAll("-", "");
     }
 }

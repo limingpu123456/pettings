@@ -34,7 +34,7 @@ public class UserController {
     @Autowired
     private ContactService contactService;
 
-    //注册前检验用户是否存在
+    //登録前にユーザーの存在を確認する
     @GetMapping("/checkuser")
     public Map checkuser(@RequestParam(value = "telphone",required = false)String telphone, @RequestParam(value = "idcard",required = false)String idcard){
         Map map = new HashMap();
@@ -45,11 +45,11 @@ public class UserController {
             map.remove("telphone");
             if(user != null){
                 map.put("flag",0);
-                map.put("msg","手机号已经被注册");
+                map.put("msg","この電話番号はすでに登録されています");
                 return map;
             }else {
                 map.put("flag",1);
-                map.put("msg","可进行下一步");
+                map.put("msg","次へ進めます");
                 return map;
             }
         }else {
@@ -58,34 +58,34 @@ public class UserController {
             map.remove("idcard");
             if (user != null){
                 map.put("flag",0);
-                map.put("msg","该身份证号已被注册");
+                map.put("msg","この身分証番号はすでに登録されています");
                 return map;
             }else {
                 map.put("flag",1);
-                map.put("msg","验证完成，可进行注册");
+                map.put("msg"," 確認済みです。登録可能です");
                 return map;
             }
         }
     }
 
-    //注册账号
+    //アカウントを登録する（注册账号）
     @PostMapping("/register")
     public Map register(User user){
         Map map = new HashMap();
         String path = "defaultavatar/avatar1.jpeg";
         user.setAvatar(path);
-        user.setSex("保密");
+        user.setSex("非公開");
         user.setType(1);
         userService.addUser(user);
         map.put("flag",1);
-        map.put("msg","注册成功");
+        map.put("msg","登録完了");
         return map;
     }
 
-    //登录
+    //ログイン（登录）
     @GetMapping("/login")
     public Map login(String username, String password){
-        //查找该用户名(即该账户)是否存在
+        //そのユーザー名が存在するかを確認する（查找该用户名(即该账户)是否存在）
         Map map = new HashMap();
         map.put("username", username);
         map.put("telphone", username);
@@ -96,23 +96,23 @@ public class UserController {
         map.remove("email");
         if (user == null){
             map.put("flag",0);
-            map.put("msg","用户不存在");
+            map.put("msg","ユーザーが存在しません");
             return map;
         }else if (password.equals(user.getPassword())){
             map.put("flag",1);
             map.put("uid",user.getUid());
             map.put("avatar",user.getAvatar());
             map.put("type",user.getType());
-            map.put("msg","欢迎，"+user.getUsername());
+            map.put("msg","ようこそ，"+user.getUsername());
             return map;
         }else {
             map.put("flag",0);
-            map.put("msg","密码错误");
+            map.put("msg"," パスワードが間違っています");
             return map;
         }
     }
 
-    //查找单个用户的信息
+    //単一ユーザーの情報を検索する
     @GetMapping("/queryuser")
     public User queryuser(Long uid){
         Map map = new HashMap();
@@ -129,7 +129,7 @@ public class UserController {
         return user;
     }
 
-    //修改用户信息
+    //ユーザー情報を修正する
     @PostMapping("/updateuser")
     public Map updateuser(@RequestParam(name = "file",required = false) MultipartFile file, User user) throws IOException {
         Map map = new HashMap();
@@ -140,7 +140,7 @@ public class UserController {
             map.remove("telphone");
             if(uuser != null && uuser.getUid() != user.getUid()){
                 map.put("flag",0);
-                map.put("msg","该手机号已被注册");
+                map.put("msg","この電話番号はすでに登録されています");
                 return map;
             }
         }
@@ -152,29 +152,34 @@ public class UserController {
         if(uuser == null || uuser.getUid() == user.getUid()){
             if(file != null) {
                 if(!file.isEmpty()) {
-                    //获取当前项目路径
+                    //現在のプロジェクトパスを取得する（获取当前项目路径）
                     String path = System.getProperty("user.dir") + "\\src\\main\\resources\\resources\\avatar\\";
-                    //获取文件名字,前面拼接uiid是为了防止名字重复
+                    //ファイル名を取得し、名前の重複を防ぐ（ふせぐ）ために前に UUID を付加（ふか）します。
+                    //获取文件名字,前面拼接UUID是为了防止名字重复
                     String filename = createUUID.getUUID() + file.getOriginalFilename();
+                    //ファイルオブジェクトを作成し、保存先のパスを設定する
                     //创建文件对象，设置文件保存路径
                     File dest = new File(path + filename);
+                    // ファイルオブジェクトを実際のファイルに変換する
                     //将文件对象转化为文件
                     file.transferTo(dest);
+                    //アバターのパスを保存する
                     //存入头像地址
                     user.setAvatar("avatar/" + filename);
-
+                    //古いユーザー情報を取得する
                     //查找旧的用户信息
                     map.put("uid",user.getUid());
                     uuser = userService.queryUser(map);
                     map.remove("uid");
                     String oldavatar = uuser.getAvatar();
                     int index = oldavatar.indexOf("defaultavatar/");
+                    //以前のアバターがデフォルトかどうかを判定し、デフォルトでない場合は削除する
                     //判断旧头像是否为默认头像，不是则删除旧头像
                     if(index == -1) {
-                        //得到旧头像的地址
+                        //以前のアバターのパスを取得する（得到旧头像的地址）
                         String oldpath = System.getProperty("user.dir") + "\\src\\main\\resources\\resources\\" + oldavatar.replace("/", "\\");
                         File olddest = new File(oldpath);
-                        //删除旧头像
+                        //以前のアバターを削除する（删除旧头像）
                         olddest.delete();
                     }
                 }
@@ -182,15 +187,15 @@ public class UserController {
             userService.updateUser(user);
             map.put("avatar",user.getAvatar());
             map.put("flag",1);
-            map.put("msg","修改成功");
+            map.put("msg","修正完了");
         }else {
             map.put("flag",0);
-            map.put("msg","用户名已存在");
+            map.put("msg","ユーザー名はすでに存在しています");
         }
         return map;
     }
 
-    //修改密码
+    //パスワードを変更する（修改密码）
     @PostMapping("/changepassword")
     public Map changepsaaword(User user,@RequestParam(value = "oldpassword")String oldpassword){
         Map map = new HashMap();
@@ -200,16 +205,16 @@ public class UserController {
         if(user1.getPassword().equals(oldpassword)){
             userService.updateUser(user);
             map.put("flag",1);
-            map.put("msg","修改成功");
+            map.put("msg","変更に成功しました");
             return map;
         }else {
             map.put("flag",0);
-            map.put("msg","旧密码错误");
+            map.put("msg","パスワードが間違っています");
             return map;
         }
     }
 
-    //删除用户
+    //ユーザーを削除する
     @GetMapping("/deleteUser")
     public String deleteUser(Long uid){
         Map map = new HashMap();
@@ -220,10 +225,10 @@ public class UserController {
         map.remove("uid");
         map.put("fromuid",uid);
         contactService.deleteContact(map);
-        return "该用户已被删除";
+        return "ユーザーは削除済みです";
     }
 
-    //查找所有用户
+    //すべてのユーザーを検索する（查找所有用户）
     @GetMapping("/queryalluser")
     public List<User> querAllUser(@RequestParam(name = "page",required = false) Integer page,@RequestParam(name = "count",required = false) Integer count){
         Map map = new HashMap();

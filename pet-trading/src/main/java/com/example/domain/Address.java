@@ -5,9 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-//生成无参的构造函数
+//引数なしのコンストラクタを作成する（生成无参的构造函数）
 @NoArgsConstructor
-//生成全参的构造函数
+//全ての引数を持つコンストラクタを作成する（生成全参的构造函数）
 @AllArgsConstructor
 public class Address {
     private Long aid;
