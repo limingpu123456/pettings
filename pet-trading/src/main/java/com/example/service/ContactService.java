@@ -12,7 +12,6 @@ public interface ContactService {
 
     int updateContact(Contact contact);
 
-
     List<Contact> queryContact(Map map);
 
     int querynoread(Map map);

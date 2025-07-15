@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+//axios配置
 export default function request(config) {
     const instance = axios.create({
         baseURL: "/api",
