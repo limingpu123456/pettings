@@ -123,8 +123,8 @@ export default {
           password: this.form.password,
         })
           .then((res) => {
-            console.log(res);
-            //权限控制
+            console.log('111'+(res));
+            //権限管理（权限控制）
             if (res.flag === 1) {
               this.$store.commit("setuid", res.uid);
               this.$store.commit("setavatar", "/api/" + res.avatar);
